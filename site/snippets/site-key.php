@@ -33,16 +33,12 @@ $items = [
   <span class="crop-tr" aria-hidden="true"></span>
   <span class="crop-bl" aria-hidden="true"></span>
 
-  <header class="site-key-head">
-    <p class="label">site key</p>
-  </header>
-
   <h2 class="site-key-title">
-    hi, i’m <em>reacien.</em>
+    hi, i’m <em>reacien</em>.
   </h2>
 
   <p class="site-key-intro">
-    dutch software developer — shipping practical tools,
+    dutch web developer — shipping practical tools,
     clean uis, and a little bit of automation in the seams.
   </p>
 
@@ -67,8 +63,12 @@ $items = [
   </ol>
 
   <div class="site-key-foot">
-    <span class="kbd-note mono">
-      pro tip: tap <span class="kbd">K</span> to jump around.
+    <span class="kbd-note mono cmdk-hint-touch-hide">
+      pro tip: press
+      <span class="kbd">
+        <span class="cmdk-mod">ctrl</span> + shift + k
+      </span>
+      to jump around.
     </span>
   </div>
 </aside>

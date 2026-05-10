@@ -4,7 +4,7 @@
 ?>
 
 <!doctype html>
-<html lang="en" data-theme="light" data-accent="green">
+<html lang="en">
 
 <head>
     <meta charset="utf-8">
@@ -30,6 +30,40 @@
         'assets/js/cmdk.js',
         'assets/js/templates/' . $page->template()->name() . '.js'
     ], ['defer' => true]) ?>
+
+    <script>
+    (() => {
+      const root = document.documentElement;
+
+      try {
+        const savedTheme = localStorage.getItem('rc-theme');
+        if (savedTheme === 'light' || savedTheme === 'dark') {
+          root.dataset.theme = savedTheme;
+        } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+          root.dataset.theme = 'dark';
+        } else {
+          root.dataset.theme = 'light';
+        }
+      } catch {
+        root.dataset.theme =
+          window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light';
+      }
+
+      try {
+        const savedAccent = localStorage.getItem('rc-accent');
+        const valid = ['green','red','blue','magenta','mono'];
+        if (savedAccent && valid.includes(savedAccent)) {
+          root.dataset.accent = savedAccent;
+        } else {
+          root.dataset.accent = 'green';
+        }
+      } catch {
+        root.dataset.accent = 'green';
+      }
+    })();
+    </script>
 </head>
 <body>
 
@@ -46,14 +80,34 @@
         </nav>
 
         <div class="chrome-right">
-            <button class="cmdk-trigger" type="button" data-cmdk-trigger aria-label="Open command palette">
-                <span class="prompt">&gt;</span>
-                <span class="placeholder">Type to navigate</span>
-                <span class="kbd">K</span>
-            </button>
+            <div class="cmdk-inline">
+            <span class="prompt">❯❯</span>
 
-            <button class="theme-btn" type="button" id="theme-toggle-inline" aria-label="Toggle theme">
-                <span class="theme-icon">◎</span>
+            <input
+                type="search"
+                class="cmdk-inline-input cmdk-hint-touch-hide"
+                data-cmdk-inline
+                placeholder="type to navigate"
+                autocapitalize="off"
+                autocomplete="off"
+                spellcheck="false"
+            >
+
+            <span class="kbd mono cmdk-hint-touch-hide">
+                <span class="cmdk-mod">ctrl</span> + shift + k
+            </span>
+
+            <button type="button" class="cmdk-inline-touch" data-cmdk-trigger>
+                cmd
+            </button>
+            </div>
+
+            <button
+                class="theme-btn"
+                type="button"
+                data-theme-trigger
+            >
+                <span class="theme-icon" data-theme-icon>☀</span>
             </button>
         </div>
     </div>

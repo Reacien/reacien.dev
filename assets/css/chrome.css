@@ -1,4 +1,7 @@
 .chrome {
+  position: sticky;
+  top: 0;
+  z-index: 60;
   background: var(--paper-soft);
   border-bottom: 1px solid var(--border-soft);
   font-family: var(--font-body);
@@ -95,7 +98,6 @@
   color: var(--ink);
 }
 
-/* ---- right-side controls ---- */
 .chrome-right {
   display: inline-flex;
   align-items: center;
@@ -139,21 +141,149 @@
   transform: translate(-0.05rem, -0.05rem);
 }
 
+.cmdk-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.75rem;
+  border: var(--border-hairline) solid var(--border-soft);
+  background: var(--paper);
+  position: relative;
+  min-height: 2rem;
+}
+
+.cmdk-inline .prompt {
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  color: var(--accent);
+}
+
+.cmdk-inline-input {
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  min-width: 9rem;
+  color: var(--ink-soft);
+}
+
+.cmdk-inline-input::placeholder {
+  color: var(--ink-muted);
+}
+
+.cmdk-inline .kbd {
+  line-height: 1;
+}
+
+.cmdk-inline-touch {
+  display: none;
+  border: none;
+  background: transparent;
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  cursor: pointer;
+  color: var(--ink-soft);
+}
+
+:root[data-input='touch'] .cmdk-inline-input,
+:root[data-input='touch'] .cmdk-inline .kbd {
+  display: none;
+}
+
+:root[data-input='touch'] .cmdk-inline-touch {
+  display: inline-flex;
+}
+
+/* tiny dropdown panel */
+.cmdk-inline-panel {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  left: 0;
+  width: 100%;
+  max-width: none;
+  background: var(--paper);
+  border: var(--border-hairline) solid var(--border-strong);
+  box-shadow: var(--shadow);
+  z-index: 50;
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  opacity: 0;
+  transform: translateY(-0.4rem) scaleY(0.96);
+  transform-origin: top center;
+  pointer-events: none;
+  transition:
+    opacity 160ms ease,
+    transform 180ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.cmdk-inline-panel.is-open {
+  opacity: 1;
+  transform: translateY(0) scaleY(1);
+  pointer-events: auto;
+}
+
+.cmdk-inline-panel.is-closing {
+  opacity: 0;
+  transform: translateY(-0.3rem) scaleY(0.97);
+  pointer-events: none;
+}
+
+.cmdk-inline-panel[hidden] {
+  display: block;
+}
+
+.cmdk-inline-list {
+  max-height: 50vh;
+  overflow-y: auto;
+}
+
+.cmdk-inline-item {
+  padding: 0.35rem 0.6rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.cmdk-inline-item .k {
+  color: var(--ink-muted);
+  flex-shrink: 0;
+}
+
+.cmdk-inline-item .label {
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cmdk-inline-item.active,
+.cmdk-inline-item:hover {
+  background: var(--paper-soft);
+}
+
 /* theme button */
 .theme-btn {
   appearance: none;
   border: 1px solid var(--border-soft);
   background: var(--paper);
   color: var(--ink-soft);
-  padding: 0.3rem 0.6rem;
+  padding: 0.3rem 0.75rem;
   cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-size: 0.75rem;
-  box-shadow: 0.1rem 0.1rem 0 var(--border-soft);
-  transition: background 0.15s ease-out, box-shadow 0.15s ease-out,
-    transform 0.15s ease-out, border-color 0.15s ease-out;
+  font-family: var(--font-code);
+  line-height: 1;
+  min-height: 2rem;
+  box-shadow: none;
+  transition:
+    background 0.15s ease-out,
+    box-shadow 0.15s ease-out,
+    transform 0.15s ease-out,
+    border-color 0.15s ease-out;
 }
 
 .theme-btn:hover {
@@ -166,4 +296,9 @@
 .theme-icon {
   font-family: var(--font-code);
   font-size: 0.75rem;
+}
+
+.theme-btn:active {
+  transform: translate(0, 0);
+  box-shadow: 0.05rem 0.05rem 0 var(--border-strong);
 }

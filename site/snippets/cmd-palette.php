@@ -52,23 +52,51 @@ if ($projects = page('projects')) {
 $items[] = [
     'group' => 'actions',
     'k'     => 'theme',
-    'label' => 'Toggle theme (light ↔ dark)',
+    'label' => 'theme: toggle light/dark',
     'hint'  => '⇧ T',
-    'js'    => "document.getElementById('theme-toggle')?.click()",
+    'js'    => "window.rcToggleTheme && window.rcToggleTheme()",
 ];
+
+$accentOptions = [
+    'green'   => 'accent: green',
+    'red'     => 'accent: red',
+    'blue'    => 'accent: blue',
+    'magenta' => 'accent: magenta',
+    'mono'    => 'accent: mono',
+];
+
+foreach ($accentOptions as $key => $label) {
+    $items[] = [
+        'group' => 'actions',
+        'k'     => 'accent ' . $key,
+        'label' => $label,
+        'hint'  => 'set accent to ' . $key,
+        'js'    => "window.rcSetAccent && window.rcSetAccent('{$key}')",
+    ];
+}
+
 $items[] = [
     'group' => 'actions',
-    'k'     => 'accent',
-    'label' => 'Cycle accent color',
-    'hint'  => '5 options',
+    'k'     => 'accent cycle',
+    'label' => 'accent: cycle through options',
+    'hint'  => 'shortcut',
     'js'    => "window.rcCycleAccent && window.rcCycleAccent()",
 ];
+
 $items[] = [
     'group' => 'actions',
     'k'     => 'email',
-    'label' => 'Copy email address',
+    'label' => 'copy email address',
     'hint'  => 'hi@reacien.dev',
     'js'    => "navigator.clipboard?.writeText('hi@reacien.dev')",
+];
+
+$items[] = [
+    'group' => 'actions',
+    'k'     => 'boot replay',
+    'label' => 'boot: replay intro sequence',
+    'hint'  => 'rerun boot overlay',
+    'js'    => "window.rcReplayBoot && window.rcReplayBoot()",
 ];
 
 // External
@@ -107,9 +135,21 @@ $items[] = ['group' => 'external', 'k' => 'kofi', 'label' => 'buy me a coffee', 
             <span class="sep">·</span>
             <span id="cmdk-total" class="mono">0 commands</span>
             <span class="spacer"></span>
-            <span class="mono">↑↓ navigate</span>
-            <span class="mono">↵ run</span>
-            <span class="mono">esc close</span>
+
+            <span class="mono">
+                <span class="kbd">↑↓</span>
+                navigate
+            </span>
+
+            <span class="mono">
+                <span class="kbd">↵</span>
+                run
+            </span>
+
+            <span class="mono">
+                <span class="kbd">esc</span>
+                close
+            </span>
         </div>
     </div>
 

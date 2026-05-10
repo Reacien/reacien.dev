@@ -89,15 +89,41 @@
         close();
     };
 
-    const open = () => {
+    let closeTimer = null;
+    let lastFocused = null;
+
+     const open = () => {
+        clearTimeout(closeTimer);
+        if (dialog.classList.contains('is-open')) return;
+
+        lastFocused = document.activeElement;
         dialog.hidden = false;
+        requestAnimationFrame(() => {
+            dialog.classList.remove('is-closing');
+            dialog.classList.add('is-open');
+        });
+
         $q.value = '';
         filter('');
         setTimeout(() => $q.focus(), 30);
     };
 
     const close = () => {
-        dialog.hidden = true;
+        $q.blur();
+
+        dialog.classList.remove('is-open');
+        dialog.classList.add('is-closing');
+
+        closeTimer = setTimeout(() => {
+            dialog.hidden = true;
+            dialog.classList.remove('is-closing');
+
+            if (lastFocused && typeof lastFocused.focus === 'function') {
+                try { lastFocused.focus(); } catch {}
+            } else {
+                try { document.body.focus(); } catch {}
+            }
+        }, 220);
     };
 
     $q.addEventListener('input', e => filter(e.target.value));

@@ -22,10 +22,22 @@ $commit  = option('reacien.commit', 'dev');
         <section class="colophon-col colophon-elsewhere">
             <h4>elsewhere</h4>
             <ul>
-                <li><a href="https://github.com/Reacien" target="_blank" rel="noreferrer">→ github · @Reacien</a></li>
-                <li><a href="https://twitter.com/Reacien_" target="_blank" rel="noreferrer">→ twitter · @Reacien_</a></li>
-                <li><a href="https://mynickname.com/reacien" target="_blank" rel="noreferrer">→ nickname</a></li>
-                <li><a href="https://ko-fi.com/reacien_" target="_blank" rel="noreferrer">→ buy me a coffee</a></li>
+                <li><a href="https://github.com/Reacien" class="footer-link" target="_blank" rel="noreferrer">
+                    <span class="footer-link-arrow" aria-hidden="true">→</span>    
+                    <span class="footer-link-label">github · @Reacien</span>
+                </a></li>
+                <li><a href="https://twitter.com/Reacien_" class="footer-link" target="_blank" rel="noreferrer">
+                    <span class="footer-link-arrow" aria-hidden="true">→</span>     
+                    <span class="footer-link-label">twitter · @Reacien_</span>
+                </a></li>
+                <li><a href="https://mynickname.com/reacien" class="footer-link" target="_blank" rel="noreferrer">
+                    <span class="footer-link-arrow" aria-hidden="true">→</span>     
+                    <span class="footer-link-label">nickname</span>
+                </a></li>
+                <li><a href="https://ko-fi.com/reacien_" class="footer-link" target="_blank" rel="noreferrer">
+                    <span class="footer-link-arrow" aria-hidden="true">→</span>     
+                    <span class="footer-link-label">buy me a coffee</span>
+                </a></li>
             </ul>
         </section>
 
@@ -33,11 +45,26 @@ $commit  = option('reacien.commit', 'dev');
         <section class="colophon-col colophon-sitemap">
             <h4>sitemap</h4>
             <ul>
-                <li><a href="<?= $site->url() ?>">→ home</a></li>
-                <li><a href="<?= url('about') ?>">→ about</a></li>
-                <li><a href="<?= url('projects') ?>">→ projects</a></li>
-                <li><a href="<?= url('insights') ?>">→ insights</a></li>
-                <li><a href="<?= url('contact') ?>">→ contact</a></li>
+                <li><a href="<?= $site->url() ?>" class="footer-link">
+                    <span class="footer-link-arrow" aria-hidden="true">→</span>
+                    <span class="footer-link-label">home</span>
+                </a></li>
+                <li><a href="<?= $site->url() ?>" class="footer-link">
+                    <span class="footer-link-arrow" aria-hidden="true">→</span>
+                    <span class="footer-link-label">about</span>
+                </a></li>
+                <li><a href="<?= $site->url() ?>" class="footer-link">
+                    <span class="footer-link-arrow" aria-hidden="true">→</span>
+                    <span class="footer-link-label">projects</span>
+                </a></li>
+                <li><a href="<?= $site->url() ?>" class="footer-link">
+                    <span class="footer-link-arrow" aria-hidden="true">→</span>
+                    <span class="footer-link-label">insights</span>
+                </a></li>
+                <li><a href="<?= $site->url() ?>" class="footer-link">
+                    <span class="footer-link-arrow" aria-hidden="true">→</span>
+                    <span class="footer-link-label">contact</span>
+                </a></li>
             </ul>
         </section>
 

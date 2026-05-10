@@ -2,7 +2,7 @@
   <pre class="boot-lines" id="boot-lines">
     <span class="ghost">&gt; boot sequence ready…</span>
   </pre>
-  <button class="boot-skip" type="button">
+  <button id="boot-skip" class="boot-skip" type="button">
     skip
   </button>
 </div>

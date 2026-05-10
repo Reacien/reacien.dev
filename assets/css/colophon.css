@@ -1,8 +1,9 @@
 .colophon {
-  border-top: var(--border-hairline) solid var(--border-strong);
-  background: var(--ink);
-  color: var(--paper);
-  margin-top: 3.75rem;
+  position: relative;
+  z-index: 2;
+  border-top: var(--border-hairline) solid color-mix(in oklch, #ece7d9 30%, transparent);
+  background: #121210;
+  color: #ece7d9;
 }
 
 .colophon-inner {
@@ -41,7 +42,7 @@
 
 .colophon .blurb,
 .colophon .colophon-text {
-  color: var(--ink-soft);
+  color: #595959;
   max-width: 40ch;
   font-size: 0.75rem;
   line-height: 1.5;
@@ -68,33 +69,76 @@
 }
 
 .colophon a {
-  color: var(--paper);
+  color: #f5f5f0;
   text-decoration: none;
   opacity: 0.85;
 }
 
-.colophon a:hover {
+.colophon .footer-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.85;
+  transition: color 0.15s ease-out, opacity 0.15s ease-out;
+}
+
+.colophon .footer-link-label {
+  transition: transform 0.15s ease-out, color 0.15s ease-out;
+}
+
+.colophon .footer-link-arrow {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  translate: 0 -50%;
+  opacity: 0;
+  transform: translateX(-0.35rem);
+  transition:
+    opacity 0.15s ease-out,
+    transform 0.15s ease-out,
+    color 0.15s ease-out;
+  color: var(--accent-strong);
+  pointer-events: none;
+}
+
+.colophon .footer-link:hover,
+.colophon .footer-link:focus-visible {
   color: var(--accent-strong);
   opacity: 1;
+}
+
+.colophon .footer-link:hover .footer-link-label,
+.colophon .footer-link:focus-visible .footer-link-label {
+  transform: translateX(0.9rem);
+  color: var(--accent-strong);
+}
+
+.colophon .footer-link:hover .footer-link-arrow,
+.colophon .footer-link:focus-visible .footer-link-arrow {
+  opacity: 1;
+  transform: translateX(0);
+  color: var(--accent-strong);
 }
 
 /* base bar */
 .colophon-base {
   border-top: var(--border-hairline)
-    solid color-mix(in oklch, var(--paper) 20%, transparent);
+    solid color-mix(in oklch, #ece7d9 20%, transparent);
   max-width: 80rem;
   margin: 0 auto;
   padding: 0.875rem clamp(1.5rem, 5vw, 2.5rem);
   display: flex;
   gap: 0.75rem;
   font-size: 0.6875rem;
-  color: var(--muted);
+  color: #8a8a85;
   flex-wrap: wrap;
   align-items: center;
 }
 
 .colophon-base .sep {
-  color: color-mix(in oklch, var(--paper) 20%, transparent);
+  color: color-mix(in oklch, #f5f5f0 20%, transparent);
 }
 
 .colophon-base a {
