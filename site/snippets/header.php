@@ -37,19 +37,6 @@
     <div class="chrome-inner">
         <nav class="crumbs" aria-label="Breadcrumb">
             <a href="<?= $site->url() ?>" class="root">
-                <span class="logo">
-                    <img
-                        src="<?= url('assets/images/logo-light.svg') ?>"
-                        alt="<?= $site->title()->escape() ?>"
-                        class="logo-mark logo-mark--light"
-                    >
-                    <img
-                        src="<?= url('assets/images/logo-dark.svg') ?>"
-                        alt="<?= $site->title()->escape() ?>"
-                        class="logo-mark logo-mark--dark"
-                        aria-hidden="true"
-                    >
-                </span>
                 <span class="root-text">
                     <span class="root-main">reacien</span><span class="accent">.dev</span>
                 </span>

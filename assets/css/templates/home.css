@@ -180,7 +180,8 @@
 .site-key::before,
 .site-key::after,
 .site-key > .crop-tl,
-.site-key > .crop-tr {
+.site-key > .crop-tr,
+.site-key > .crop-bl {
   content: '';
   position: absolute;
   width: 0.625rem;
@@ -212,10 +213,6 @@
 .site-key .crop-bl {
   bottom: 0.375rem;
   left: 0.375rem;
-  position: absolute;
-  width: 0.625rem;
-  height: 0.625rem;
-  border-style: solid;
   border-bottom-width: var(--border-hairline);
   border-left-width: var(--border-hairline);
 }
@@ -223,8 +220,15 @@
 .site-key-head {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  margin-bottom: 0.875rem;
+  justify-content: flex-start;
+  margin-bottom: 0.5rem;
+}
+
+.site-key-head .chip.solid {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+  font-size: 0.6875rem;
 }
 
 .site-key-title {
@@ -236,13 +240,18 @@
 
 .site-key-title em {
   color: var(--accent);
+  font-style: italic;
 }
 
-.site-key-blurb {
-  font-size: 0.875rem;
+.site-key-intro {
+  font-size: 0.8125rem;
   color: var(--ink-soft);
-  margin-bottom: 1rem;
   max-width: 38ch;
+  margin: 0 0 0.75rem;
+}
+
+.site-key-section-label {
+  margin: 0 0 0.375rem;
 }
 
 .site-key hr.dashed {
@@ -290,11 +299,52 @@
 }
 
 .site-key-foot {
-  display: flex;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-  align-items: center;
   margin-top: 0.75rem;
+}
+
+.site-key-foot .kbd-note {
+  font-size: 0.6875rem;
+  color: var(--ink-muted);
+}
+
+.site-key-foot .kbd {
+  margin-left: 0.25rem;
+}
+
+.site-key-row {
+  display: grid;
+  grid-template-columns: 1.75rem 5.5rem 1fr;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.4375rem 0.25rem;
+  border-bottom: var(--border-hairline) dashed var(--border-soft);
+  font-size: 0.78125rem;
+}
+
+.site-key-row:last-child {
+  border-bottom: none;
+}
+
+.site-key-row .num {
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  color: var(--ink-muted);
+}
+
+.site-key-row .name {
+  font-family: var(--font-serif);
+  font-size: 0.9375rem;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.site-key-row .name:hover {
+  color: var(--accent);
+}
+
+.site-key-row .desc {
+  color: var(--ink-muted);
+  line-height: 1.35;
 }
 
 /* ---- selected work strip ---- */

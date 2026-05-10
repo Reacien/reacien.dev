@@ -2,16 +2,24 @@
 
 $items = [];
 
+// Navigation
 foreach ([
-  ['Home',     '/',         url()],
-  ['About',    '/about',    url('about')],
-  ['Projects', '/projects', url('projects')],
-  ['Insights', '/insights', url('insights')],
-  ['Contact',  '/contact',  url('contact')],
+    ['Home',     '/',       url()],
+    ['About',    '/about',  url('about')],
+    ['Projects', '/projects', url('projects')],
+    ['Insights', '/insights', url('insights')],
+    ['Contact',  '/contact',  url('contact')],
 ] as [$label, $hint, $href]) {
-  $items[] = ['group'=>'navigate', 'k'=>strtolower($label), 'label'=>$label, 'hint'=>$hint, 'href'=>$href];
+    $items[] = [
+        'group' => 'navigate',
+        'k'     => strtolower($label),
+        'label' => $label,
+        'hint'  => $hint,
+        'href'  => $href,
+    ];
 }
 
+// Latest insights
 if ($insights = page('insights')) {
     foreach ($insights->children()->listed()->sortBy('date', 'desc')->limit(3) as $post) {
         $items[] = [
@@ -24,46 +32,88 @@ if ($insights = page('insights')) {
     }
 }
 
+// Projects by status
 if ($projects = page('projects')) {
-    $labels = ['wip'=>'In Progress', 'completed'=>'Completed', 'archived'=>'Archived'];
+    $labels = ['wip' => 'in progress', 'completed' => 'completed', 'archived' => 'archived'];
     foreach ($projects->children()->listed() as $p) {
         $status = $p->project_status()->value();
+        $statusLabel = $labels[$status] ?? $status;
         $items[] = [
             'group' => 'projects',
-            'k'     => $labels[$status] ?? $status,
+            'k'     => $statusLabel,
             'label' => $p->title()->value(),
-            'hint'  => '→ ' . ($labels[$status] ?? $status),
+            'hint'  => '→ ' . $statusLabel,
             'href'  => $p->url(),
         ];
     }
 }
 
-$items[] = ['group'=>'actions', 'k'=>'theme',  'label'=>'Toggle theme (light ↔ dark)', 'hint'=>'⇧ T',  'js'=>"document.getElementById('theme-toggle')?.click()"];
-$items[] = ['group'=>'actions', 'k'=>'accent', 'label'=>'Cycle accent color',          'hint'=>'5 options', 'js'=>"window.rcCycleAccent && window.rcCycleAccent()"];
-$items[] = ['group'=>'actions', 'k'=>'email',  'label'=>'Copy email address',           'hint'=>'hi@reacien.dev', 'js'=>"navigator.clipboard?.writeText('hi@reacien.dev')"];
+// Actions
+$items[] = [
+    'group' => 'actions',
+    'k'     => 'theme',
+    'label' => 'Toggle theme (light ↔ dark)',
+    'hint'  => '⇧ T',
+    'js'    => "document.getElementById('theme-toggle')?.click()",
+];
+$items[] = [
+    'group' => 'actions',
+    'k'     => 'accent',
+    'label' => 'Cycle accent color',
+    'hint'  => '5 options',
+    'js'    => "window.rcCycleAccent && window.rcCycleAccent()",
+];
+$items[] = [
+    'group' => 'actions',
+    'k'     => 'email',
+    'label' => 'Copy email address',
+    'hint'  => 'hi@reacien.dev',
+    'js'    => "navigator.clipboard?.writeText('hi@reacien.dev')",
+];
 
-$items[] = ['group'=>'external', 'k'=>'gh',    'label'=>'Github · @Reacien',     'hint'=>'↗', 'href'=>'https://github.com/Reacien',     'external'=>true];
-$items[] = ['group'=>'external', 'k'=>'tw',    'label'=>'Twitter · @Reacien_',   'hint'=>'↗', 'href'=>'https://twitter.com/Reacien_',   'external'=>true];
-$items[] = ['group'=>'external', 'k'=>'nick',  'label'=>'Nickname',              'hint'=>'↗', 'href'=>'https://mynickname.com/reacien', 'external'=>true];
-$items[] = ['group'=>'external', 'k'=>'kofi',  'label'=>'Buy me a coffee',       'hint'=>'↗', 'href'=>'https://ko-fi.com/reacien_',     'external'=>true];
+// External
+$items[] = ['group' => 'external', 'k' => 'gh',   'label' => 'github · @Reacien',   'hint' => '↗', 'href' => 'https://github.com/Reacien',   'external' => true];
+$items[] = ['group' => 'external', 'k' => 'tw',   'label' => 'twitter · @Reacien_', 'hint' => '↗', 'href' => 'https://twitter.com/Reacien_', 'external' => true];
+$items[] = ['group' => 'external', 'k' => 'nick', 'label' => 'nickname',            'hint' => '↗', 'href' => 'https://mynickname.com/reacien', 'external' => true];
+$items[] = ['group' => 'external', 'k' => 'kofi', 'label' => 'buy me a coffee',     'hint' => '↗', 'href' => 'https://ko-fi.com/reacien_', 'external' => true];
+
 ?>
 
-<dialog class="cmdk-overlay" id="cmdk" hidden aria-label="Command Palette">
-    <div class="cmdk-panel" role="document">
-        <div class="cmdk-input">
-            <span class="prompt">&gt;</span>
-            <input id="cmdk-q" type="text" placeholder="type to navigate, search, or run..." autocomplete="off" />
-            <span class="chip" id="cmdk-count">0 results</span>
+<div class="overlay" id="cmdk" hidden>
+    <div class="cmd-panel" role="dialog" aria-modal="true" aria-labelledby="cmdk-label">
+        <div class="cmd-input">
+            <span class="prompt">❯❯</span>
+            <input
+                id="cmdk-q"
+                type="text"
+                placeholder="type to navigate…"
+                autocapitalize="off"
+                autocomplete="off"
+                spellcheck="false"
+                aria-label="Command palette"
+            >
+            <span class="kbd mono">esc</span>
         </div>
-        <div class="cmdk-list" id="cmdk-list" role="listbox"></div>
-        <div class="cmdk-empty" id="cmdk-empty" hidden>no matches</div>
-        <div class="cmdk-foot">
-            <span><span class="kbd">↑↓</span> navigate</span>
-            <span><span class="kbd">↵</span> run</span>
-            <span><span class="kbd">esc</span> close</span>
-            <span class="spacer" id="cmdk-total"></span>
+
+        <div id="cmdk-empty" class="cmd-empty" hidden>
+            <p>0 results</p>
+            <p class="muted">no matches</p>
+        </div>
+
+        <div id="cmdk-list" class="cmd-list" role="listbox" aria-label="Commands"></div>
+
+        <div class="cmd-foot">
+            <span id="cmdk-count" class="mono">0 results</span>
+            <span class="sep">·</span>
+            <span id="cmdk-total" class="mono">0 commands</span>
+            <span class="spacer"></span>
+            <span class="mono">↑↓ navigate</span>
+            <span class="mono">↵ run</span>
+            <span class="mono">esc close</span>
         </div>
     </div>
-</dialog>
 
-<script type="application/json" id="cmdk-data"><?= json_encode($items, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?></script>
+    <script type="application/json" id="cmdk-data">
+        <?= json_encode($items, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?>
+    </script>
+</div>

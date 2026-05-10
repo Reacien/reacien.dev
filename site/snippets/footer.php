@@ -1,73 +1,69 @@
 <?php
 /** @var \Kirby\Cms\Site $site */
+
+$version = option('reacien.version', 'v0.0.0');
+$commit  = option('reacien.commit', 'dev');
 ?>
 
 <footer class="colophon">
     <div class="colophon-inner">
+        <!-- Brand / blurb -->
         <section class="colophon-col colophon-brand">
             <div class="wordmark">
-                reacien<span class="accent">.dev</span>
+                reacien<em>.dev</em>
             </div>
             <p class="blurb">
-                Dutch software developr — shipping practical tools, clean UIs, and a little bit of automation in the seams.
+                a dutch software developer — shipping practical tools,
+                clean uis, and a little bit of automation in the seams.
             </p>
-
-            <a
-                href="https://mynickname.com/reacien"
-                class="nick-cert"
-                target="_blank"
-                rel="noreferrer"
-            >
-                <img
-                    src="<?= url('assets/images/nickname-cert.gif') ?>"
-                    alt="Nickname certificate for Reacien"
-                    loading="lazy"
-                >
-            </a>
         </section>
 
+        <!-- Elsewhere -->
         <section class="colophon-col colophon-elsewhere">
-            <h4>Elsewhere</h4>
+            <h4>elsewhere</h4>
             <ul>
-                <li><a href="https://github.com/Reacien" target="_blank" rel="noreferrer">GitHub</a></li>
-                <li><a href="https://twitter.com/Reacien_" target="_blank" rel="noreferrer">Twitter</a></li>
-                <li><a href="https://mynickname.com/reacien" target="_blank" rel="noreferrer">Nickname</a></li>
-                <li><a href="https://ko-fi.com/reacien_" target="_blank" rel="noreferrer">Buy me a coffee</a></li>
+                <li><a href="https://github.com/Reacien" target="_blank" rel="noreferrer">→ github · @Reacien</a></li>
+                <li><a href="https://twitter.com/Reacien_" target="_blank" rel="noreferrer">→ twitter · @Reacien_</a></li>
+                <li><a href="https://mynickname.com/reacien" target="_blank" rel="noreferrer">→ nickname</a></li>
+                <li><a href="https://ko-fi.com/reacien_" target="_blank" rel="noreferrer">→ buy me a coffee</a></li>
             </ul>
         </section>
 
+        <!-- Sitemap -->
         <section class="colophon-col colophon-sitemap">
-            <h4>Sitemap</h4>
+            <h4>sitemap</h4>
             <ul>
-                <li><a href="<?= $site->url() ?>">Home</a></li>
-                <li><a href="<?= url('about') ?>">About</a></li>
-                <li><a href="<?= url('projects') ?>">Projects</a></li>
-                <li><a href="<?= url('insights') ?>">Insights</a></li>
-                <li><a href="<?= url('contact') ?>">Contact</a></li>
+                <li><a href="<?= $site->url() ?>">→ home</a></li>
+                <li><a href="<?= url('about') ?>">→ about</a></li>
+                <li><a href="<?= url('projects') ?>">→ projects</a></li>
+                <li><a href="<?= url('insights') ?>">→ insights</a></li>
+                <li><a href="<?= url('contact') ?>">→ contact</a></li>
             </ul>
         </section>
 
+         <!-- Colophon text -->
         <section class="colophone-col colophon-meta">
-            <h4>Colophon</h4>
-            <p>
-                Built with Kirby CMS, hand-tuned CSS, and a little bit of PHP.
-                Typeset in Instrument Serif and JetBrains Mono. Hosted in the Cloud.
+            <h4>colophon</h4>
+            <p class="colophon-text">
+                typeset in instrument serif & jetbrains mono. built with kirby cms
+                & hand-tuned css. hosted in the cloud.
             </p>
         </section>
     </div>
 
     <div class="colophon-base">
-        <span>&copy; <?= date('Y') ?> <?= $site->title()->escape() ?></span>
-        <span class="sep">•</span>
-        <span>Made by hand in NL</span>
-        <span class="sep">•</span>
-        <a href="<?= url('privacy') ?>">Privacy</a>
-        <span class="sep">•</span>
-        <a href="<?= url('insights/feed.xml') ?>">RSS</a>
+        <span>&copy; <?= date('Y') ?> reacien.dev</span>
+        <span class="sep">/</span>
+        <span>made by hand in nl</span>
+        <span class="sep">/</span>
+        <a href="<?= url('privacy') ?>">privacy</a>
+
         <span class="build">
-            <?= option('reacien.build', 'v2-dev') ?>
+        <?= $version ?>
+        <span class="sep-dot">•</span>
+        commit <?= $commit ?>
         </span>
-    </div>
+  </div>
 </footer>
 
 </body>

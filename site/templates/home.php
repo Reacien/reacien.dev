@@ -13,20 +13,11 @@
 
     <div class="home-hero-grid">
       <div class="home-copy">
-        <p class="label">reacien.dev · est. 2024</p>
+        <p class="label">reacien.dev · est. 2025</p>
         <h1>
           building on the <em>web</em>,<br>
           one commit at a time.
         </h1>
-        <p class="lede">
-          Dutch software development student — shipping practical tools,
-          clean UIs, and a little bit of automation in the seams.
-        </p>
-
-        <div class="hero-actions">
-          <a href="<?= url('projects') ?>" class="btn btn-primary">View projects</a>
-          <a href="<?= url('about') ?>" class="btn">About me</a>
-        </div>
       </div>
 
       <div class="home-side">

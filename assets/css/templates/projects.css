@@ -1,0 +1,142 @@
+.projects-inner {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 2.5rem clamp(1.25rem, 5vw, 2.5rem) 5rem;
+}
+
+/* Hero */
+.projects-hero {
+  margin-bottom: 1.75rem;
+}
+
+.projects-hero .label {
+  margin-bottom: 0.25rem;
+}
+
+.projects-hero h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(2.25rem, 4vw, 3rem);
+  line-height: 1.15;
+  margin: 0 0 0.5rem;
+  padding-bottom: 0.18em;
+}
+
+.projects-hero h1 em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.projects-hero .lede {
+  color: var(--ink-soft);
+  max-width: 52ch;
+  font-size: 0.875rem;
+}
+
+/* Grid */
+.projects-body {
+  border-top: var(--border-hairline) solid var(--border-soft);
+  padding-top: 1.75rem;
+}
+
+.projects-grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
+  gap: 1rem;
+}
+
+/* Card */
+.project-card {
+  position: relative;
+  background: var(--paper-soft);
+  border: var(--border-hairline) solid var(--border-strong);
+  box-shadow: var(--shadow);
+  transition: transform 0.15s ease-out, box-shadow 0.15s ease-out,
+    border-color 0.15s ease-out, background 0.15s ease-out;
+}
+
+.project-card:hover {
+  transform: translate(-0.125rem, -0.125rem);
+  box-shadow: 0.5rem 0.5rem 0 0 var(--border-strong);
+  border-color: var(--border-strong);
+  background: var(--paper);
+}
+
+.project-card .card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Shot area */
+.project-card .shot {
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--stripe) 0 0.375rem,
+    transparent 0.375rem 0.75rem
+  );
+  border-bottom: var(--border-hairline) dashed var(--border-soft);
+  min-height: 7.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  color: var(--ink-muted);
+}
+
+/* Content */
+.project-card .card-content {
+  padding: 0.875rem 1rem 1.1rem;
+}
+
+.project-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  line-height: 1.05;
+  margin: 0;
+}
+
+.project-card .summary {
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+  margin: 0.375rem 0 0;
+}
+
+/* Status chip */
+.project-card .status {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 999px;
+  border: var(--border-hairline) solid var(--border-soft);
+  background: var(--paper-strong);
+  color: var(--ink-muted);
+}
+
+.project-card .status-wip {
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  border-color: var(--accent-strong);
+}
+
+.project-card .status-completed {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.project-card .status-archived {
+  background: var(--paper-strong);
+  color: var(--ink-muted);
+  border-color: var(--border-soft);
+}
