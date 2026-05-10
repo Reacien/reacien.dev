@@ -1,0 +1,67 @@
+Title: Togichu's Website
+
+----
+
+Subtitle: Portfolio website for Togichu
+
+----
+
+Project-status: completed
+
+----
+
+Description:
+
+### Project Overview
+The official website for Togichu was built to serve as a central hub for her VTubing brand. Moving beyond standard social media link-trees, her website provides a dedicated space for fans to get to know her, explore her models, and see all the people she has worked with.
+
+### Technical Execution
+Built on **Kirby CMS**, the site prioritizes speed and a mobile-friendly experience for fans browsing during live streams. I developed a custom frontend that handles heavy imagery without sacrificing performance. By utilizing Kirby's flexible blueprint system, the site allows for quick updates to models, credits, and social links, ensuring the content is as dynamic as the streamer herself.
+
+### Key Features
+- Immersive Branding: A UI/UX designed to match Togichu's character colors and aesthetic.
+- Live Integration: Optimized links and layouts that direct traffic efficiently to her active platforms.
+- Asset Optimization: Advanced handling of high-resolution character art and fan graphics to ensure fast load times on all devices.
+- Scalable Architecture: A clean, file-based backend that allows for the easy addition of future features like merch stores or lore wikis.
+
+### The Result
+A professional, vibrant landing page that solidifies Togichu's digital presence, offering her community a polished and reliable destination to connect with her brand outside of streaming platforms.
+
+----
+
+Urls:
+
+-
+  label: 'Visit the website'
+  url: 'https://togichu.live'
+-
+  label: "Togichu's Twitch"
+  url: 'https://twitch.tv/togichu'
+
+----
+
+Testimonial-name: Togichu
+
+----
+
+Testimonial-role: VTuber
+
+----
+
+Testimonial-quote: 
+
+----
+
+Content: []
+
+----
+
+Status: completed
+
+----
+
+Tech: php
+
+----
+
+Uuid: h3napsmcrtxlojcp

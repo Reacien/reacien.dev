@@ -1,0 +1,25 @@
+Title: Stream Timer
+
+----
+
+Cover: []
+
+----
+
+Date: 2026-03-19
+
+----
+
+Tags: javascript, html, css, webdev, frontend, api, project
+
+----
+
+Excerpt: Stream Timer is a customizable countdown overlay for streamers — drop a URL into OBS and you're good to go. This is the write-up on how it started as a one-person hack and grew into something anyone can use.
+
+----
+
+Content: [{"content":{"text":"<p>The Stream Timer was the first tool I built for my tools library, and honestly, that's exactly why I picked it. I wanted to start building stream utilities, and a countdown timer felt like the right size to actually finish – small scope, clear purpose, something real at the end of it.</p>"},"id":"96866080-efb5-4881-8615-11465234e0fa","isHidden":false,"type":"text"},{"content":{"text":"<p>The idea is straightforward: you set it up on the page, copy a URL, and paste it into OBS (the software most streamers use to manage their stream layout) as a browser source. The timer shows up on screen like any other overlay. You can change how long it counts down, what text shows above it, what pops up when it hits zero, the font, size, colors, and text outline – all from the settings panel. There's also a choice between two modes: one that auto-starts as soon as OBS loads it and one you control manually by clicking inside the preview.</p>"},"id":"6dd43db8-a64a-4f0a-9d23-e6eb245f601d","isHidden":false,"type":"text"},{"content":{"text":"<p>The first version was pretty rough and built entirely with one person in mind. It worked for that use case, but it wasn't really ready for anyone else – too many assumptions baked in. When I decided to open it up for general use, I had to step back and rethink a lot of what I'd taken for granted. That took more time than I expected, but planning things out before writing code helped a lot. Whenever I took a few minutes to map out what I actually wanted to do first, I ended up doing far less backtracking. That part clicked for me during this build.</p>"},"id":"8f4b1444-8bd3-4a3f-bb13-6280f6be00dd","isHidden":false,"type":"text"},{"content":{"text":"<p>The harder lesson, one I'm still working on, is scope creep. I'd be in the middle of building something and suddenly have three new ideas I wanted to add right then. It's hard to resist, but trying to finish everything at once just made the whole thing drag on longer than it needed to. Shipping the core thing first, then layering on extras, is the smarter move. I know that. Acting on it is a different story.</p>"},"id":"309b67e5-cece-463a-8b70-9a0729009331","isHidden":false,"type":"text"},{"content":{"text":"<p>The thing that's still bugging me about the current version is the interactive mode. Right now, if you want to manually start or reset the timer, you have to click controls inside OBS's browser window, which isn't great when you're mid-stream trying to manage everything else at once. The plan is to add a custom API so you can hook it up to a Stream Deck (a physical button panel a lot of streamers use) and control the timer that way instead. I'm also thinking about whether the two URL modes should just be one, with autostart being a toggle through the API rather than a separate link. I'm still working that one out.</p>"},"id":"9c99dbbc-7ad8-4720-8d65-4cd228e5a4ea","isHidden":false,"type":"text"}]
+
+----
+
+Uuid: qjw776w433uwjxoj

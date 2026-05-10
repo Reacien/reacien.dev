@@ -1,0 +1,66 @@
+Title: About Me
+
+----
+
+Description: Learn about Reacien — a developer with a passion for clean web design, automation, and creative coding. Skills, journey, and personal interests.
+
+----
+
+Hero: - 'file://u8slnnxd8bdn4j61'
+
+----
+
+Intro: A Dutch software development student who enjoys building practical tools, clean UIs, and little automations that remove repetitive work. The focus is on writing code that feels understandable, maintainable, and just a bit over-engineered in the right places.
+
+----
+
+Journey:
+
+I grew up curious about how things work, especially anything with buttons, screens, or a settings menu. That curiosity slowly turned into a habit of **taking things apart**, breaking software, and then figuring out how to fix it again.
+
+### Studying software development
+
+Choosing software development as a study path was a natural move. It combines problem-solving, logic, and creativity, and it rewards you for being stubborn in a good way. At school I moved from *"just make it work"* to thinking about structure, readability, and how other developers will experience the code.
+
+### Falling in love with the web
+
+The web became my main focus: HTML, CSS, JavaScript, and PHP with Kirby CMS for fast, content-driven sites. I enjoy building things that feel **simple on the surface**, even when there's a lot of logic and automation running underneath.
+
+### Real projects, real lessons
+
+To really learn, I started building tools and websites that other people could actually use. Each project is a small case study: what went well, what broke in production, and what I can automate or refactor next time.
+
+### What I'm working towards
+
+Right now I'm focused on sharpening my full-stack web skills, building more reliable automation, and creating a portfolio that reflects how I think as a developer. The goal is to be able to take an idea from rough sketch to **deployed, maintainable software** — and have fun along the way.
+
+----
+
+Skills:
+
+-
+  name: 'HTML & CSS'
+  level: 80.0
+-
+  name: JavaScript
+  level: 75.0
+-
+  name: 'PHP & Kirby CMS'
+  level: 70.0
+-
+  name: 'CLI Tools & Scripts'
+  level: 60.0
+-
+  name: 'APIs & Integrations'
+  level: 50.0
+-
+  name: Python
+  level: 45.0
+
+----
+
+Interests: Outside of development, most spare time goes into hands-on creativity. 3D printing scratches the engineering itch — designing, tweaking, and iterating until a digital model becomes something you can actually hold. Painting miniatures is the opposite face: slow, focused, and detail-driven, a nice balance to fast iteration in code. In general, any excuse to be creative, whether that's designing, building, or experimenting with new tools, is welcome.
+
+----
+
+Uuid: qy4aiotozgq9zn34

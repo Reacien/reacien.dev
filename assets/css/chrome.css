@@ -1,0 +1,88 @@
+.chrome {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: color-mix(in oklch, var(--paper) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule-soft);
+  font-family: var(--font-code);
+}
+
+.chrome-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75em;
+  padding: 0.75em 1.5em;
+}
+
+.crumbs {
+  display: flex; align-items: baseline; gap: 0.5em;
+  font-size: 0.875rem;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.crumbs .root {
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+}
+.crumbs .root em { font-style: normal; color: var(--accent); }
+.crumbs .sep { color: var(--ink-3); }
+.crumbs a {
+  color: var(--ink-2);
+  text-decoration: none;
+}
+.crumbs a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+.crumbs .here {
+  color: var(--ink);
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chrome-right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  flex-shrink: 0;
+}
+
+.cmdk {
+  display: inline-flex; align-items: center; gap: 0.625em;
+  padding: 0.5em 0.625em 0.5em 0.75em;
+  background: var(--paper-2);
+  border: 1px solid var(--rule-soft);
+  border-radius: 6px;
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  color: var(--ink-3);
+  cursor: pointer;
+  min-width: 200px;
+  transition: background .15s, border-color .15s;
+}
+.cmdk:hover { background: var(--paper-3); border-color: var(--rule); }
+.cmdk .prompt { color: var(--accent); font-weight: 600; }
+.cmdk .placeholder { flex: 1; text-align: left; }
+.cmdk .kbd { margin-left: auto; }
+
+.theme-btn {
+  width: 2.125em; height: 2.125em;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--paper-2);
+  border: 1px solid var(--rule-soft);
+  border-radius: 6px;
+  color: var(--ink);
+  font-size: 0.875rem;
+  cursor: pointer;
+}
+.theme-btn:hover { background: var(--paper-3); }
+
+@media (max-width: 720px) {
+  .chrome-inner { padding: 0.625em 0.875em; }
+  .cmdk { min-width: 0; padding: 0.5em 0.625em; }
+  .cmdk .placeholder { display: none; }
+}

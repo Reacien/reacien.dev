@@ -1,0 +1,89 @@
+.cmdk-overlay {
+  position: fixed; inset: 0;
+  display: flex; align-items: flex-start; justify-content: center;
+  padding: 12vh 1em 1em;
+  background: color-mix(in oklch, #000 35%, transparent);
+  backdrop-filter: blur(2px);
+  z-index: 1000;
+  border: 0;
+  width: 100vw; height: 100vh;
+  max-width: none; max-height: none;
+}
+.cmdk-overlay[hidden] { display: none; }
+
+.cmdk-panel {
+  width: 640px; max-width: 100%;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  box-shadow: 0 24px 60px rgba(0,0,0,.25);
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  font-family: var(--font-code);
+  color: var(--ink);
+}
+
+.cmdk-input {
+  display: flex; align-items: center; gap: 0.625em;
+  padding: 0.875em 1em;
+  border-bottom: 1px solid var(--rule-soft);
+}
+.cmdk-input .prompt { color: var(--accent); font-weight: 700; }
+.cmdk-input input {
+  flex: 1;
+  background: transparent;
+  border: none; outline: none;
+  font: inherit;
+  color: var(--ink);
+  font-size: 0.875rem;
+}
+.cmdk-input input::placeholder { color: var(--ink-3); }
+
+.cmdk-list {
+  max-height: 50vh;
+  overflow-y: auto;
+  padding: 0.375em 0;
+}
+
+.cmdk-group-label {
+  font-size: 0.625rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding: 0.5em 1em 0.25em;
+}
+
+.cmdk-item {
+  display: grid;
+  grid-template-columns: 6em 1fr auto;
+  gap: 0.75em;
+  align-items: center;
+  padding: 0.5em 1em;
+  cursor: pointer;
+  font-size: 0.8125rem;
+  color: var(--ink);
+}
+.cmdk-item .k { font-size: 0.75rem; color: var(--ink-3); }
+.cmdk-item .arrow { font-size: 0.75rem; color: var(--ink-3); }
+.cmdk-item.active,
+.cmdk-item:hover { background: var(--paper-2); }
+.cmdk-item.active .k,
+.cmdk-item.active .arrow { color: var(--ink); }
+
+.cmdk-empty {
+  padding: 1.5em 1em;
+  text-align: center;
+  color: var(--ink-3);
+  font-size: 0.8125rem;
+}
+
+.cmdk-foot {
+  display: flex; gap: 0.875em;
+  padding: 0.625em 1em;
+  border-top: 1px solid var(--rule-soft);
+  background: var(--paper-2);
+  font-size: 0.6875rem;
+  color: var(--ink-3);
+}
+.cmdk-foot .kbd { margin-right: 0.375em; }
+.cmdk-foot .spacer { margin-left: auto; }
