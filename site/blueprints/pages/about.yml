@@ -33,13 +33,14 @@ tabs:
                 type: files
                 max: 1
                 layout: cards
+                query: page.images
                 when:
                   show_hero: true
           story:
             type: fields
             label: Story
             fields:
-              story:
+              story_blocks:
                 type: blocks
                 label: Story
                 fieldsets:
@@ -82,11 +83,9 @@ tabs:
                   name:
                     type: text
                     label: Skill
-                    width: 2/3
                   level:
                     type: range
                     label: Level
                     min: 0
                     max: 100
                     step: 5
-                    width: 1/3
