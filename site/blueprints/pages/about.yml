@@ -1,0 +1,92 @@
+title: About
+icon: user
+
+tabs:
+  content:
+    label: Content
+    icon: text
+    columns:
+      main:
+        width: 2/3
+        sections:
+          hero:
+            type: fields
+            label: Hero
+            fields:
+              show_hero:
+                type: toggle
+                label: Show Hero Section
+                default: true
+              heading:
+                type: text
+                label: Heading
+                when:
+                  show_hero: true
+              intro:
+                type: textarea
+                label: Introduction
+                size: small
+                when:
+                  show_hero: true
+              profile_image:
+                label: Profile Image
+                type: files
+                max: 1
+                layout: cards
+                when:
+                  show_hero: true
+          story:
+            type: fields
+            label: Story
+            fields:
+              story:
+                type: blocks
+                label: Story
+                fieldsets:
+                  - text
+                  - image
+                  - quote
+                  - heading
+          passions:
+            type: fields
+            label: Passions
+            fields:
+              show_passions:
+                type: toggle
+                label: Show Passions Section
+                default: true
+              passions:
+                type: textarea
+                label: Passions
+                size: medium
+                when:
+                  show_passions: true
+      sidebar:
+        width: 1/3
+        sections:
+          skills:
+            type: fields
+            label: Skills
+            fields:
+              show_skills:
+                type: toggle
+                label: Show Skills Section
+                default: true
+              skills:
+                type: structure
+                label: Skills Matrix
+                layout: table
+                when:
+                  show_skills: true
+                fields:
+                  name:
+                    type: text
+                    label: Skill
+                    width: 2/3
+                  level:
+                    type: range
+                    label: Level
+                    min: 0
+                    max: 100
+                    step: 5
+                    width: 1/3
