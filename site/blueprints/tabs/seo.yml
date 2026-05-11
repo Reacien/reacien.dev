@@ -21,3 +21,4 @@ sections:
         type: files
         max: 1
         layout: cards
+        query: page.images
