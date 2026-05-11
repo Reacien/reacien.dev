@@ -1,4 +1,5 @@
 <?php
+/** @var \Kirby\Cms\App $kirby */
 /** @var \Kirby\Cms\Page $page */
 /** @var \Kirby\Cms\Site $site */
 ?>
@@ -10,26 +11,80 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <title>
-        <?= $page->isHomePage() ? $site->title()->escape() : $page->title()->escape() . ' | ' . $site->title()->escape() ?>
-    </title>
+    <?php
+        $metaTitle       = $page->content()->get('meta_title')->or($page->title());
+        $metaDescription = $page->content()->get('meta_description')->or($page->description())->or($site->description());
+        $ogImageFile     = $page->content()->get('og_image')->toFile();
+        $ogImageUrl      = $ogImageFile ? $ogImageFile->url() : null;
+        $fullTitle       = $page->isHomePage()
+            ? $metaTitle->value()
+            : $metaTitle->value() . ' | ' . $site->title()->value();
+    ?>
 
-    <meta name="description" content="<?= $page->description()->or($site->description())->escape() ?>">
+    <title><?= esc($fullTitle) ?></title>
 
-    <?= css([
-        'assets/css/global.css',
-        'assets/css/templates/' . $page->template()->name() . '.css'
-    ]) ?>
+    <meta name="description" content="<?= $metaDescription->escape() ?>">
+    <link rel="canonical" href="<?= $page->url() ?>">
 
-    <?php if ($page->isHomePage()): ?>
-        <?= js('assets/js/boot.js') ?> 
+    <link rel="icon" type="image/svg+xml" href="<?= url('assets/images/logo-light.svg') ?>" media="(prefers-color-scheme: light)">
+    <link rel="icon" type="image/svg+xml" href="<?= url('assets/images/logo-dark.svg') ?>" media="(prefers-color-scheme: dark)">
+
+    <meta property="og:site_name" content="<?= $site->title()->escape() ?>">
+    <meta property="og:title" content="<?= esc($fullTitle) ?>">
+    <meta property="og:description" content="<?= $metaDescription->escape() ?>">
+    <meta property="og:url" content="<?= $page->url() ?>">
+    <meta property="og:type" content="<?= $page->isHomePage() ? 'website' : 'article' ?>">
+    <?php if ($ogImageUrl): ?>
+    <meta property="og:image" content="<?= esc($ogImageUrl) ?>">
     <?php endif; ?>
 
-    <?= js([
-        'assets/js/chrome.js',
-        'assets/js/cmdk.js',
-        'assets/js/templates/' . $page->template()->name() . '.js'
-    ], ['defer' => true]) ?>
+    <meta name="twitter:card" content="<?= $ogImageUrl ? 'summary_large_image' : 'summary' ?>">
+    <meta name="twitter:title" content="<?= esc($fullTitle) ?>">
+    <meta name="twitter:description" content="<?= $metaDescription->escape() ?>">
+    <?php if ($ogImageUrl): ?>
+    <meta name="twitter:image" content="<?= esc($ogImageUrl) ?>">
+    <?php endif; ?>
+
+    <?php if ($page->isHomePage()): ?>
+    <script type="application/ld+json">
+    <?= json_encode([
+        '@context' => 'https://schema.org',
+        '@type'    => 'Person',
+        'name'     => 'Reacien',
+        'url'      => $site->url(),
+        'jobTitle' => 'Software Developer',
+        'sameAs'   => [
+            'https://github.com/Reacien',
+            'https://twitter.com/Reacien_',
+        ],
+    ], JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_PRETTY_PRINT) ?>
+    </script>
+    <?php endif; ?>
+
+    <?php
+        $tplName = $page->template()->name();
+        $tplCss  = 'assets/css/templates/' . $tplName . '.css';
+        $tplJs   = 'assets/js/templates/'  . $tplName . '.js';
+        $rootDir = $kirby->root('index');
+
+        $cssFiles = ['assets/css/global.css'];
+        if (file_exists($rootDir . '/' . $tplCss)) {
+            $cssFiles[] = $tplCss;
+        }
+
+        $jsFiles = ['assets/js/chrome.js', 'assets/js/cmdk.js'];
+        if (file_exists($rootDir . '/' . $tplJs)) {
+            $jsFiles[] = $tplJs;
+        }
+    ?>
+
+    <?= css($cssFiles) ?>
+
+    <?php if ($page->isHomePage()): ?>
+        <?= js('assets/js/boot.js', ['defer' => true]) ?>
+    <?php endif; ?>
+
+    <?= js($jsFiles, ['defer' => true]) ?>
 
     <script>
     (() => {

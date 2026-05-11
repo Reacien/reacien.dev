@@ -22,6 +22,12 @@ RewriteEngine on
 #
 # RewriteBase /
 
+# force HTTPS (skip on localhost so local dev still works on http)
+RewriteCond %{HTTPS} off
+RewriteCond %{HTTP_HOST} !^localhost(:[0-9]+)?$ [NC]
+RewriteCond %{HTTP_HOST} !^127\.0\.0\.1(:[0-9]+)?$ [NC]
+RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+
 # block files and folders beginning with a dot, such as .git
 # except for the .well-known folder, which is used for Let's Encrypt and security.txt
 RewriteRule (^|/)\.(?!well-known\/) index.php [L]
@@ -34,6 +40,9 @@ RewriteRule ^site/(.*) index.php [L]
 
 # block direct access to Kirby and the Panel sources
 RewriteRule ^kirby/(.*) index.php [L]
+
+# block all files in the storage folder from being accessed directly
+RewriteRule ^storage/(.*) index.php [L]
 
 # make site links work
 RewriteCond %{REQUEST_FILENAME} !-f
@@ -63,5 +72,17 @@ AddOutputFilterByType DEFLATE application/x-javascript
 # (hardens against attacks from malicious file uploads)
 Header set Content-Type "text/plain" "expr=-z %{CONTENT_TYPE}"
 Header set X-Content-Type-Options "nosniff"
+
+# enforce HTTPS for one year, including subdomains
+Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+# disallow framing (clickjacking protection)
+Header set X-Frame-Options "SAMEORIGIN"
+
+# only send origin on cross-origin requests
+Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+# deny access to powerful browser features by default
+Header set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
 
 </IfModule>

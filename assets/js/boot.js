@@ -36,6 +36,26 @@
 
     let i = 0, ch = 0, finished = false;
 
+    const prefersReducedMotion =
+      window.matchMedia &&
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      for (const step of SCRIPT) {
+        if (step.accent) {
+          const s = document.createElement('span');
+          s.className = 'accent ok';
+          s.textContent = step.t;
+          lines.appendChild(s);
+        } else {
+          lines.appendChild(document.createTextNode(step.t));
+        }
+      }
+      overlay.hidden = true;
+      try { sessionStorage.setItem(KEY, '1'); } catch {}
+      return;
+    }
+
     const tick = () => {
       if (finished) return;
       const step = SCRIPT[i];

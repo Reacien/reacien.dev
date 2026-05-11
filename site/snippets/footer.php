@@ -49,19 +49,19 @@ $commit  = option('reacien.commit', 'dev');
                     <span class="footer-link-arrow" aria-hidden="true">→</span>
                     <span class="footer-link-label">home</span>
                 </a></li>
-                <li><a href="<?= $site->url() ?>" class="footer-link">
+                <li><a href="<?= page('about')->url() ?>" class="footer-link">
                     <span class="footer-link-arrow" aria-hidden="true">→</span>
                     <span class="footer-link-label">about</span>
                 </a></li>
-                <li><a href="<?= $site->url() ?>" class="footer-link">
+                <li><a href="<?= page('projects')->url() ?>" class="footer-link">
                     <span class="footer-link-arrow" aria-hidden="true">→</span>
                     <span class="footer-link-label">projects</span>
                 </a></li>
-                <li><a href="<?= $site->url() ?>" class="footer-link">
+                <li><a href="<?= page('insights')->url() ?>" class="footer-link">
                     <span class="footer-link-arrow" aria-hidden="true">→</span>
                     <span class="footer-link-label">insights</span>
                 </a></li>
-                <li><a href="<?= $site->url() ?>" class="footer-link">
+                <li><a href="<?= page('contact')->url() ?>" class="footer-link">
                     <span class="footer-link-arrow" aria-hidden="true">→</span>
                     <span class="footer-link-label">contact</span>
                 </a></li>
@@ -69,7 +69,7 @@ $commit  = option('reacien.commit', 'dev');
         </section>
 
          <!-- Colophon text -->
-        <section class="colophone-col colophon-meta">
+        <section class="colophon-col colophon-meta">
             <h4>colophon</h4>
             <p class="colophon-text">
                 typeset in instrument serif & jetbrains mono. built with kirby cms
@@ -82,8 +82,6 @@ $commit  = option('reacien.commit', 'dev');
         <span>&copy; <?= date('Y') ?> reacien.dev</span>
         <span class="sep">/</span>
         <span>made by hand in nl</span>
-        <span class="sep">/</span>
-        <a href="<?= url('privacy') ?>">privacy</a>
 
         <span class="build">
         <?= $version ?>

@@ -154,6 +154,6 @@ $items[] = ['group' => 'external', 'k' => 'kofi', 'label' => 'buy me a coffee', 
     </div>
 
     <script type="application/json" id="cmdk-data">
-        <?= json_encode($items, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) ?>
+        <?= json_encode($items, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_HEX_TAG | JSON_HEX_AMP) ?>
     </script>
 </div>

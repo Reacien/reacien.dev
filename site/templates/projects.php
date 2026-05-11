@@ -1,3 +1,8 @@
+<?php
+/** @var \Kirby\Cms\App $kirby */
+/** @var \Kirby\Cms\Site $site */
+/** @var \Kirby\Cms\Page $page */
+?>
 <?php snippet('header') ?>
 
 <main class="page projects">
@@ -25,7 +30,7 @@
           $statusLabel = $status;
           if ($status === 'wip') $statusLabel = 'in progress';
           ?>
-          <li class="project-card">
+          <li class="project-card cropped">
             <a href="<?= $project->url() ?>" class="card-link">
               <div class="shot stripes">
                 <span class="mono">[shot]</span>

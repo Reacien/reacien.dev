@@ -1,3 +1,8 @@
+<?php
+/** @var \Kirby\Cms\App $kirby */
+/** @var \Kirby\Cms\Site $site */
+/** @var \Kirby\Cms\Page $page */
+?>
 <?php snippet('header') ?>
 
 <main class="home">
@@ -33,7 +38,7 @@
           foreach ($projects as $project):
             $status = $project->project_status()->value();
             ?>
-            <a class="selected-work-card" href="<?= $project->url() ?>">
+            <a class="selected-work-card cropped" href="<?= $project->url() ?>">
               <div class="shot">
                 <span class="mono">Screenshot coming soon</span>
               </div>
