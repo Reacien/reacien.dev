@@ -1,0 +1,23 @@
+label: SEO
+icon: search
+
+sections:
+  seo_fields:
+    type: fields
+    fields:
+      meta_title:
+        type: text
+        label: Meta Title
+        counter: true
+        help: "Aim for 50–60 characters for best search visibility"
+      meta_description:
+        type: textarea
+        label: Meta Description
+        size: small
+        counter: true
+        help: "Aim for 150–160 characters for best search visibility"
+      og_image:
+        label: OG Image
+        type: files
+        max: 1
+        layout: cards
