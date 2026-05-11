@@ -89,3 +89,61 @@ tabs:
                     min: 0
                     max: 100
                     step: 5
+
+  identity:
+    label: Identity
+    icon: user
+    columns:
+      left:
+        width: 1/2
+        sections:
+          who:
+            type: fields
+            fields:
+              name:
+                type: text
+                label: Name
+              role:
+                type: text
+                label: Role
+              role_since:
+                type: date
+                label: Role Since
+              location:
+                type: text
+                label: Location
+              timezone:
+                type: text
+                label: Timezone
+                help: "IANA format e.g. Europe/Amsterdam — the frontend converts this to the visitor's local time"
+              availability:
+                type: select
+                label: Availability
+                options:
+                  available: Available
+                  busy: Busy
+                  open_to_offers: Open to Offers
+      right:
+        width: 1/2
+        sections:
+          now:
+            type: fields
+            fields:
+              currently_working_on:
+                type: text
+                label: Currently Working On
+              journey:
+                type: textarea
+                label: My Journey
+                size: large
+              open_to:
+                type: tags
+                label: Open To
+                options:
+                  - Freelance
+                  - Full-time
+                  - Consulting
+                  - Side Projects
+
+  seo:
+    extends: tabs/seo
