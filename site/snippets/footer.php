@@ -49,19 +49,19 @@ $commit  = option('reacien.commit', 'dev');
                     <span class="footer-link-arrow" aria-hidden="true">→</span>
                     <span class="footer-link-label">home</span>
                 </a></li>
-                <li><a href="<?= $site->url() ?>" class="footer-link">
+                <li><a href="<?= page('about')?->url() ?>" class="footer-link">
                     <span class="footer-link-arrow" aria-hidden="true">→</span>
                     <span class="footer-link-label">about</span>
                 </a></li>
-                <li><a href="<?= $site->url() ?>" class="footer-link">
+                <li><a href="<?= page('projects')?->url() ?>" class="footer-link">
                     <span class="footer-link-arrow" aria-hidden="true">→</span>
                     <span class="footer-link-label">projects</span>
                 </a></li>
-                <li><a href="<?= $site->url() ?>" class="footer-link">
+                <li><a href="<?= page('insights')?->url() ?>" class="footer-link">
                     <span class="footer-link-arrow" aria-hidden="true">→</span>
                     <span class="footer-link-label">insights</span>
                 </a></li>
-                <li><a href="<?= $site->url() ?>" class="footer-link">
+                <li><a href="<?= page('contact')?->url() ?>" class="footer-link">
                     <span class="footer-link-arrow" aria-hidden="true">→</span>
                     <span class="footer-link-label">contact</span>
                 </a></li>

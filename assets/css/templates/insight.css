@@ -1,0 +1,168 @@
+.page.insight .wrap {
+  max-width: 60rem;
+  margin: 1.5rem auto 0;
+}
+
+.page.insight .page-head {
+  margin-bottom: 1.5rem;
+}
+
+.page.insight .insight-date {
+  display: inline-block;
+  margin: 0.35rem 0 0.5rem;
+  font-family: var(--font-code, JetBrains Mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.page.insight .page-head h1 {
+  font-family: "Instrument Serif", serif;
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  line-height: 1.08;
+  margin: 0;
+  padding-bottom: 0.18em;
+  max-width: 14ch;
+}
+
+.page.insight .insight-tags {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 0;
+  padding: 0;
+}
+
+.page.insight .insight-cover {
+  margin: 0 0 1.5rem;
+  border: var(--stroke) solid var(--rule-soft);
+  background: var(--paper-2);
+}
+
+.page.insight .insight-cover img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* body */
+.page.insight .insight-body {
+  font-family: "IBM Plex Sans", system-ui, sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+.page.insight .insight-body > * + * {
+  margin-top: 1.25rem;
+}
+
+.page.insight .insight-body h2,
+.page.insight .insight-body h3,
+.page.insight .insight-body h4 {
+  font-family: "Instrument Serif", serif;
+  color: var(--ink);
+  line-height: 1.15;
+  margin-top: 2rem;
+  margin-bottom: 0.65rem;
+}
+
+.page.insight .insight-body h2 {
+  font-size: 2rem;
+}
+
+.page.insight .insight-body h3 {
+  font-size: 1.5rem;
+}
+
+.page.insight .insight-body h4 {
+  font-size: 1.2rem;
+}
+
+.page.insight .insight-body p,
+.page.insight .insight-body ul,
+.page.insight .insight-body ol,
+.page.insight .insight-body blockquote {
+  max-width: 42rem;
+}
+
+.page.insight .insight-body p + p {
+  margin-top: 0.95em;
+}
+
+.page.insight .insight-body ul,
+.page.insight .insight-body ol {
+  padding-left: 1.25em;
+}
+
+.page.insight .insight-body li + li {
+  margin-top: 0.3em;
+}
+
+.page.insight .insight-body a {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.page.insight .insight-body a:hover {
+  color: var(--accent);
+}
+
+.page.insight .insight-body blockquote {
+  margin-left: 0;
+  padding: 0.9rem 1rem;
+  border-left: var(--stroke) solid var(--accent);
+  background: var(--paper-2);
+  color: var(--ink);
+}
+
+.page.insight .insight-body img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: var(--stroke) solid var(--rule-soft);
+}
+
+.page.insight .insight-body figure {
+  margin: 1.5rem 0;
+}
+
+.page.insight .insight-body figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--ink-3);
+}
+
+.page.insight .insight-footer {
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  border-top: var(--stroke) solid var(--rule-soft);
+}
+
+.page.insight .back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-code, JetBrains Mono, ui-monospace, monospace);
+  font-size: 0.75rem;
+  text-decoration: none;
+  color: var(--ink-2);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.page.insight .back-link:hover {
+  color: var(--accent);
+}
+
+@media (max-width: 48rem) {
+  .page.insight .page-head h1 {
+    max-width: none;
+  }
+
+  .page.insight .insight-body {
+    font-size: 0.875rem;
+  }
+}

@@ -9,6 +9,7 @@ Icon
 
 /media/*
 !/media/index.html
+/docs/*
 
 # Lock files
 # ---------------
@@ -21,6 +22,7 @@ Icon
 *.sublime-workspace
 /.vscode
 /.idea
+/.claude
 
 # -------------SECURITY-------------
 # NEVER publish these files via Git!
