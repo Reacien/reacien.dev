@@ -56,7 +56,7 @@ tabs:
                 type: toggle
                 label: Show Passions Section
                 default: true
-              passions:
+              passions_text:
                 type: textarea
                 label: Passions
                 size: medium
@@ -99,6 +99,7 @@ tabs:
         sections:
           who:
             type: fields
+            label: Who
             fields:
               display_name:
                 type: text
@@ -129,6 +130,7 @@ tabs:
         sections:
           now:
             type: fields
+            label: Now
             fields:
               currently_working_on:
                 type: text
