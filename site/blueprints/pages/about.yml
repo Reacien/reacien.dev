@@ -147,6 +147,24 @@ tabs:
                   - Full-time
                   - Consulting
                   - Side Projects
+          bio_facts_section:
+            type: fields
+            label: Bio Facts
+            fields:
+              bio_facts:
+                type: structure
+                label: Bio Facts
+                layout: table
+                help: "Short label/value pairs shown in the identity card grid (e.g. focus, langs, tools, vibe, outside, coffee). Labels appear above values in a mono UPPERCASE style."
+                fields:
+                  label:
+                    type: text
+                    label: Label
+                    width: 1/3
+                  value:
+                    type: text
+                    label: Value
+                    width: 2/3
 
   seo:
     extends: tabs/seo

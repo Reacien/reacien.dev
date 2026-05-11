@@ -18,7 +18,7 @@
 .page.error .page-body.text {
   font-family: "IBM Plex Sans", system-ui, sans-serif;
   font-size: 0.875rem;
-  color: var(--ink-2);
+  color: var(--ink-soft);
   line-height: 1.6;
 }
 

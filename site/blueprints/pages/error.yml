@@ -1,0 +1,28 @@
+title: Error Page
+icon: alert
+
+options:
+  changeStatus: false
+  delete: false
+  duplicate: false
+  changeSlug: false
+  changeTemplate: false
+
+tabs:
+  content:
+    label: Content
+    icon: text
+    columns:
+      main:
+        width: 1/1
+        sections:
+          body:
+            type: fields
+            label: 404 Page
+            fields:
+              text:
+                type: textarea
+                label: Message
+                size: small
+                help: "Shown when a visitor lands on a missing page."
+                default: "This page cannot be found 😱"

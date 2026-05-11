@@ -13,8 +13,12 @@
 
     <?php
         $metaTitle       = $page->content()->get('meta_title')->or($page->title());
-        $metaDescription = $page->content()->get('meta_description')->or($page->description())->or($site->description());
-        $ogImageFile     = $page->content()->get('og_image')->toFile();
+        $metaDescription = $page->content()->get('meta_description')
+            ->or($page->content()->get('excerpt'))
+            ->or($page->content()->get('description'))
+            ->or($site->description());
+        $ogImageFile     = $page->content()->get('og_image')->toFile()
+            ?? $site->content()->get('default_og_image')->toFile();
         $ogImageUrl      = $ogImageFile ? $ogImageFile->url() : null;
         $fullTitle       = $page->isHomePage()
             ? $metaTitle->value()
@@ -46,18 +50,25 @@
     <?php endif; ?>
 
     <?php if ($page->isHomePage()): ?>
+    <?php
+        $identityName = $site->identity_name()->or('Reacien')->value();
+        $identityRole = $site->identity_role()->or('Software Developer')->value();
+        $sameAs       = array_filter([
+            $site->github_url()->or('https://github.com/Reacien')->value(),
+            $site->twitter_url()->or('https://twitter.com/Reacien_')->value(),
+            $site->nickname_url()->value(),
+            $site->kofi_url()->value(),
+        ]);
+    ?>
     <script type="application/ld+json">
-    <?= json_encode([
+    <?= json_encode(array_filter([
         '@context' => 'https://schema.org',
         '@type'    => 'Person',
-        'name'     => 'Reacien',
+        'name'     => $identityName,
         'url'      => $site->url(),
-        'jobTitle' => 'Software Developer',
-        'sameAs'   => [
-            'https://github.com/Reacien',
-            'https://twitter.com/Reacien_',
-        ],
-    ], JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_PRETTY_PRINT) ?>
+        'jobTitle' => $identityRole,
+        'sameAs'   => array_values($sameAs) ?: null,
+    ]), JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_PRETTY_PRINT) ?>
     </script>
     <?php endif; ?>
 

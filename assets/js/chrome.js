@@ -258,3 +258,88 @@
         });
     });
 })();
+
+/* ============================================================
+   Live clock + relative-time ticker for the status bar.
+   ============================================================ */
+(() => {
+    const timeEl = document.querySelector('[data-live-clock]');
+    const tzEl   = document.querySelector('[data-live-clock-tz]');
+    const relEls = document.querySelectorAll('[data-relative-time]');
+
+    if (!timeEl && relEls.length === 0) return;
+
+    const pad = (n) => String(n).padStart(2, '0');
+
+    const tickClock = () => {
+        if (!timeEl) return;
+        const now = new Date();
+        timeEl.textContent = pad(now.getHours()) + ':' + pad(now.getMinutes());
+
+        if (tzEl) {
+            try {
+                const parts = new Intl.DateTimeFormat('en-US', {
+                    timeZoneName: 'short'
+                }).formatToParts(now);
+                const tzPart = parts.find(p => p.type === 'timeZoneName');
+                if (tzPart && tzPart.value) tzEl.textContent = tzPart.value;
+            } catch {}
+        }
+    };
+
+    const formatRelative = (ts) => {
+        const diff = Math.max(0, Math.floor(Date.now() / 1000) - ts);
+        if (diff < 60)      return diff + 's ago';
+        if (diff < 3600)    return Math.floor(diff / 60) + 'm ago';
+        if (diff < 86400)   return Math.floor(diff / 3600) + 'h ago';
+        if (diff < 604800)  return Math.floor(diff / 86400) + 'd ago';
+        if (diff < 2592000) return Math.floor(diff / 604800) + 'w ago';
+        return Math.floor(diff / 2592000) + 'mo ago';
+    };
+
+    const tickRelative = () => {
+        relEls.forEach(el => {
+            const ts = parseInt(el.dataset.relativeTime, 10);
+            if (!ts) return;
+            el.textContent = formatRelative(ts);
+        });
+    };
+
+    tickClock();
+    tickRelative();
+    setInterval(tickClock, 30_000);
+    setInterval(tickRelative, 60_000);
+})();
+
+/* ============================================================
+   Chip-based facet filter — works for the projects index and
+   the insights index. Each card carries data-filter-tokens with
+   space-separated facets; each chip carries data-filter with
+   the facet it activates ("all" or e.g. "tag:kirby").
+   ============================================================ */
+(() => {
+    const chips = document.querySelectorAll('.filter-chip[data-filter]');
+    const cards = document.querySelectorAll('[data-filter-tokens]');
+    const empty = document.querySelector('[data-empty-state]');
+
+    if (!chips.length || !cards.length) return;
+
+    const applyFilter = (filter) => {
+        let visibleCount = 0;
+        cards.forEach(card => {
+            const tokens = (card.dataset.filterTokens || '').split(/\s+/);
+            const matches = filter === 'all' || tokens.includes(filter);
+            card.classList.toggle('is-hidden', !matches);
+            if (matches) visibleCount++;
+        });
+
+        if (empty) empty.hidden = visibleCount !== 0;
+    };
+
+    chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            chips.forEach(c => c.classList.toggle('is-active', c === chip));
+            applyFilter(chip.dataset.filter);
+        });
+    });
+})();

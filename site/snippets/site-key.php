@@ -1,4 +1,14 @@
 <?php
+/** @var \Kirby\Content\Field|null $siteKeyTitle */
+/** @var \Kirby\Content\Field|null $siteKeyIntro */
+
+$siteKeyTitleHtml = (isset($siteKeyTitle) && $siteKeyTitle->isNotEmpty())
+    ? $siteKeyTitle->value()
+    : "hi, i'm <em>reacien</em>.";
+
+$siteKeyIntroHtml = (isset($siteKeyIntro) && $siteKeyIntro->isNotEmpty())
+    ? $siteKeyIntro->kirbytextinline()
+    : 'dutch web developer — shipping practical tools, clean uis, and a little bit of automation in the seams.';
 
 $items = [
     [
@@ -33,14 +43,9 @@ $items = [
   <span class="crop-tr" aria-hidden="true"></span>
   <span class="crop-bl" aria-hidden="true"></span>
 
-  <h2 class="site-key-title">
-    hi, i’m <em>reacien</em>.
-  </h2>
+  <h2 class="site-key-title"><?= $siteKeyTitleHtml ?></h2>
 
-  <p class="site-key-intro">
-    dutch web developer — shipping practical tools,
-    clean uis, and a little bit of automation in the seams.
-  </p>
+  <p class="site-key-intro"><?= $siteKeyIntroHtml ?></p>
 
   <hr class="dashed">
 

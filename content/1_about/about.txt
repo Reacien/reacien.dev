@@ -2,15 +2,86 @@ Title: About Me
 
 ----
 
-Description: Learn about Reacien — a developer with a passion for clean web design, automation, and creative coding. Skills, journey, and personal interests.
+Show-hero: true
 
 ----
 
-Hero: - 'file://u8slnnxd8bdn4j61'
+Heading: This is a test.
 
 ----
 
 Intro: A Dutch software development student who enjoys building practical tools, clean UIs, and little automations that remove repetitive work. The focus is on writing code that feels understandable, maintainable, and just a bit over-engineered in the right places.
+
+----
+
+Profile-image: 
+
+----
+
+Story-blocks: 
+
+----
+
+Show-passions: true
+
+----
+
+Passions-text: 
+
+----
+
+Show-skills: true
+
+----
+
+Skills:
+
+- 
+  name: 'HTML & CSS'
+  level: 80
+- 
+  name: JavaScript
+  level: 75
+- 
+  name: 'PHP & Kirby CMS'
+  level: 70
+- 
+  name: 'CLI Tools & Scripts'
+  level: 60
+- 
+  name: 'APIs & Integrations'
+  level: 50
+- 
+  name: Python
+  level: 45
+
+----
+
+Display-name: 
+
+----
+
+Role: 
+
+----
+
+Role-since: 
+
+----
+
+Location: 
+
+----
+
+Timezone: 
+
+----
+
+Availability: 
+
+----
+
+Currently-working-on: 
 
 ----
 
@@ -36,26 +107,27 @@ Right now I'm focused on sharpening my full-stack web skills, building more reli
 
 ----
 
-Skills:
+Open-to: 
 
--
-  name: 'HTML & CSS'
-  level: 80.0
--
-  name: JavaScript
-  level: 75.0
--
-  name: 'PHP & Kirby CMS'
-  level: 70.0
--
-  name: 'CLI Tools & Scripts'
-  level: 60.0
--
-  name: 'APIs & Integrations'
-  level: 50.0
--
-  name: Python
-  level: 45.0
+----
+
+Meta-title: 
+
+----
+
+Meta-description: 
+
+----
+
+Og-image: 
+
+----
+
+Description: Learn about Reacien — a developer with a passion for clean web design, automation, and creative coding. Skills, journey, and personal interests.
+
+----
+
+Hero: - 'file://u8slnnxd8bdn4j61'
 
 ----
 

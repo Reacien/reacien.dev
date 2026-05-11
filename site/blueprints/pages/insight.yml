@@ -1,0 +1,77 @@
+title: Insight
+icon: edit
+
+status:
+  draft:
+    label: Draft
+    text: Not visible on the site.
+  unlisted:
+    label: Unlisted
+    text: Accessible by URL but not listed.
+  listed:
+    label: Published
+    text: Visible in the insights listing.
+
+tabs:
+  content:
+    label: Content
+    icon: text
+    columns:
+      main:
+        width: 2/3
+        sections:
+          meta:
+            type: fields
+            label: Header
+            fields:
+              date:
+                type: date
+                label: Publish Date
+                default: today
+                width: 1/2
+              tags:
+                type: tags
+                label: Tags
+                width: 1/2
+              excerpt:
+                type: textarea
+                label: Excerpt
+                size: small
+                buttons: false
+                help: "Short summary shown on the insights listing and as the SEO description fallback."
+          body:
+            type: fields
+            label: Body
+            fields:
+              content:
+                type: blocks
+                label: Body
+                fieldsets:
+                  - heading
+                  - text
+                  - quote
+                  - list
+                  - image
+                  - code
+                  - markdown
+
+      sidebar:
+        width: 1/3
+        sections:
+          cover:
+            type: fields
+            label: Cover Image
+            fields:
+              cover:
+                type: files
+                label: Cover
+                max: 1
+                layout: cards
+                query: page.images
+          assets:
+            type: files
+            label: Inline Images
+            template: image
+
+  seo:
+    extends: tabs/seo

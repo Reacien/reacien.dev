@@ -1,8 +1,13 @@
 <?php
 /** @var \Kirby\Cms\Site $site */
 
-$version = option('reacien.version', 'v0.0.0');
-$commit  = option('reacien.commit', 'dev');
+$blurb    = $site->footer_blurb()->or('a dutch software developer — shipping practical tools, clean uis, and a little bit of automation in the seams.');
+$colophon = $site->footer_colophon()->or('typeset in instrument serif &amp; jetbrains mono. built with kirby cms &amp; hand-tuned css. hosted in the cloud.');
+
+$github   = $site->github_url()->or('https://github.com/Reacien')->value();
+$twitter  = $site->twitter_url()->or('https://twitter.com/Reacien_')->value();
+$nickname = $site->nickname_url()->or('https://mynickname.com/reacien')->value();
+$kofi     = $site->kofi_url()->or('https://ko-fi.com/reacien_')->value();
 ?>
 
 <footer class="colophon">
@@ -12,32 +17,37 @@ $commit  = option('reacien.commit', 'dev');
             <div class="wordmark">
                 reacien<em>.dev</em>
             </div>
-            <p class="blurb">
-                a dutch software developer — shipping practical tools,
-                clean uis, and a little bit of automation in the seams.
-            </p>
+            <p class="blurb"><?= $blurb->kirbytextinline() ?></p>
         </section>
 
         <!-- Elsewhere -->
         <section class="colophon-col colophon-elsewhere">
             <h4>elsewhere</h4>
             <ul>
-                <li><a href="https://github.com/Reacien" class="footer-link" target="_blank" rel="noreferrer">
-                    <span class="footer-link-arrow" aria-hidden="true">→</span>    
+                <?php if ($github): ?>
+                <li><a href="<?= esc($github) ?>" class="footer-link" target="_blank" rel="noreferrer">
+                    <span class="footer-link-arrow" aria-hidden="true">→</span>
                     <span class="footer-link-label">github · @Reacien</span>
                 </a></li>
-                <li><a href="https://twitter.com/Reacien_" class="footer-link" target="_blank" rel="noreferrer">
-                    <span class="footer-link-arrow" aria-hidden="true">→</span>     
+                <?php endif; ?>
+                <?php if ($twitter): ?>
+                <li><a href="<?= esc($twitter) ?>" class="footer-link" target="_blank" rel="noreferrer">
+                    <span class="footer-link-arrow" aria-hidden="true">→</span>
                     <span class="footer-link-label">twitter · @Reacien_</span>
                 </a></li>
-                <li><a href="https://mynickname.com/reacien" class="footer-link" target="_blank" rel="noreferrer">
-                    <span class="footer-link-arrow" aria-hidden="true">→</span>     
+                <?php endif; ?>
+                <?php if ($nickname): ?>
+                <li><a href="<?= esc($nickname) ?>" class="footer-link" target="_blank" rel="noreferrer">
+                    <span class="footer-link-arrow" aria-hidden="true">→</span>
                     <span class="footer-link-label">nickname</span>
                 </a></li>
-                <li><a href="https://ko-fi.com/reacien_" class="footer-link" target="_blank" rel="noreferrer">
-                    <span class="footer-link-arrow" aria-hidden="true">→</span>     
+                <?php endif; ?>
+                <?php if ($kofi): ?>
+                <li><a href="<?= esc($kofi) ?>" class="footer-link" target="_blank" rel="noreferrer">
+                    <span class="footer-link-arrow" aria-hidden="true">→</span>
                     <span class="footer-link-label">buy me a coffee</span>
                 </a></li>
+                <?php endif; ?>
             </ul>
         </section>
 
@@ -71,25 +81,13 @@ $commit  = option('reacien.commit', 'dev');
          <!-- Colophon text -->
         <section class="colophon-col colophon-meta">
             <h4>colophon</h4>
-            <p class="colophon-text">
-                typeset in instrument serif & jetbrains mono. built with kirby cms
-                & hand-tuned css. hosted in the cloud.
-            </p>
+            <p class="colophon-text"><?= $colophon->kirbytextinline() ?></p>
         </section>
     </div>
 
-    <div class="colophon-base">
-        <span>&copy; <?= date('Y') ?> reacien.dev</span>
-        <span class="sep">/</span>
-        <span>made by hand in nl</span>
-
-        <span class="build">
-        <?= $version ?>
-        <span class="sep-dot">•</span>
-        commit <?= $commit ?>
-        </span>
-  </div>
 </footer>
+
+<?php snippet('status-bar') ?>
 
 </body>
 </html>

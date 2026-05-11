@@ -1,0 +1,58 @@
+title: Projects
+icon: layers
+
+options:
+  changeStatus: false
+  delete: false
+  duplicate: false
+  changeSlug: false
+  changeTemplate: false
+
+tabs:
+  manage:
+    label: Projects
+    icon: layers
+    columns:
+      main:
+        width: 1/1
+        sections:
+          all_projects:
+            headline: All Projects
+            type: pages
+            template: project
+            create: project
+            sortBy: title asc
+            info: "{{ page.project_status }}"
+            empty: "No projects yet — use 'Add a project' to create one."
+
+  content:
+    label: Page Content
+    icon: text
+    columns:
+      main:
+        width: 2/3
+        sections:
+          hero:
+            type: fields
+            label: Hero
+            fields:
+              headline:
+                type: writer
+                label: Headline
+                inline: true
+                marks:
+                  - italic
+                help: "The big serif headline. Wrap a word in italic (Cmd/Ctrl+I) to colour it with the accent."
+                default: "From <em>prototype</em> to production."
+              subtitle:
+                type: text
+                label: Subtitle
+                help: "Shown as the lede beneath the headline."
+              description:
+                type: textarea
+                label: Description
+                size: small
+                help: "Used as the page SEO description fallback."
+
+  seo:
+    extends: tabs/seo

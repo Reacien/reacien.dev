@@ -1,44 +1,90 @@
 .page.insight .wrap {
-  max-width: 60rem;
-  margin: 1.5rem auto 0;
-}
-
-.page.insight .page-head {
-  margin-bottom: 1.5rem;
-}
-
-.page.insight .insight-date {
-  display: inline-block;
-  margin: 0.35rem 0 0.5rem;
-  font-family: var(--font-code, JetBrains Mono, ui-monospace, monospace);
-  font-size: 0.75rem;
-  color: var(--ink-3);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.page.insight .page-head h1 {
-  font-family: "Instrument Serif", serif;
-  font-size: clamp(2.25rem, 5vw, 4rem);
-  line-height: 1.08;
-  margin: 0;
-  padding-bottom: 0.18em;
-  max-width: 14ch;
-}
-
-.page.insight .insight-tags {
-  list-style: none;
+  max-width: 56rem;
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 5vw, 2.5rem);
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  margin: 1rem 0 0;
-  padding: 0;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
+/* ============================================================
+   HERO
+   ============================================================ */
+.page.insight .insight-hero {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.page.insight .insight-breadcrumb {
+  margin: 0;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.page.insight .insight-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5.5vw, 3.75rem);
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  margin: 0;
+  color: var(--ink);
+  max-width: 22ch;
+}
+
+.page.insight .insight-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.page.insight .insight-meta {
+  margin: 0;
+  font-size: 0.6875rem;
+  letter-spacing: 0.06em;
+  color: var(--ink-muted);
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.page.insight .insight-meta .sep {
+  opacity: 0.5;
+}
+
+.page.insight .insight-meta-tags {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.page.insight .insight-meta .meta-tag {
+  font-size: 0.625rem;
+  padding: 0.1em 0.45em;
+  background: var(--paper);
+  border: var(--border-hairline) solid var(--border-soft);
+  color: var(--ink-soft);
+  letter-spacing: 0;
+}
+
+.page.insight .insight-lede {
+  margin: 0.25rem 0 0;
+  font-size: 1rem;
+  color: var(--ink-soft);
+  max-width: 56ch;
+  line-height: 1.55;
+}
+
+/* ============================================================
+   COVER
+   ============================================================ */
 .page.insight .insight-cover {
-  margin: 0 0 1.5rem;
-  border: var(--stroke) solid var(--rule-soft);
-  background: var(--paper-2);
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  border: var(--border-hairline) solid var(--border-soft);
 }
 
 .page.insight .insight-cover img {
@@ -47,122 +93,105 @@
   height: auto;
 }
 
-/* body */
+/* ============================================================
+   BODY — shares .markdown-body styles from global.css.
+   ============================================================ */
 .page.insight .insight-body {
-  font-family: "IBM Plex Sans", system-ui, sans-serif;
-  font-size: 0.9375rem;
-  line-height: 1.7;
-  color: var(--ink-2);
+  background: var(--paper);
+  border: var(--border-hairline) solid var(--border-soft);
+  padding: clamp(1.25rem, 3vw, 2rem);
 }
 
-.page.insight .insight-body > * + * {
-  margin-top: 1.25rem;
+.page.insight .insight-body > :first-child {
+  margin-top: 0;
 }
 
-.page.insight .insight-body h2,
-.page.insight .insight-body h3,
-.page.insight .insight-body h4 {
-  font-family: "Instrument Serif", serif;
-  color: var(--ink);
-  line-height: 1.15;
-  margin-top: 2rem;
-  margin-bottom: 0.65rem;
+.page.insight .insight-body h2:first-child,
+.page.insight .insight-body h3:first-child,
+.page.insight .insight-body h4:first-child {
+  margin-top: 0;
 }
 
-.page.insight .insight-body h2 {
-  font-size: 2rem;
-}
-
-.page.insight .insight-body h3 {
-  font-size: 1.5rem;
-}
-
-.page.insight .insight-body h4 {
-  font-size: 1.2rem;
-}
-
-.page.insight .insight-body p,
-.page.insight .insight-body ul,
-.page.insight .insight-body ol,
-.page.insight .insight-body blockquote {
-  max-width: 42rem;
-}
-
-.page.insight .insight-body p + p {
-  margin-top: 0.95em;
-}
-
-.page.insight .insight-body ul,
-.page.insight .insight-body ol {
-  padding-left: 1.25em;
-}
-
-.page.insight .insight-body li + li {
-  margin-top: 0.3em;
-}
-
-.page.insight .insight-body a {
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-}
-
-.page.insight .insight-body a:hover {
-  color: var(--accent);
-}
-
-.page.insight .insight-body blockquote {
-  margin-left: 0;
-  padding: 0.9rem 1rem;
-  border-left: var(--stroke) solid var(--accent);
-  background: var(--paper-2);
-  color: var(--ink);
-}
-
-.page.insight .insight-body img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border: var(--stroke) solid var(--rule-soft);
-}
-
-.page.insight .insight-body figure {
-  margin: 1.5rem 0;
-}
-
-.page.insight .insight-body figcaption {
+/* ============================================================
+   PREV / NEXT PAGER
+   ============================================================ */
+.page.insight .insight-pager {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.625rem;
   margin-top: 0.5rem;
-  font-size: 0.75rem;
-  color: var(--ink-3);
 }
 
+@media (max-width: 36rem) {
+  .page.insight .insight-pager {
+    grid-template-columns: 1fr;
+  }
+}
+
+.page.insight .pager-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem 1.125rem;
+  background: var(--paper);
+  border: var(--border-hairline) solid var(--border-soft);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform 0.15s ease-out,
+    box-shadow 0.15s ease-out,
+    border-color 0.15s ease-out;
+}
+
+.page.insight .pager-card.pager-next {
+  text-align: right;
+}
+
+.page.insight .pager-empty {
+  background: transparent;
+  border-color: transparent;
+  pointer-events: none;
+}
+
+.page.insight .pager-card:not(.pager-empty):hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 3px 3px 0 var(--border-strong);
+  border-color: var(--border-strong);
+}
+
+.page.insight .pager-direction {
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.page.insight .pager-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
 .page.insight .insight-footer {
-  margin-top: 2.5rem;
   padding-top: 1rem;
-  border-top: var(--stroke) solid var(--rule-soft);
+  border-top: var(--border-hairline) dashed var(--border-soft);
 }
 
 .page.insight .back-link {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  font-family: var(--font-code, JetBrains Mono, ui-monospace, monospace);
-  font-size: 0.75rem;
+  font-size: 0.6875rem;
   text-decoration: none;
-  color: var(--ink-2);
+  color: var(--ink-soft);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
 }
 
 .page.insight .back-link:hover {
   color: var(--accent);
-}
-
-@media (max-width: 48rem) {
-  .page.insight .page-head h1 {
-    max-width: none;
-  }
-
-  .page.insight .insight-body {
-    font-size: 0.875rem;
-  }
 }

@@ -1,0 +1,59 @@
+title: Contact
+icon: email
+
+options:
+  changeStatus: false
+  delete: false
+  duplicate: false
+  changeSlug: false
+  changeTemplate: false
+
+tabs:
+  content:
+    label: Content
+    icon: text
+    columns:
+      main:
+        width: 2/3
+        sections:
+          hero:
+            type: fields
+            label: Hero
+            fields:
+              subtitle:
+                type: text
+                label: Subtitle
+                help: "Short tagline shown under the H1."
+              intro:
+                type: textarea
+                label: Intro
+                size: small
+                help: "A welcoming paragraph above the contact methods."
+          body:
+            type: fields
+            label: Body
+            fields:
+              description:
+                type: textarea
+                label: Body Copy
+                size: large
+                help: "Optional longer text — supports KirbyText."
+
+      sidebar:
+        width: 1/3
+        sections:
+          channels:
+            type: fields
+            label: Contact Channels
+            fields:
+              email_to:
+                type: email
+                label: Primary Email
+                help: "Used for the mailto link and 'copy email' command."
+              email_from:
+                type: email
+                label: Form 'From' Address
+                help: "Optional — if/when a contact form is added."
+
+  seo:
+    extends: tabs/seo

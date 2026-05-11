@@ -1,4 +1,11 @@
 <?php
+/** @var \Kirby\Cms\Site $site */
+
+$publicEmail = $site->public_email()->or('hi@reacien.dev')->value();
+$github      = $site->github_url()->or('https://github.com/Reacien')->value();
+$twitter     = $site->twitter_url()->or('https://twitter.com/Reacien_')->value();
+$nickname    = $site->nickname_url()->or('https://mynickname.com/reacien')->value();
+$kofi        = $site->kofi_url()->or('https://ko-fi.com/reacien_')->value();
 
 $items = [];
 
@@ -87,8 +94,8 @@ $items[] = [
     'group' => 'actions',
     'k'     => 'email',
     'label' => 'copy email address',
-    'hint'  => 'hi@reacien.dev',
-    'js'    => "navigator.clipboard?.writeText('hi@reacien.dev')",
+    'hint'  => $publicEmail,
+    'js'    => "navigator.clipboard?.writeText(" . json_encode($publicEmail, JSON_UNESCAPED_SLASHES) . ")",
 ];
 
 $items[] = [
@@ -100,10 +107,10 @@ $items[] = [
 ];
 
 // External
-$items[] = ['group' => 'external', 'k' => 'gh',   'label' => 'github · @Reacien',   'hint' => '↗', 'href' => 'https://github.com/Reacien',   'external' => true];
-$items[] = ['group' => 'external', 'k' => 'tw',   'label' => 'twitter · @Reacien_', 'hint' => '↗', 'href' => 'https://twitter.com/Reacien_', 'external' => true];
-$items[] = ['group' => 'external', 'k' => 'nick', 'label' => 'nickname',            'hint' => '↗', 'href' => 'https://mynickname.com/reacien', 'external' => true];
-$items[] = ['group' => 'external', 'k' => 'kofi', 'label' => 'buy me a coffee',     'hint' => '↗', 'href' => 'https://ko-fi.com/reacien_', 'external' => true];
+if ($github)   { $items[] = ['group' => 'external', 'k' => 'gh',   'label' => 'github · @Reacien',   'hint' => '↗', 'href' => $github,   'external' => true]; }
+if ($twitter)  { $items[] = ['group' => 'external', 'k' => 'tw',   'label' => 'twitter · @Reacien_', 'hint' => '↗', 'href' => $twitter,  'external' => true]; }
+if ($nickname) { $items[] = ['group' => 'external', 'k' => 'nick', 'label' => 'nickname',            'hint' => '↗', 'href' => $nickname, 'external' => true]; }
+if ($kofi)     { $items[] = ['group' => 'external', 'k' => 'kofi', 'label' => 'buy me a coffee',     'hint' => '↗', 'href' => $kofi,     'external' => true]; }
 
 ?>
 

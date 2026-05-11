@@ -1,0 +1,69 @@
+title: Insights
+icon: edit
+
+options:
+  changeStatus: false
+  delete: false
+  duplicate: false
+  changeSlug: false
+  changeTemplate: false
+
+tabs:
+  manage:
+    label: Insights
+    icon: edit
+    columns:
+      main:
+        width: 1/1
+        sections:
+          all_insights:
+            headline: All Insights
+            type: pages
+            template: insight
+            create: insight
+            sortBy: date desc
+            info: "{{ page.date.toDate('d M Y') }}"
+            empty: "No insights yet — use 'Add an insight' to publish your first post."
+
+  content:
+    label: Page Content
+    icon: text
+    columns:
+      main:
+        width: 2/3
+        sections:
+          hero:
+            type: fields
+            label: Hero
+            fields:
+              headline:
+                type: writer
+                label: Headline
+                inline: true
+                marks:
+                  - italic
+                help: "The big serif headline. Wrap a word in italic (Cmd/Ctrl+I) to colour it with the accent."
+                default: "What I'm <em>learning</em>, mostly in public."
+              subtitle:
+                type: textarea
+                label: Subtitle
+                size: small
+                buttons: false
+                help: "Shown as the lede beneath the headline."
+              description:
+                type: textarea
+                label: Description
+                size: small
+                help: "Used as the page SEO description fallback."
+          footnote_section:
+            type: fields
+            label: Working Toward
+            fields:
+              footnote:
+                type: textarea
+                label: Working Toward
+                size: small
+                help: "Optional little note at the bottom of the insights list — what's currently in the drafts pile."
+
+  seo:
+    extends: tabs/seo

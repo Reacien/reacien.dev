@@ -1,5 +1,180 @@
-title: Site
+title: Reacien.dev
 
-sections:
-  pages:
-    type: pages
+tabs:
+  dashboard:
+    label: Dashboard
+    icon: home
+    columns:
+      main:
+        width: 2/3
+        sections:
+          pages:
+            type: pages
+            headline: Pages
+            templates:
+              - home
+              - about
+              - projects
+              - insights
+              - contact
+            sortBy: title asc
+          drafts:
+            type: pages
+            headline: Drafts
+            status: drafts
+            templates:
+              - project
+              - insight
+            empty: "No drafts at the moment."
+      sidebar:
+        width: 1/3
+        sections:
+          stats:
+            type: stats
+            reports:
+              - label: Projects
+                value: "{{ site.find('projects').children.published.count }}"
+                link: "{{ site.find('projects').panel.url }}"
+              - label: Insights
+                value: "{{ site.find('insights').children.published.count }}"
+                link: "{{ site.find('insights').panel.url }}"
+              - label: Drafts
+                value: "{{ site.index.drafts.count }}"
+          shortcuts:
+            type: info
+            label: Quick Tips
+            text: |
+              Press **Ctrl + Shift + K** on the live site to open the command palette.
+
+              Use the **Site** menu (top-left) for shared identity, social links and footer text.
+
+  identity:
+    label: Identity
+    icon: user
+    columns:
+      main:
+        width: 2/3
+        sections:
+          site_info:
+            type: fields
+            label: Site
+            fields:
+              title:
+                type: text
+                label: Site Title
+                required: true
+                width: 2/3
+              tagline:
+                type: text
+                label: Tagline
+                width: 1/3
+                help: "Short one-line description."
+              description:
+                type: textarea
+                label: Default SEO Description
+                size: small
+                help: "Used as the fallback meta description for any page without its own."
+              default_og_image:
+                type: files
+                label: Default Open Graph Image
+                max: 1
+                layout: cards
+                query: site.images
+                help: "Used when a specific page hasn't set an OG image."
+      sidebar:
+        width: 1/3
+        sections:
+          identity_info:
+            type: fields
+            label: Public Identity
+            help: "Used in JSON-LD structured data on the homepage."
+            fields:
+              identity_name:
+                type: text
+                label: Name
+                default: Reacien
+              identity_role:
+                type: text
+                label: Role
+                default: Software Developer
+              identity_location:
+                type: text
+                label: Location
+                default: Netherlands
+
+  social:
+    label: Social
+    icon: globe
+    columns:
+      main:
+        width: 1/1
+        sections:
+          social_links:
+            type: fields
+            label: External Links
+            help: "Powers the footer 'elsewhere' list and the command palette shortcuts."
+            fields:
+              github_url:
+                type: url
+                label: GitHub
+                placeholder: https://github.com/Reacien
+                default: https://github.com/Reacien
+              twitter_url:
+                type: url
+                label: Twitter / X
+                placeholder: https://twitter.com/Reacien_
+                default: https://twitter.com/Reacien_
+              nickname_url:
+                type: url
+                label: Nickname
+                placeholder: https://mynickname.com/reacien
+                default: https://mynickname.com/reacien
+              kofi_url:
+                type: url
+                label: Ko-fi
+                placeholder: https://ko-fi.com/reacien_
+                default: https://ko-fi.com/reacien_
+              public_email:
+                type: email
+                label: Public Email
+                default: hi@reacien.dev
+                help: "The address copied by the 'copy email' command palette action."
+
+  footer:
+    label: Footer
+    icon: panel-bottom
+    columns:
+      main:
+        width: 2/3
+        sections:
+          footer_text:
+            type: fields
+            label: Footer Text
+            fields:
+              footer_blurb:
+                type: textarea
+                label: Brand Blurb
+                size: small
+                default: "a dutch software developer — shipping practical tools, clean uis, and a little bit of automation in the seams."
+              footer_colophon:
+                type: textarea
+                label: Colophon
+                size: small
+                default: "typeset in instrument serif & jetbrains mono. built with kirby cms & hand-tuned css. hosted in the cloud."
+              footer_made_by:
+                type: text
+                label: Tagline
+                default: "made by hand in nl"
+                help: "Shown in the bottom bar, e.g. 'made by hand in nl'."
+      sidebar:
+        width: 1/3
+        sections:
+          build_info:
+            type: info
+            label: Build
+            text: |
+              **Version:** {{ kirby.option('reacien.version') }}
+
+              **Commit:** {{ kirby.option('reacien.commit') }}
+
+              These are pinned in `site/config/config.php`.
