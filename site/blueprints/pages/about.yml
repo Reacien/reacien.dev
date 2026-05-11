@@ -100,15 +100,16 @@ tabs:
           who:
             type: fields
             fields:
-              name:
+              display_name:
                 type: text
                 label: Name
               role:
                 type: text
                 label: Role
               role_since:
-                type: date
+                type: text
                 label: Role Since
+                help: "e.g. 2021"
               location:
                 type: text
                 label: Location
