@@ -16,6 +16,13 @@ Icon
 
 .lock
 
+# Panel draft scratch space
+# -------------------------
+# Kirby writes unsaved panel edits into a `_changes/` folder
+# next to the content file. These are transient and should
+# never be committed.
+_changes/
+
 # Editors
 # (sensitive workspace files)
 # ---------------------------
