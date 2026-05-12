@@ -1,6 +1,6 @@
 /* ─────────────────────────────────────────────
    error page
-   breadcrumb · serif title · body text · back link
+   label · serif title · accent lede · actions
 ───────────────────────────────────────────── */
 
 .page.error .wrap {
@@ -13,8 +13,7 @@
 }
 
 /* — hero —
-   label / serif title. same paper-card treatment as insight-hero
-   so it sits cleanly on top of the page texture. */
+   label / big serif title / italic lede with accent colour. */
 .page.error .page-head {
   display: flex;
   flex-direction: column;
@@ -41,28 +40,53 @@
   color: var(--ink);
 }
 
+/* lede sits directly under the h1 inside the hero card.
+   italic em spans get the current accent colour. */
+.page.error .error-lede {
+  margin: 0.25rem 0 0;
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--ink-soft);
+  line-height: 1.5;
+  max-width: 48ch;
+}
+
+.page.error .error-lede em {
+  font-style: italic;
+  color: var(--accent);
+}
+
 /* — body —
-   paper card with hairline border, same as insight-body. */
+   paper card with hairline border. */
 .page.error .page-body {
   background: var(--paper);
   border: var(--border-hairline) solid var(--border-soft);
   padding: clamp(1.25rem, 3vw, 2rem);
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 1.25rem;
 }
 
-.page.error .page-body p {
+.page.error .error-suggest {
   margin: 0;
   font-size: 0.9375rem;
   color: var(--ink-soft);
   line-height: 1.6;
-  max-width: 56ch;
 }
 
-/* — back link —
-   mono, small-caps, same as insight back-link. */
-.page.error .back-link {
+/* — actions row —
+   back-home + contact + github in a flex row, wrap on small screens. */
+.page.error .error-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.25rem;
+  padding-top: 1rem;
+  border-top: var(--border-hairline) dashed var(--border-soft);
+}
+
+.page.error .back-link,
+.page.error .error-link {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
@@ -71,8 +95,19 @@
   color: var(--ink-soft);
   text-transform: uppercase;
   letter-spacing: 0.06em;
+  transition: color 0.15s ease-out;
 }
 
-.page.error .back-link:hover {
+.page.error .back-link:hover,
+.page.error .error-link:hover {
+  color: var(--accent);
+}
+
+/* contact link gets a subtle accent tint to stand out slightly */
+.page.error .error-link:first-of-type {
+  color: var(--accent-strong);
+}
+
+.page.error .error-link:first-of-type:hover {
   color: var(--accent);
 }
