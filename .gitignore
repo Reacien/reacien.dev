@@ -57,3 +57,8 @@ _changes/
 # ---------------
 
 /site/config/.license
+
+# Environment / secrets
+# ---------------
+
+/site/config/config.env.php
