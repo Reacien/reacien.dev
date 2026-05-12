@@ -35,15 +35,17 @@ Stack:
 - 
   name: PHP
   version: v8.3
-  note: ""
+  note: '	Server-side templating + Kirby core'
 - 
   name: Kirby CMS
   version: v5.4
-  note: ""
+  note: Flat-file CMS
 - 
   name: Vanilla JS
   version: ""
-  note: ""
+  note: >
+    No framework — DOM, events,
+    lightweight scripts
 - 
   name: Modern CSS
   version: ""
@@ -53,21 +55,21 @@ Stack:
 
 Decisions:
 
-Design: Leaned into Togichu's character colors and visual identity from the start, rather than building neutral and retrofitting. The UI needed to feel like her, not a generic portfolio template.
+**Design:** Leaned into Togichu's character colors and visual identity from the start, rather than building neutral and retrofitting. The UI needed to feel like her, not a generic portfolio template.
 
-Architecture: Chose Kirby's file-based CMS over a database backend for portability and low operational overhead — a small creator site shouldn't need a MySQL server to update a social link. Blueprint-driven content editing means she can update models and credits herself without touching code.
+**Architecture:** Chose Kirby's file-based CMS over a database backend for portability and low operational overhead — a small creator site shouldn't need a MySQL server to update a social link. Blueprint-driven content editing means she can update models and credits herself without touching code.
 
-Performance: Character art files are large by nature. Used Kirby's built-in thumb API aggressively — lazy loaded, sized for viewport — so the site stays fast even with heavy imagery.
+**Performance:** Character art files are large by nature. Used Kirby's built-in thumb API aggressively — lazy loaded, sized for viewport — so the site stays fast even with heavy imagery.
 
 ----
 
 Retro:
 
-What worked: The Kirby blueprint system was the right call. It made the content editor genuinely usable for a non-technical client, and keeping all media file-based made migrations trivial. The performance budget held up surprisingly well given the image-heavy content.
+**What worked:** The Kirby blueprint system was the right call. It made the content editor genuinely usable for a non-technical client, and keeping all media file-based made migrations trivial. The performance budget held up surprisingly well given the image-heavy content.
 
-What didn't: Early on I tried to be too flexible with the layout system — leaving too many options open in blueprints. It created indecision during content editing. Fewer, more opinionated fields would have been better.
+**What didn't:** Early on I tried to be too flexible with the layout system — leaving too many options open in blueprints. It created indecision during content editing. Fewer, more opinionated fields would have been better.
 
-What I'd do differently: Add a proper staging environment from day one instead of testing on the live server. I got away with it, but it was reckless.
+**What I'd do differently:** Add a proper staging environment from day one instead of testing on the live server. I got away with it, but it was reckless.
 
 ----
 
@@ -87,13 +89,15 @@ Info-cards:
 
 - 
   label: CONTENT MODEL
-  value: ""
+  value: Flat-file · no database
 - 
-  label: PERF BUDGET
-  value: ""
+  label: PAGES
+  value: >
+    6 · Home, About, Contact, Models,
+    Credits, Subathons
 - 
   label: MOBILE FIRST
-  value: ""
+  value: Yes · viewport-sized images
 
 ----
 

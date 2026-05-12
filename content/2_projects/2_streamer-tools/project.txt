@@ -14,7 +14,7 @@ Year: 2025
 
 ----
 
-Scope: 
+Scope: ongoing · solo
 
 ----
 
@@ -26,19 +26,75 @@ Tech: php, javascript, css, html, kirby
 
 ----
 
-Description: A growing toolbox of browser‑based utilities for streamers and creators with no installs, no bullshit, just URLs.
+Description:
+
+Started because I kept building one-off stream widgets that lived in random folders. The timer came first — I needed a clean countdown I could throw into OBS as a browser source, and every existing option was either login-walled, bloated, or couldn't be embedded cleanly. Built it in an afternoon.
+
+The spinner came next, same logic. Needed something for a community game on stream — every wheel tool I found was styled like a 2012 Flash site or required an account just to save a list. So I built one.
+
+The pattern was obvious — there's a whole category of streamer utilities that are simple enough to be a URL, but nobody builds them that way. So instead of scattered files, I turned it into a proper toolbox.
+
+**The core rule:** every tool has to work as a plain URL. No accounts, no installs, no state stored on a server. You open it, configure it, and if you want to save that setup — the URL does it. Paste it in OBS, bookmark it, share it with your mods. That constraint shapes every tool.
+
+Tools so far:
+• **Stream Timer:** countdown/countup, visible in browser source, shareable URL state.
+• **Wheel Spinner:** weighted, configurable, canvas-rendered. OBS-ready.
+• **D&D Initiative Tracker:** built during a live stream D&D session; tracks turn order, HP, and conditions.
+
+More tools get added when I see a problem during a stream that a tool could solve.
 
 ----
 
-Stack: 
+Stack:
+
+- 
+  name: PHP
+  version: v8.3
+  note: >
+    Kirby routing + server-side page
+    rendering
+- 
+  name: Kirby CMS
+  version: v5.x
+  note: >
+    Content-managed tool index; each tool is
+    a page
+- 
+  name: Vanilla JS
+  version: ES2022
+  note: >
+    All tool logic — canvas, timers,
+    state; no framework
+- 
+  name: Modern CSS
+  version: ""
+  note: ""
+- 
+  name: Web Storage API
+  version: ""
+  note: >
+    Client-side persistence for tool
+    settings
 
 ----
 
-Decisions: 
+Decisions:
+
+**URL-First:** Every tool is its own URL — fully shareable and embeddable directly in OBS as a browser source. No app state that breaks on refresh.
+
+No accounts, no backend state: All tool config lives in the URL (query params / encoded data) or localStorage. The server just serves the page; it has no idea what the user configured.
+
+**Kirby as the shell:** Using Kirby for routing and the tool index rather than a custom router keeps the overhead near zero and the content model consistent with the main portfolio.
 
 ----
 
-Retro: 
+Retro:
+
+**What worked:** The URL-as-state approach proved its worth immediately — users can bookmark their spinner config, share a pre-filled timer with their mods, or paste a URL straight into OBS. No login friction.
+
+**What didn't:** The tool pages share very little structure in practice. The idea of a "template per tool" felt clean early on but each tool is different enough that the shared template is mostly just the nav and footer.
+
+**What I'd do differently:** Define a proper shared component system for the tool UI earlier (settings panels, copy-URL blocks, OBS embed sections) rather than rebuilding similar patterns per tool.
 
 ----
 
@@ -46,15 +102,25 @@ Testimonial-quote:
 
 ----
 
-Testimonial-name: 
+Testimonial-name: Reacien
 
 ----
 
-Testimonial-role: 
+Testimonial-role: Creator
 
 ----
 
-Info-cards: 
+Info-cards:
+
+- 
+  label: TOOLS
+  value: 3 released · ongoing
+- 
+  label: APPROACH
+  value: URL-first · OBS-ready embeds
+- 
+  label: PERSISTENCE
+  value: Client-side only · no accounts
 
 ----
 
