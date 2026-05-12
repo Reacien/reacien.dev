@@ -17,7 +17,7 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
           local-dir: ./
-          server-dir: /home/reaciend/public_html/
+          server-dir: public_html/
           exclude: |
             **/.git*
             **/.git*/**
