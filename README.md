@@ -89,4 +89,4 @@ hash without any setup.
 
 published for reading and inspiration only — see [LICENSE](LICENSE).
 not for reuse, redistribution, or re-skinning. if you want more than
-inspiration, ask: hi@reacien.dev.
+inspiration, ask: business@reacien.dev.
