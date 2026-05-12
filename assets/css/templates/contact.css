@@ -7,9 +7,9 @@
   gap: 1.25rem;
 }
 
-/* ============================================================
-   HERO
-   ============================================================ */
+/* — hero —
+   breadcrumb / serif title / lede, with a status pill anchored
+   to the right at wider widths. */
 .page.contact .contact-hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -76,9 +76,8 @@
   }
 }
 
-/* ============================================================
-   TWO-COLUMN LAYOUT
-   ============================================================ */
+/* — two-column layout —
+   channels left, letter form right. stacks below 58rem. */
 .page.contact .contact-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr);
@@ -92,9 +91,9 @@
   }
 }
 
-/* ============================================================
-   CHANNEL CARDS (left column)
-   ============================================================ */
+/* — channel cards —
+   one per channel. the ko-fi card flips to accent-green for the
+   tip-jar pop. */
 .page.contact .contact-channels {
   display: flex;
   flex-direction: column;
@@ -196,9 +195,9 @@
   color: var(--ink-soft);
 }
 
-/* ============================================================
-   LETTER FORM (right column)
-   ============================================================ */
+/* — letter form —
+   inline inputs styled as ruled handwriting lines. submit builds
+   a richer mailto: via js. */
 .page.contact .contact-letter {
   background: var(--paper);
   border: var(--border-hairline) solid var(--border-strong);

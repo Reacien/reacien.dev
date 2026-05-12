@@ -27,7 +27,7 @@ $bioFacts = $page->bio_facts()->toStructure();
 <main class="page about">
   <div class="wrap">
 
-    <header class="about-card identity-card">
+    <header class="card identity-card">
       <div class="identity-card-photo<?= $profileImage ? '' : ' is-placeholder' ?>">
         <?php if ($profileImage): ?>
           <img
@@ -115,7 +115,7 @@ $bioFacts = $page->bio_facts()->toStructure();
 
     <div class="about-row">
       <?php if ($page->journey()->isNotEmpty() || $page->story_blocks()->isNotEmpty()): ?>
-        <section class="about-card journey-card">
+        <section class="card journey-card">
           <p class="card-label mono">My Journey</p>
           <h2 class="card-heading">
             <?= $page->intro()->isNotEmpty()
@@ -135,7 +135,7 @@ $bioFacts = $page->bio_facts()->toStructure();
       <?php endif; ?>
 
       <?php if ($showSkills && $page->skills()->isNotEmpty()): ?>
-        <section class="about-card skill-matrix">
+        <section class="card skill-matrix">
           <p class="card-label mono">Skill Matrix</p>
 
           <ul class="skill-list">
@@ -164,7 +164,7 @@ $bioFacts = $page->bio_facts()->toStructure();
     </div>
 
     <?php if ($showPassions && $page->passions_text()->isNotEmpty()): ?>
-      <section class="about-card passions-card">
+      <section class="card passions-card">
         <p class="card-label mono">Beyond Code</p>
         <h2 class="card-heading">Two kinds of <em>slow</em>.</h2>
         <div class="card-body text">

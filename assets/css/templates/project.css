@@ -7,9 +7,9 @@
   gap: 1.75rem;
 }
 
-/* ============================================================
-   HERO
-   ============================================================ */
+/* — hero —
+   breadcrumb, big serif title with optional italic accent, lede,
+   then meta chips + visit/repo buttons stacked on the right. */
 .page.project .project-hero {
   display: flex;
   flex-direction: column;
@@ -161,9 +161,9 @@
   margin-top: 0;
 }
 
-/* ============================================================
-   DOC TABS (README / STACK / DECISIONS / RETRO)
-   ============================================================ */
+/* — doc tabs —
+   readme / stack / decisions / retro. the meta strip on top
+   mimics a file path: `README.md  reacien/slug · main`. */
 .page.project .project-doc {
   background: var(--paper);
   border: var(--border-hairline) solid var(--border-soft);
@@ -295,9 +295,9 @@
   line-height: 1.5;
 }
 
-/* ============================================================
-   INFO CARDS GRID
-   ============================================================ */
+/* — info cards grid —
+   little mono-label cards (content model · perf budget · a11y · …)
+   shown side by side under the description. */
 .page.project .project-info-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
@@ -328,9 +328,9 @@
   color: var(--ink);
 }
 
-/* ============================================================
-   LINKS LIST
-   ============================================================ */
+/* — links list —
+   extra urls (anything that isn't already the visit / repo
+   button). arrow-slide hover. */
 .page.project .project-links {
   background: var(--paper);
   border: var(--border-hairline) solid var(--border-soft);
@@ -378,9 +378,9 @@
   text-underline-offset: 0.2em;
 }
 
-/* ============================================================
-   TESTIMONIAL
-   ============================================================ */
+/* — testimonial —
+   serif quote with accent-colour quote marks, mono uppercase
+   caption. */
 .page.project .project-testimonial {
   position: relative;
   padding: 1.25rem 1.5rem;
@@ -426,9 +426,9 @@
   color: var(--ink-muted);
 }
 
-/* ============================================================
-   GALLERY
-   ============================================================ */
+/* — gallery —
+   first image takes a 2×2 hero slot, the rest fill in around it.
+   collapses to a single column on small screens. */
 .page.project .project-gallery > .label {
   display: block;
   margin: 0 0 0.625rem;

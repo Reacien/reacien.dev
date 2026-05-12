@@ -34,7 +34,7 @@ arsort($tagCounts);
 <main class="page insights">
   <div class="wrap">
 
-    <header class="insights-hero about-card">
+    <header class="insights-hero card">
       <div class="insights-hero-text">
         <p class="label insights-breadcrumb mono">Insights · Notebook</p>
         <h1 class="insights-headline">

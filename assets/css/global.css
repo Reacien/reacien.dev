@@ -188,12 +188,10 @@ button:focus-visible {
   max-width: 70ch;
 }
 
-/* ============================================================
-   .markdown-body — shared "README-style" prose treatment
-   for project descriptions, insight bodies, etc.
-   Heading levels get a mono `##` / `###` / `####` glyph in the
-   gutter, like rendered markdown.
-   ============================================================ */
+/* — .markdown-body —
+   shared "README-style" prose. used by project descriptions and
+   insight bodies. h2 / h3 / h4 get a mono `##` / `###` / `####`
+   glyph in the gutter, like a rendered markdown file. */
 .markdown-body,
 .markdown-heading {
   font-family: var(--font-body);
@@ -349,12 +347,30 @@ button:focus-visible {
   color: var(--ink-muted);
 }
 
-/* ============================================================
-   Shared small components — used by more than one template.
-   Per-template files only override these when something is
-   genuinely page-specific (e.g. the contact .btn-primary is
-   accent-green while the project one is ink-black on idle).
-   ============================================================ */
+/* — shared small components —
+   moved here so every template inherits the same look. per-template
+   files only override these when something is genuinely page-
+   specific (e.g. contact's .btn-primary fills with accent green,
+   project's fills with ink black). */
+
+/* — card chrome —
+   paper bg, hairline border, generous padding. used wherever we
+   want content to lift off the page texture. `--soft` swaps to the
+   lighter border colour for nested or secondary blocks. */
+.card {
+  background: var(--paper);
+  border: var(--border-hairline) solid var(--border-strong);
+  padding: clamp(1.125rem, 2.5vw, 1.75rem);
+  position: relative;
+}
+
+.card--soft {
+  border-color: var(--border-soft);
+}
+
+.card--compact {
+  padding: 0.875rem 1rem;
+}
 
 /* filter chips — projects index + insights index */
 .filter-chip {

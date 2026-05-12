@@ -7,16 +7,9 @@
   gap: 1rem;
 }
 
-/* ============================================================
-   SHARED CARD CHROME
-   ============================================================ */
-.page.about .about-card {
-  position: relative;
-  background: var(--paper);
-  border: var(--border-hairline) solid var(--border-strong);
-  padding: clamp(1.125rem, 2.5vw, 1.75rem);
-}
-
+/* — card chrome lives in global.css now (`.card`).
+   only the about-specific bits — labels, headings, body type — stay
+   below. */
 .page.about .card-label {
   margin: 0 0 0.5rem;
   font-size: 0.625rem;
@@ -93,9 +86,9 @@
   color: var(--accent);
 }
 
-/* ============================================================
-   IDENTITY CARD (file-id idiom)
-   ============================================================ */
+/* — identity card —
+   the file-id idiom: photo well on the left, mono meta + serif
+   name + bio-facts grid on the right. */
 .page.about .identity-card {
   display: grid;
   grid-template-columns: 14rem minmax(0, 1fr);
@@ -283,9 +276,8 @@
   gap: 0.3rem;
 }
 
-/* ============================================================
-   JOURNEY + SKILL ROW
-   ============================================================ */
+/* — journey + skill row —
+   two-column on wide screens, stacks below 56rem. */
 .page.about .about-row {
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
@@ -303,9 +295,8 @@
   max-width: 36rem;
 }
 
-/* ============================================================
-   SKILL MATRIX (dark terminal card)
-   ============================================================ */
+/* — skill matrix —
+   dark terminal card. ink bg, paper text, accent-green bars. */
 .page.about .skill-matrix {
   background: var(--ink);
   color: var(--paper);
@@ -378,9 +369,9 @@
   opacity: 0.55;
 }
 
-/* ============================================================
-   BEYOND CODE (passions)
-   ============================================================ */
+/* — beyond code —
+   the passions card. label + serif heading on the left, body
+   on the right. */
 .page.about .passions-card {
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);

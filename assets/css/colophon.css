@@ -122,9 +122,9 @@
   color: var(--accent-strong);
 }
 
-/* ============================================================
-   FOOTER BAR — live status (left) + clock/copyright (right).
-   ============================================================ */
+/* — footer bar —
+   live status on the left, clock + copyright on the right.
+   single row at wide widths, stacks to two below 56rem. */
 .footer-bar {
   position: relative;
   z-index: 2;

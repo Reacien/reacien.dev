@@ -7,9 +7,10 @@
   gap: 1.5rem;
 }
 
-/* ============================================================
-   HERO
-   ============================================================ */
+/* — hero —
+   breadcrumb, serif title, mono meta (date · read time · tags),
+   optional lede. lives in a paper card so prose stays readable
+   on top of the page texture. */
 .page.insight .insight-hero {
   display: flex;
   flex-direction: column;
@@ -80,9 +81,8 @@
   line-height: 1.55;
 }
 
-/* ============================================================
-   COVER
-   ============================================================ */
+/* — cover image —
+   framed with a hairline so it sits properly inside the page. */
 .page.insight .insight-cover {
   margin: 0;
   padding: 0;
@@ -96,9 +96,9 @@
   height: auto;
 }
 
-/* ============================================================
-   BODY — shares .markdown-body styles from global.css.
-   ============================================================ */
+/* — body —
+   shares `.markdown-body` styles from global.css. only the page-
+   level container chrome lives here. */
 .page.insight .insight-body {
   background: var(--paper);
   border: var(--border-hairline) solid var(--border-soft);
@@ -129,9 +129,8 @@
   }
 }
 
-/* ============================================================
-   FOOTER
-   ============================================================ */
+/* — footer —
+   dashed top border + small "all insights" back-link. */
 .page.insight .insight-footer {
   padding-top: 1rem;
   border-top: var(--border-hairline) dashed var(--border-soft);

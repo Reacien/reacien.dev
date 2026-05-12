@@ -7,9 +7,9 @@
   gap: 1rem;
 }
 
-/* ============================================================
-   HERO CARD
-   ============================================================ */
+/* — hero card —
+   breadcrumb + serif headline + lede on the left, post-count
+   chip on the right. */
 .page.insights .insights-hero {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -89,9 +89,9 @@
   cursor: not-allowed;
 }
 
-/* ============================================================
-   FILTER BAR
-   ============================================================ */
+/* — filter bar —
+   "filter by tag:" label + chips. `.filter-chip` itself lives in
+   global.css. */
 .page.insights .insights-filters {
   display: flex;
   flex-wrap: wrap;
@@ -117,9 +117,8 @@
   gap: 0.375rem;
 }
 
-/* ============================================================
-   POST LIST
-   ============================================================ */
+/* — post list —
+   one wide row per insight: cover well | body | read-arrow. */
 .page.insights .insights-list {
   list-style: none;
   margin: 0;
@@ -283,9 +282,9 @@
   color: var(--ink-muted);
 }
 
-/* ============================================================
-   WORKING-TOWARD FOOTNOTE
-   ============================================================ */
+/* — working-toward footnote —
+   dashed-border block at the bottom of the list. shows whatever
+   colin's currently drafting. */
 .page.insights .insights-footnote {
   background: var(--paper);
   border: var(--border-hairline) dashed var(--border-soft);
