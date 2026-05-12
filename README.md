@@ -1,7 +1,3 @@
-<p align="center">
-  <a href="https://reacien.dev"><img src=".github/hero.svg" alt="reacien.dev — paper-and-terminal portfolio" width="960"></a>
-</p>
-
 <h1 align="center">reacien.dev</h1>
 
 <p align="center">
