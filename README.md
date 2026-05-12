@@ -1,15 +1,20 @@
-# reacien.dev
+<p align="center">
+  <a href="https://reacien.dev"><img src=".github/hero.png" alt="reacien.dev — paper-and-terminal portfolio" width="960"></a>
+</p>
 
-> a personal site that thinks it's a case file.
+<h1 align="center">reacien.dev</h1>
 
-a paper-textured kirby cms portfolio. one accent colour, two typefaces, no
-front-end framework. built mostly to have somewhere to put projects without
-feeling guilty about it.
+<p align="center">
+  source of <a href="https://reacien.dev">reacien.dev</a> — a paper-and-terminal portfolio on kirby cms.<br>
+  instrument serif + jetbrains mono. no front-end framework.
+</p>
 
-if you came here from the live site, the chip you clicked goes somewhere.
-welcome.
-
----
+<p align="center">
+  <a href="https://github.com/Reacien/reacien.dev/actions/workflows/update-build.yml"><img alt="build" src="https://github.com/Reacien/reacien.dev/actions/workflows/update-build.yml/badge.svg"></a>
+  <a href="https://reacien.dev"><img alt="live site" src="https://img.shields.io/badge/live-reacien.dev-1a7a3f?style=flat-square&labelColor=21201c"></a>
+  <a href="https://github.com/Reacien/reacien.dev/commits/main"><img alt="last commit" src="https://img.shields.io/github/last-commit/Reacien/reacien.dev?style=flat-square&color=21201c&labelColor=21201c"></a>
+  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-21201c?style=flat-square&labelColor=21201c"></a>
+</p>
 
 ## stack
 
@@ -23,23 +28,8 @@ welcome.
 | `jetbrains mono` | google fonts | labels, kbd, build chip, terminal bits |
 | `github actions` | — | writes `BUILD.json` on every push so the footer can show real build info |
 
-no bundler, no transpilation, no dependency tree to audit. the only `composer
-install` is for kirby itself.
-
-## running it locally
-
-```sh
-git clone git@github.com:Reacien/reacien.dev.git
-cd reacien.dev
-composer install
-php -S localhost:8000
-```
-
-then open <http://localhost:8000>. the panel lives at `/panel` — the first
-load runs an installer.
-
-a host-aware config in `site/config/` flips `debug` on for `localhost` and off
-for `reacien.dev`. nothing extra to wire up.
+no bundler, no transpilation, no dependency tree to audit. the only
+`composer install` is for kirby itself.
 
 ## live build info
 
@@ -86,7 +76,7 @@ hash without any setup.
 - `site/snippets/cmd-palette.php` + `assets/js/cmdk.js` — `ctrl+shift+k`
   opens a keyboard palette. all entries are built server-side, the json gets
   dropped into a `<script type="application/json">` block, the front-end just
-  reads + filters.
+  reads and filters.
 - `site/snippets/status-bar.php` — the strip at the bottom of every page.
   live clock, last-push relative time, build sha that links to the commit.
 - `assets/js/boot.js` — a one-shot typewriter sequence on the home page.
