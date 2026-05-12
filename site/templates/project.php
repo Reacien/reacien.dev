@@ -90,9 +90,115 @@ $next = $page->nextListed();
       </div>
     </header>
 
-    <?php if ($page->description()->isNotEmpty()): ?>
-      <section class="project-body markdown-body">
-        <?= $page->description()->kt() ?>
+    <?php
+      $stack     = $page->stack()->isNotEmpty() ? $page->stack()->toStructure() : null;
+      $decisions = $page->decisions()->isNotEmpty() ? $page->decisions()->kt() : null;
+      $retro     = $page->retro()->isNotEmpty() ? $page->retro()->kt() : null;
+
+      $tabs = [];
+      if ($page->description()->isNotEmpty()) {
+          $tabs[] = ['key' => 'readme', 'label' => 'readme'];
+      }
+      if ($stack && $stack->count() > 0) {
+          $tabs[] = ['key' => 'stack', 'label' => 'stack'];
+      }
+      if ($decisions) {
+          $tabs[] = ['key' => 'decisions', 'label' => 'decisions'];
+      }
+      if ($retro) {
+          $tabs[] = ['key' => 'retro', 'label' => 'retro'];
+      }
+      $hasTabs = count($tabs) > 1;
+    ?>
+
+    <?php if (count($tabs) > 0): ?>
+      <section class="project-doc" data-doc-tabs>
+        <header class="project-doc-head">
+          <p class="project-doc-meta mono">
+            <span class="file-icon" aria-hidden="true">#</span>
+            README.md
+            <span class="muted">·</span>
+            <span><?= esc($page->slug()) ?> · main</span>
+          </p>
+
+          <?php if ($hasTabs): ?>
+            <ul class="project-doc-tabs" role="tablist">
+              <?php foreach ($tabs as $i => $tab): ?>
+                <li role="presentation">
+                  <button
+                    type="button"
+                    class="doc-tab mono<?= $i === 0 ? ' is-active' : '' ?>"
+                    role="tab"
+                    aria-selected="<?= $i === 0 ? 'true' : 'false' ?>"
+                    aria-controls="doc-panel-<?= esc($tab['key']) ?>"
+                    data-doc-tab="<?= esc($tab['key']) ?>"
+                  ><?= esc($tab['label']) ?></button>
+                </li>
+              <?php endforeach; ?>
+            </ul>
+          <?php endif; ?>
+        </header>
+
+        <?php if ($page->description()->isNotEmpty()): ?>
+          <article
+            class="project-doc-panel project-body markdown-body<?= $tabs[0]['key'] === 'readme' ? ' is-active' : '' ?>"
+            id="doc-panel-readme"
+            role="tabpanel"
+            data-doc-panel="readme"
+            <?= $tabs[0]['key'] !== 'readme' ? 'hidden' : '' ?>
+          >
+            <?= $page->description()->kt() ?>
+          </article>
+        <?php endif; ?>
+
+        <?php if ($stack && $stack->count() > 0): ?>
+          <article
+            class="project-doc-panel project-doc-stack<?= $tabs[0]['key'] === 'stack' ? ' is-active' : '' ?>"
+            id="doc-panel-stack"
+            role="tabpanel"
+            data-doc-panel="stack"
+            <?= $tabs[0]['key'] !== 'stack' ? 'hidden' : '' ?>
+          >
+            <h2 class="markdown-heading">stack</h2>
+            <dl class="stack-table">
+              <?php foreach ($stack as $row): ?>
+                <?php if ($row->name()->isNotEmpty()): ?>
+                  <div class="stack-row">
+                    <dt class="stack-name mono"><?= $row->name()->esc() ?></dt>
+                    <dd class="stack-version mono"><?= $row->version()->or('—')->esc() ?></dd>
+                    <dd class="stack-note"><?= $row->note()->esc() ?></dd>
+                  </div>
+                <?php endif; ?>
+              <?php endforeach; ?>
+            </dl>
+          </article>
+        <?php endif; ?>
+
+        <?php if ($decisions): ?>
+          <article
+            class="project-doc-panel project-body markdown-body<?= $tabs[0]['key'] === 'decisions' ? ' is-active' : '' ?>"
+            id="doc-panel-decisions"
+            role="tabpanel"
+            data-doc-panel="decisions"
+            <?= $tabs[0]['key'] !== 'decisions' ? 'hidden' : '' ?>
+          >
+            <h2 class="markdown-heading">decisions</h2>
+            <?= $decisions ?>
+          </article>
+        <?php endif; ?>
+
+        <?php if ($retro): ?>
+          <article
+            class="project-doc-panel project-body markdown-body<?= $tabs[0]['key'] === 'retro' ? ' is-active' : '' ?>"
+            id="doc-panel-retro"
+            role="tabpanel"
+            data-doc-panel="retro"
+            <?= $tabs[0]['key'] !== 'retro' ? 'hidden' : '' ?>
+          >
+            <h2 class="markdown-heading">retro</h2>
+            <?= $retro ?>
+          </article>
+        <?php endif; ?>
       </section>
     <?php endif; ?>
 

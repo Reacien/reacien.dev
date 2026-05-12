@@ -63,6 +63,23 @@ AddOutputFilterByType DEFLATE text/javascript
 AddOutputFilterByType DEFLATE application/json
 AddOutputFilterByType DEFLATE application/javascript
 AddOutputFilterByType DEFLATE application/x-javascript
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# long-cache static assets (a year). Filenames change when content changes
+# because Kirby's css()/js() helpers append a query string version param.
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType text/css                 "access plus 1 year"
+ExpiresByType application/javascript   "access plus 1 year"
+ExpiresByType image/svg+xml            "access plus 1 month"
+ExpiresByType image/png                "access plus 1 month"
+ExpiresByType image/jpeg               "access plus 1 month"
+ExpiresByType image/webp               "access plus 1 month"
+ExpiresByType image/avif               "access plus 1 month"
+ExpiresByType font/woff2               "access plus 1 year"
+ExpiresByType application/font-woff2   "access plus 1 year"
 </IfModule>
 
 # set security headers in all responses
@@ -84,5 +101,24 @@ Header set Referrer-Policy "strict-origin-when-cross-origin"
 
 # deny access to powerful browser features by default
 Header set Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+
+# isolate top-level pages from cross-origin popups
+Header set Cross-Origin-Opener-Policy "same-origin"
+
+# Content Security Policy — allow self + Google Fonts + inline scripts
+# (theme detection + JSON-LD blocks). The inline scripts are all
+# author-controlled; user content is escaped via JSON_HEX_TAG before
+# reaching any application/json block.
+Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https:; connect-src 'self'; frame-ancestors 'self'; base-uri 'self'; form-action 'self' mailto:; object-src 'none'; upgrade-insecure-requests"
+
+# Long-cache hashed/asset paths only
+<FilesMatch "\.(css|js|woff2|svg|png|jpg|jpeg|webp|avif)$">
+  Header set Cache-Control "public, max-age=31536000, immutable"
+</FilesMatch>
+
+# Never cache HTML — let the CMS revalidate on every request
+<FilesMatch "\.(html|php)$">
+  Header set Cache-Control "no-cache, must-revalidate"
+</FilesMatch>
 
 </IfModule>

@@ -8,26 +8,18 @@ $timestamp   = $build['timestamp'] ?? null;
 $lastPush    = $timestamp ? reacienRelativeTime($timestamp) : null;
 $lastPushIso = $timestamp ? gmdate('c', $timestamp) : null;
 
-$madeBy = $site->footer_made_by()->or('made by hand in nl')->value();
-
-// Repo + commit URLs (link to GitHub when public; harmless 404 otherwise).
+// Repo + commit URLs (will only resolve when the repo is public).
 $github   = $site->github_url()->or('https://github.com/Reacien')->value();
 $repoBase = rtrim($github, '/') . '/reacien.dev';
 $commitUrl = $build['sha'] ? $repoBase . '/commit/' . $build['sha'] : $repoBase;
 
-// Server time / locale (JS replaces with the visitor's local time on load).
+// Server-side defaults — JS replaces these with the visitor's local values on load.
 $serverTz   = date_default_timezone_get();
 $serverTime = date('H:i');
 $serverAbbr = date('T');
 ?>
 
 <aside class="footer-bar mono" aria-label="Site status">
-    <div class="footer-bar-credits">
-        <span>&copy; <?= date('Y') ?> reacien.dev</span>
-        <span class="dot-sep" aria-hidden="true">·</span>
-        <span><?= esc($madeBy) ?></span>
-    </div>
-
     <ul class="footer-bar-status">
         <li class="footer-bar-item status-ok">
             <span class="status-dot" aria-hidden="true">●</span>
@@ -56,7 +48,7 @@ $serverAbbr = date('T');
         </li>
     </ul>
 
-    <div class="footer-bar-clock">
+    <div class="footer-bar-right">
         <span
             class="clock-time"
             data-live-clock
@@ -65,6 +57,6 @@ $serverAbbr = date('T');
         ><?= esc($serverTime) ?></span>
         <span class="clock-tz" data-live-clock-tz><?= esc($serverAbbr) ?></span>
         <span class="dot-sep" aria-hidden="true">·</span>
-        <span class="clock-locale">NL</span>
+        <span class="copyright">&copy; <?= date('Y') ?> reacien.dev</span>
     </div>
 </aside>

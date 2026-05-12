@@ -11,6 +11,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <?php
         $metaTitle       = $page->content()->get('meta_title')->or($page->title());
         $metaDescription = $page->content()->get('meta_description')
@@ -49,27 +52,80 @@
     <meta name="twitter:image" content="<?= esc($ogImageUrl) ?>">
     <?php endif; ?>
 
-    <?php if ($page->isHomePage()): ?>
     <?php
         $identityName = $site->identity_name()->or('Reacien')->value();
         $identityRole = $site->identity_role()->or('Software Developer')->value();
-        $sameAs       = array_filter([
+        $sameAs       = array_values(array_filter([
             $site->github_url()->or('https://github.com/Reacien')->value(),
             $site->twitter_url()->or('https://twitter.com/Reacien_')->value(),
             $site->nickname_url()->value(),
             $site->kofi_url()->value(),
-        ]);
+        ]));
+
+        $jsonLd = [];
+
+        if ($page->isHomePage()) {
+            $jsonLd[] = array_filter([
+                '@context' => 'https://schema.org',
+                '@type'    => 'Person',
+                'name'     => $identityName,
+                'url'      => $site->url(),
+                'jobTitle' => $identityRole,
+                'sameAs'   => $sameAs ?: null,
+            ]);
+            $jsonLd[] = array_filter([
+                '@context' => 'https://schema.org',
+                '@type'    => 'WebSite',
+                'name'     => $site->title()->value(),
+                'url'      => $site->url(),
+                'inLanguage' => 'en',
+            ]);
+        } elseif ($page->template()->name() === 'insight') {
+            $datePublished = $page->date()->isNotEmpty() ? $page->date()->toDate('c') : null;
+            $jsonLd[] = array_filter([
+                '@context'      => 'https://schema.org',
+                '@type'         => 'BlogPosting',
+                'headline'      => $page->title()->value(),
+                'description'   => $metaDescription->value() ?: null,
+                'datePublished' => $datePublished,
+                'dateModified'  => gmdate('c', $page->modified()),
+                'image'         => $ogImageUrl,
+                'url'           => $page->url(),
+                'mainEntityOfPage' => $page->url(),
+                'author'        => [
+                    '@type' => 'Person',
+                    'name'  => $identityName,
+                    'url'   => $site->url(),
+                ],
+                'publisher'     => [
+                    '@type' => 'Person',
+                    'name'  => $identityName,
+                    'url'   => $site->url(),
+                ],
+                'keywords' => $page->tags()->isNotEmpty() ? implode(', ', array_map('trim', $page->tags()->split(','))) : null,
+            ]);
+        } elseif ($page->template()->name() === 'project') {
+            $jsonLd[] = array_filter([
+                '@context'    => 'https://schema.org',
+                '@type'       => 'CreativeWork',
+                'name'        => $page->title()->value(),
+                'description' => $metaDescription->value() ?: null,
+                'image'       => $ogImageUrl,
+                'url'         => $page->url(),
+                'dateCreated' => $page->year()->isNotEmpty() ? $page->year()->value() : null,
+                'creator'     => [
+                    '@type' => 'Person',
+                    'name'  => $identityName,
+                    'url'   => $site->url(),
+                ],
+                'keywords' => $page->tech()->isNotEmpty() ? implode(', ', array_map('trim', $page->tech()->split(','))) : null,
+            ]);
+        }
     ?>
-    <script type="application/ld+json">
-    <?= json_encode(array_filter([
-        '@context' => 'https://schema.org',
-        '@type'    => 'Person',
-        'name'     => $identityName,
-        'url'      => $site->url(),
-        'jobTitle' => $identityRole,
-        'sameAs'   => array_values($sameAs) ?: null,
-    ]), JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP | JSON_PRETTY_PRINT) ?>
-    </script>
+    <?php if (!empty($jsonLd)): ?>
+        <?php foreach ($jsonLd as $ld): ?>
+            <script type="application/ld+json"><?= json_encode($ld, JSON_UNESCAPED_SLASHES | JSON_HEX_TAG | JSON_HEX_AMP) ?></script>
+        <?php endforeach; ?>
     <?php endif; ?>
 
     <?php
@@ -133,6 +189,8 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main-content">Skip to main content</a>
+
 <header class="chrome">
     <div class="chrome-inner">
         <nav class="crumbs" aria-label="Breadcrumb">
@@ -180,3 +238,5 @@
 </header>
 
 <?php snippet('cmd-palette') ?>
+
+<div id="main-content" tabindex="-1"></div>

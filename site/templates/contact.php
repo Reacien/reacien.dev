@@ -6,72 +6,210 @@
 $email    = $page->email_to()->or($site->public_email())->or('hi@reacien.dev')->value();
 $github   = $site->github_url()->or('https://github.com/Reacien')->value();
 $twitter  = $site->twitter_url()->or('https://twitter.com/Reacien_')->value();
-$nickname = $site->nickname_url()->or('https://mynickname.com/reacien')->value();
 $kofi     = $site->kofi_url()->or('https://ko-fi.com/reacien_')->value();
+$nickname = $site->nickname_url()->or('https://mynickname.com/reacien')->value();
+
+$githubHandle  = '@' . basename(rtrim(parse_url($github, PHP_URL_PATH) ?? '', '/'));
+$twitterHandle = '@' . basename(rtrim(parse_url($twitter, PHP_URL_PATH) ?? '', '/'));
+$kofiLabel     = preg_replace('#^https?://#', '', rtrim($kofi, '/'));
+
+$responseTime = $page->response_time()->value();
+
+$emailBadge   = $page->email_badge()->or('best for most things')->value();
+$emailNote    = $page->email_note()->or('for anything that needs attachments, context, or privacy')->value();
+$githubNote   = $page->github_note()->or('issues, PRs, and bug reports that belong in a tracker')->value();
+$twitterNote  = $page->twitter_note()->or('quick chatter, replies within a day or so')->value();
+$kofiNote     = $page->kofi_note()->or('tip jar — fuels the americano habit')->value();
+$notMe        = $page->not_me_disclaimer()->or("any account that isn't listed here isn't mine — even if it looks close.")->value();
+
+$mailtoSubject = 'Hello from reacien.dev';
 ?>
 <?php snippet('header') ?>
 
 <main class="page contact">
   <div class="wrap">
-    <header class="page-head">
-      <p class="label">Contact</p>
-      <h1><?= $page->title()->html() ?></h1>
 
-      <?php if ($page->subtitle()->isNotEmpty()): ?>
-        <p class="lede"><?= $page->subtitle()->kirbytextinline() ?></p>
+    <header class="contact-hero">
+      <div class="contact-hero-text">
+        <p class="label contact-breadcrumb mono">Contact</p>
+        <h1 class="contact-title">
+          <?php if ($page->headline()->isNotEmpty()): ?>
+            <?= $page->headline() ?>
+          <?php else: ?>
+            say <em>hi</em>.
+          <?php endif; ?>
+        </h1>
+        <?php if ($page->intro()->isNotEmpty()): ?>
+          <p class="lede"><?= $page->intro()->kirbytextinline() ?></p>
+        <?php else: ?>
+          <p class="lede">
+            Questions, commissions, bugs — all welcome. Pick a channel on the left, or write a letter on the right.
+          </p>
+        <?php endif; ?>
+      </div>
+
+      <?php if ($responseTime): ?>
+        <aside class="contact-status mono">
+          <span class="status-dot" aria-hidden="true">●</span>
+          responding · <?= esc($responseTime) ?>
+        </aside>
       <?php endif; ?>
     </header>
 
-    <?php if ($page->intro()->isNotEmpty()): ?>
-      <section class="page-body text contact-intro">
-        <?= $page->intro()->kt() ?>
+    <div class="contact-grid">
+      <section class="contact-channels" aria-label="Contact channels">
+        <article class="channel-card channel-email">
+          <header class="channel-card-head">
+            <h2 class="channel-name">email</h2>
+            <?php if ($emailBadge): ?>
+              <span class="channel-badge mono"><?= esc($emailBadge) ?></span>
+            <?php endif; ?>
+          </header>
+          <a class="channel-handle mono" href="mailto:<?= esc($email) ?>">
+            <?= esc($email) ?>
+          </a>
+          <?php if ($emailNote): ?>
+            <p class="channel-note"><?= esc($emailNote) ?></p>
+          <?php endif; ?>
+        </article>
+
+        <article class="channel-card">
+          <header class="channel-card-head">
+            <h2 class="channel-name">github</h2>
+          </header>
+          <a class="channel-handle mono" href="<?= esc($github) ?>" target="_blank" rel="noreferrer">
+            <?= esc($githubHandle) ?>
+          </a>
+          <?php if ($githubNote): ?>
+            <p class="channel-note"><?= esc($githubNote) ?></p>
+          <?php endif; ?>
+        </article>
+
+        <article class="channel-card">
+          <header class="channel-card-head">
+            <h2 class="channel-name">twitter / x</h2>
+          </header>
+          <a class="channel-handle mono" href="<?= esc($twitter) ?>" target="_blank" rel="noreferrer">
+            <?= esc($twitterHandle) ?>
+          </a>
+          <?php if ($twitterNote): ?>
+            <p class="channel-note"><?= esc($twitterNote) ?></p>
+          <?php endif; ?>
+        </article>
+
+        <article class="channel-card channel-kofi">
+          <header class="channel-card-head">
+            <h2 class="channel-name">buy me a coffee</h2>
+          </header>
+          <a class="channel-handle mono" href="<?= esc($kofi) ?>" target="_blank" rel="noreferrer">
+            <?= esc($kofiLabel) ?>
+          </a>
+          <?php if ($kofiNote): ?>
+            <p class="channel-note"><?= esc($kofiNote) ?></p>
+          <?php endif; ?>
+        </article>
+
+        <?php if ($notMe): ?>
+          <aside class="channel-disclaimer">
+            <p class="label mono">not me</p>
+            <p class="channel-disclaimer-text"><?= esc($notMe) ?></p>
+          </aside>
+        <?php endif; ?>
       </section>
-    <?php endif; ?>
 
-    <section class="contact-channels">
-      <?php if ($email): ?>
-        <a class="contact-channel cropped" href="mailto:<?= esc($email) ?>">
-          <span class="label mono">Email</span>
-          <span class="value"><?= esc($email) ?></span>
-          <span class="contact-channel-arrow" aria-hidden="true">→</span>
-        </a>
-      <?php endif; ?>
+      <section class="contact-letter" aria-label="Letter form">
+        <form
+          class="letter-form"
+          action="mailto:<?= esc($email) ?>"
+          method="post"
+          enctype="text/plain"
+          data-letter-form
+        >
+          <header class="letter-head">
+            <span class="letter-tag mono">a letter, of sorts</span>
+            <span class="letter-promise mono">ends up in my inbox · never sold</span>
+          </header>
 
-      <?php if ($github): ?>
-        <a class="contact-channel cropped" href="<?= esc($github) ?>" target="_blank" rel="noreferrer">
-          <span class="label mono">GitHub</span>
-          <span class="value">@Reacien</span>
-          <span class="contact-channel-arrow" aria-hidden="true">↗</span>
-        </a>
-      <?php endif; ?>
+          <p class="letter-line">
+            <span>Hey Reacien,</span>
+          </p>
 
-      <?php if ($twitter): ?>
-        <a class="contact-channel cropped" href="<?= esc($twitter) ?>" target="_blank" rel="noreferrer">
-          <span class="label mono">Twitter</span>
-          <span class="value">@Reacien_</span>
-          <span class="contact-channel-arrow" aria-hidden="true">↗</span>
-        </a>
-      <?php endif; ?>
+          <p class="letter-line">
+            my name is
+            <label class="visually-hidden" for="letter-name">Your name</label>
+            <input
+              type="text"
+              id="letter-name"
+              name="name"
+              required
+              autocomplete="name"
+              placeholder="your name"
+              class="letter-input"
+            >
+            and I'd like to talk about a
+            <label class="visually-hidden" for="letter-type">Type of message</label>
+            <select id="letter-type" name="type" class="letter-input letter-select">
+              <option value="" disabled selected>select type…</option>
+              <option value="commission">commission</option>
+              <option value="collaboration">collaboration</option>
+              <option value="bug-report">bug report</option>
+              <option value="question">question</option>
+              <option value="just-saying-hi">just saying hi</option>
+            </select>
+            .
+          </p>
 
-      <?php if ($kofi): ?>
-        <a class="contact-channel cropped" href="<?= esc($kofi) ?>" target="_blank" rel="noreferrer">
-          <span class="label mono">Ko-fi</span>
-          <span class="value">buy me a coffee</span>
-          <span class="contact-channel-arrow" aria-hidden="true">↗</span>
-        </a>
-      <?php endif; ?>
+          <p class="letter-line">Here are the details:</p>
+          <label class="visually-hidden" for="letter-body">Message</label>
+          <textarea
+            id="letter-body"
+            name="message"
+            class="letter-textarea"
+            required
+            rows="6"
+            placeholder="what's on your mind…"
+            data-letter-body
+          ></textarea>
 
-      <?php if ($nickname): ?>
-        <a class="contact-channel cropped" href="<?= esc($nickname) ?>" target="_blank" rel="noreferrer">
-          <span class="label mono">Nickname</span>
-          <span class="value">on Nickname</span>
-          <span class="contact-channel-arrow" aria-hidden="true">↗</span>
-        </a>
-      <?php endif; ?>
-    </section>
+          <p class="letter-line">
+            You can reply to
+            <label class="visually-hidden" for="letter-email">Your email</label>
+            <input
+              type="email"
+              id="letter-email"
+              name="reply_to"
+              required
+              autocomplete="email"
+              placeholder="you@somewhere.dev"
+              class="letter-input"
+            >
+            when you have a moment.
+          </p>
+
+          <p class="letter-line letter-signoff">Thanks —</p>
+          <p class="letter-line letter-signature"><em>you</em></p>
+
+          <!-- Honeypot: bots will fill this, humans won't. -->
+          <input type="text" name="company" tabindex="-1" autocomplete="off" class="letter-honeypot" aria-hidden="true">
+
+          <footer class="letter-foot">
+            <button type="submit" class="btn btn-primary mono">
+              seal &amp; send <span aria-hidden="true">→</span>
+            </button>
+            <span class="letter-foot-note mono">
+              or copy as email · open mailto:
+            </span>
+            <span class="letter-stats mono" data-letter-stats>
+              <span data-letter-count>0</span> chars
+              <span class="muted">· form has real labels under the hood · screen-reader friendly</span>
+            </span>
+          </footer>
+        </form>
+      </section>
+    </div>
 
     <?php if ($page->description()->isNotEmpty()): ?>
-      <section class="page-body text contact-description">
+      <section class="contact-extras markdown-body">
         <?= $page->description()->kt() ?>
       </section>
     <?php endif; ?>

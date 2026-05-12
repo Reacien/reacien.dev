@@ -343,3 +343,88 @@
         });
     });
 })();
+
+/* ============================================================
+   Project detail — README/stack/decisions/retro tab switcher.
+   ============================================================ */
+(() => {
+    document.querySelectorAll('[data-doc-tabs]').forEach(container => {
+        const tabs   = container.querySelectorAll('[data-doc-tab]');
+        const panels = container.querySelectorAll('[data-doc-panel]');
+        if (!tabs.length || !panels.length) return;
+
+        const activate = (key) => {
+            tabs.forEach(t => {
+                const active = t.dataset.docTab === key;
+                t.classList.toggle('is-active', active);
+                t.setAttribute('aria-selected', active ? 'true' : 'false');
+            });
+            panels.forEach(p => {
+                const match = p.dataset.docPanel === key;
+                p.classList.toggle('is-active', match);
+                if (match) p.removeAttribute('hidden');
+                else p.setAttribute('hidden', '');
+            });
+        };
+
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => activate(tab.dataset.docTab));
+        });
+    });
+})();
+
+/* ============================================================
+   Contact letter form — char counter + mailto submission.
+   ============================================================ */
+(() => {
+    const form  = document.querySelector('[data-letter-form]');
+    if (!form) return;
+
+    const body  = form.querySelector('[data-letter-body]');
+    const count = form.querySelector('[data-letter-count]');
+    const honeypot = form.querySelector('input[name="company"]');
+
+    if (body && count) {
+        const updateCount = () => { count.textContent = String(body.value.length); };
+        body.addEventListener('input', updateCount);
+        updateCount();
+    }
+
+    form.addEventListener('submit', (event) => {
+        // Drop bot submissions silently.
+        if (honeypot && honeypot.value.trim() !== '') {
+            event.preventDefault();
+            return;
+        }
+
+        // Build a richer mailto: than the default enctype gives us.
+        event.preventDefault();
+        const data = new FormData(form);
+        const name    = (data.get('name')    || '').toString().trim();
+        const type    = (data.get('type')    || '').toString().trim();
+        const message = (data.get('message') || '').toString().trim();
+        const replyTo = (data.get('reply_to') || '').toString().trim();
+        const action  = form.getAttribute('action') || '';
+        const to      = action.replace(/^mailto:/, '');
+
+        const subject = `[reacien.dev] ${type || 'message'} from ${name || 'someone'}`;
+        const lines = [
+            `Hey Reacien,`,
+            ``,
+            `My name is ${name || '(unknown)'} and I'd like to talk about a ${type || 'thing'}.`,
+            ``,
+            `Here are the details:`,
+            message,
+            ``,
+            `You can reply to ${replyTo || '(no reply address given)'} when you have a moment.`,
+            ``,
+            `Thanks —`,
+            `you`,
+        ];
+        const url = 'mailto:' + encodeURIComponent(to)
+            + '?subject=' + encodeURIComponent(subject)
+            + '&body='    + encodeURIComponent(lines.join('\n'));
+
+        window.location.href = url;
+    });
+})();

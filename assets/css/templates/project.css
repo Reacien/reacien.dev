@@ -14,6 +14,9 @@
   display: flex;
   flex-direction: column;
   gap: 0.625rem;
+  background: var(--paper);
+  border: var(--border-hairline) solid var(--border-strong);
+  padding: clamp(1.25rem, 3vw, 2rem);
 }
 
 .page.project .project-breadcrumb {
@@ -164,6 +167,153 @@
 }
 
 /* Markdown body styles live in global.css and are shared with insight pages. */
+.page.project .project-body {
+  background: var(--paper);
+}
+
+.page.project .project-body > :first-child {
+  margin-top: 0;
+}
+
+.page.project .project-body h2:first-child,
+.page.project .project-body h3:first-child,
+.page.project .project-body h4:first-child {
+  margin-top: 0;
+}
+
+/* ============================================================
+   DOC TABS (README / STACK / DECISIONS / RETRO)
+   ============================================================ */
+.page.project .project-doc {
+  background: var(--paper);
+  border: var(--border-hairline) solid var(--border-soft);
+}
+
+.page.project .project-doc-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  padding: 0.6rem 1rem;
+  background: var(--paper-soft);
+  border-bottom: var(--border-hairline) solid var(--border-soft);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+}
+
+.page.project .project-doc-meta {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--ink-soft);
+}
+
+.page.project .project-doc-meta .file-icon {
+  color: var(--accent-strong);
+  font-weight: 600;
+}
+
+.page.project .project-doc-meta .muted {
+  color: var(--ink-muted);
+  opacity: 0.5;
+}
+
+.page.project .project-doc-tabs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.page.project .doc-tab {
+  appearance: none;
+  background: var(--paper);
+  border: var(--border-hairline) solid var(--border-soft);
+  color: var(--ink-soft);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  padding: 0.25rem 0.625rem;
+  cursor: pointer;
+  transition:
+    background 0.15s ease-out,
+    color 0.15s ease-out,
+    border-color 0.15s ease-out;
+}
+
+.page.project .doc-tab:hover {
+  background: var(--paper-soft);
+  color: var(--ink);
+}
+
+.page.project .doc-tab.is-active {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.page.project .project-doc-panel {
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+.page.project .project-doc-panel[hidden] {
+  display: none;
+}
+
+/* Stack panel — definition-list as a table-y view */
+.page.project .stack-table {
+  margin: 0.5rem 0 0;
+  border: var(--border-hairline) solid var(--border-soft);
+}
+
+.page.project .stack-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 2fr;
+  gap: 0.75rem 1rem;
+  align-items: baseline;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.8125rem;
+  border-bottom: var(--border-hairline) dashed var(--border-soft);
+}
+
+.page.project .stack-row:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 36rem) {
+  .page.project .stack-row {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "name version"
+      "note note";
+  }
+  .page.project .stack-name    { grid-area: name; }
+  .page.project .stack-version { grid-area: version; text-align: right; }
+  .page.project .stack-note    { grid-area: note; }
+}
+
+.page.project .stack-name {
+  margin: 0;
+  color: var(--ink);
+  font-size: 0.8125rem;
+  text-transform: lowercase;
+  font-weight: 600;
+}
+
+.page.project .stack-version {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.75rem;
+}
+
+.page.project .stack-note {
+  margin: 0;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
 
 /* ============================================================
    INFO CARDS GRID

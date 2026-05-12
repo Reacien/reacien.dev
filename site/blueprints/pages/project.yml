@@ -82,8 +82,65 @@ tabs:
             fields:
               description:
                 type: textarea
-                label: Description
+                label: README
                 size: large
+                help: "Rendered as the default tab on the project page."
+                buttons:
+                  - headlines
+                  - bold
+                  - italic
+                  - link
+                  - bulletList
+                  - orderedList
+                  - code
+          stack_section:
+            type: fields
+            label: Stack
+            fields:
+              stack:
+                type: structure
+                label: Stack
+                layout: table
+                help: "Tech stack table — appears under the 'stack' tab on the project page."
+                fields:
+                  name:
+                    type: text
+                    label: Name
+                    width: 1/3
+                  version:
+                    type: text
+                    label: Version
+                    width: 1/3
+                  note:
+                    type: text
+                    label: Note
+                    width: 1/3
+          decisions_section:
+            type: fields
+            label: Decisions
+            fields:
+              decisions:
+                type: textarea
+                label: Decisions
+                size: medium
+                help: "Optional — design / architecture decisions you made on this project."
+                buttons:
+                  - headlines
+                  - bold
+                  - italic
+                  - link
+                  - bulletList
+                  - orderedList
+                  - code
+          retro_section:
+            type: fields
+            label: Retro
+            fields:
+              retro:
+                type: textarea
+                label: Retro
+                size: medium
+                help: "Optional — what worked, what didn't, what you'd do differently."
                 buttons:
                   - headlines
                   - bold

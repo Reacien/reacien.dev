@@ -42,6 +42,15 @@ tabs:
       sidebar:
         width: 1/3
         sections:
+          status:
+            type: fields
+            label: Status
+            fields:
+              response_time:
+                type: text
+                label: Response Time
+                help: 'Shown in the green "responding · avg Xh" pill on the contact page. Leave blank to hide.'
+                placeholder: "avg 18h"
           channels:
             type: fields
             label: Contact Channels
@@ -49,11 +58,35 @@ tabs:
               email_to:
                 type: email
                 label: Primary Email
-                help: "Used for the mailto link and 'copy email' command."
-              email_from:
-                type: email
-                label: Form 'From' Address
-                help: "Optional — if/when a contact form is added."
+                help: "Where the contact form sends to. Used for the mailto link."
+              email_note:
+                type: text
+                label: Email Note
+                placeholder: "for anything that needs attachments, context, or privacy"
+              email_badge:
+                type: text
+                label: Email Badge
+                placeholder: "best for most things"
+                help: "Optional little pill shown on the email card."
+              github_note:
+                type: text
+                label: GitHub Note
+                placeholder: "issues, PRs, and bug reports that belong in a tracker"
+              twitter_note:
+                type: text
+                label: Twitter / X Note
+                placeholder: "quick chatter, replies within a day or so"
+              kofi_note:
+                type: text
+                label: Ko-fi Note
+                placeholder: "tip jar — fuels the americano habit"
+              not_me_disclaimer:
+                type: textarea
+                label: "Not Me" Disclaimer
+                size: small
+                buttons: false
+                help: "Optional little footnote about accounts that aren't actually you."
+                placeholder: "any account that isn't listed here isn't mine — even if it looks close."
 
   seo:
     extends: tabs/seo
