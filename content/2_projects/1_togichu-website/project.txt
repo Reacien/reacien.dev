@@ -10,33 +10,68 @@ Project-status: completed
 
 ----
 
-Description:
-
-### Project Overview
-The official website for Togichu was built to serve as a central hub for her VTubing brand. Moving beyond standard social media link-trees, her website provides a dedicated space for fans to get to know her, explore her models, and see all the people she has worked with.
-
-### Technical Execution
-Built on **Kirby CMS**, the site prioritizes speed and a mobile-friendly experience for fans browsing during live streams. I developed a custom frontend that handles heavy imagery without sacrificing performance. By utilizing Kirby's flexible blueprint system, the site allows for quick updates to models, credits, and social links, ensuring the content is as dynamic as the streamer herself.
-
-### Key Features
-- Immersive Branding: A UI/UX designed to match Togichu's character colors and aesthetic.
-- Live Integration: Optimized links and layouts that direct traffic efficiently to her active platforms.
-- Asset Optimization: Advanced handling of high-resolution character art and fan graphics to ensure fast load times on all devices.
-- Scalable Architecture: A clean, file-based backend that allows for the easy addition of future features like merch stores or lore wikis.
-
-### The Result
-A professional, vibrant landing page that solidifies Togichu's digital presence, offering her community a polished and reliable destination to connect with her brand outside of streaming platforms.
+Year: 2025
 
 ----
 
-Urls:
+Scope: 4wk · solo
 
--
-  label: 'Visit the website'
-  url: 'https://togichu.live'
--
-  label: "Togichu's Twitch"
-  url: 'https://twitch.tv/togichu'
+----
+
+Category: web
+
+----
+
+Tech: php, javascript, css, html, kirby
+
+----
+
+Description: Togichu's Website is a custom Kirby CMS build created as the official web presence for Togichu, a VTuber and content creator. The goal was a branded, fast, mobile-friendly hub — somewhere fans could find her models, credits, social links, and a sense of her character, outside of the platforms she lives on.
+
+----
+
+Stack:
+
+- 
+  name: PHP
+  version: v8.3
+  note: ""
+- 
+  name: Kirby CMS
+  version: v5.4
+  note: ""
+- 
+  name: Vanilla JS
+  version: ""
+  note: ""
+- 
+  name: Modern CSS
+  version: ""
+  note: ""
+
+----
+
+Decisions:
+
+Design: Leaned into Togichu's character colors and visual identity from the start, rather than building neutral and retrofitting. The UI needed to feel like her, not a generic portfolio template.
+
+Architecture: Chose Kirby's file-based CMS over a database backend for portability and low operational overhead — a small creator site shouldn't need a MySQL server to update a social link. Blueprint-driven content editing means she can update models and credits herself without touching code.
+
+Performance: Character art files are large by nature. Used Kirby's built-in thumb API aggressively — lazy loaded, sized for viewport — so the site stays fast even with heavy imagery.
+
+----
+
+Retro:
+
+What worked: The Kirby blueprint system was the right call. It made the content editor genuinely usable for a non-technical client, and keeping all media file-based made migrations trivial. The performance budget held up surprisingly well given the image-heavy content.
+
+What didn't: Early on I tried to be too flexible with the layout system — leaving too many options open in blueprints. It created indecision during content editing. Fewer, more opinionated fields would have been better.
+
+What I'd do differently: Add a proper staging environment from day one instead of testing on the live server. I got away with it, but it was reckless.
+
+----
+
+Testimonial-quote: "It looks exactly like my brand, and updating it is actually easy. I didn't expect both."
 
 ----
 
@@ -48,7 +83,45 @@ Testimonial-role: VTuber
 
 ----
 
-Testimonial-quote: 
+Info-cards:
+
+- 
+  label: CONTENT MODEL
+  value: ""
+- 
+  label: PERF BUDGET
+  value: ""
+- 
+  label: MOBILE FIRST
+  value: ""
+
+----
+
+Visit-url: https://togichu.live
+
+----
+
+Repo-url: 
+
+----
+
+Urls:
+
+- 
+  label: "Togichu's Twitch"
+  url: https://twitch.tv/togichu
+
+----
+
+Meta-title: Togichu's Website — Reacien
+
+----
+
+Meta-description: Kirby CMS build for VTuber Togichu — a branded, mobile-first hub for models, credits, and community, built for performance with heavy imagery.
+
+----
+
+Og-image: 
 
 ----
 
@@ -57,10 +130,6 @@ Content: []
 ----
 
 Status: completed
-
-----
-
-Tech: php
 
 ----
 

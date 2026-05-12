@@ -1,15 +1,16 @@
 <?php
+
 /** @var \Kirby\Cms\App $kirby */
 /** @var \Kirby\Cms\Site $site */
 /** @var \Kirby\Cms\Page $page */
 
 $statusKey   = $page->project_status()->value();
 $statusLabel = match ($statusKey) {
-    'wip'       => 'in progress',
-    'completed' => 'shipped',
-    'archived'  => 'archived',
-    'idea'      => 'idea',
-    default     => $statusKey,
+  'wip'       => 'in progress',
+  'completed' => 'shipped',
+  'archived'  => 'archived',
+  'idea'      => 'idea',
+  default     => $statusKey,
 };
 
 $year  = $page->year()->isNotEmpty() ? $page->year()->value() : null;
@@ -22,17 +23,17 @@ $repoUrl  = $page->repo_url()->isNotEmpty()  ? $page->repo_url()->value()  : nul
 $extraLinks = $page->urls()->isNotEmpty() ? $page->urls()->toStructure() : null;
 
 if (($visitUrl === null || $repoUrl === null) && $extraLinks) {
-    foreach ($extraLinks as $link) {
-        $label = strtolower($link->label()->value());
-        $url   = $link->url()->value();
-        if (!$url) continue;
-        if ($visitUrl === null && (str_contains($label, 'visit') || str_contains($label, 'site') || str_contains($label, 'live'))) {
-            $visitUrl = $url;
-        }
-        if ($repoUrl === null && (str_contains($label, 'repo') || str_contains($label, 'github') || str_contains($label, 'source'))) {
-            $repoUrl = $url;
-        }
+  foreach ($extraLinks as $link) {
+    $label = strtolower($link->label()->value());
+    $url   = $link->url()->value();
+    if (!$url) continue;
+    if ($visitUrl === null && (str_contains($label, 'visit') || str_contains($label, 'site') || str_contains($label, 'live'))) {
+      $visitUrl = $url;
     }
+    if ($repoUrl === null && (str_contains($label, 'repo') || str_contains($label, 'github') || str_contains($label, 'source'))) {
+      $repoUrl = $url;
+    }
+  }
 }
 
 $infoCards = $page->info_cards()->isNotEmpty() ? $page->info_cards()->toStructure() : null;
@@ -91,24 +92,24 @@ $next = $page->nextListed();
     </header>
 
     <?php
-      $stack     = $page->stack()->isNotEmpty() ? $page->stack()->toStructure() : null;
-      $decisions = $page->decisions()->isNotEmpty() ? $page->decisions()->kt() : null;
-      $retro     = $page->retro()->isNotEmpty() ? $page->retro()->kt() : null;
+    $stack     = $page->stack()->isNotEmpty() ? $page->stack()->toStructure() : null;
+    $decisions = $page->decisions()->isNotEmpty() ? $page->decisions()->kt() : null;
+    $retro     = $page->retro()->isNotEmpty() ? $page->retro()->kt() : null;
 
-      $tabs = [];
-      if ($page->description()->isNotEmpty()) {
-          $tabs[] = ['key' => 'readme', 'label' => 'readme'];
-      }
-      if ($stack && $stack->count() > 0) {
-          $tabs[] = ['key' => 'stack', 'label' => 'stack'];
-      }
-      if ($decisions) {
-          $tabs[] = ['key' => 'decisions', 'label' => 'decisions'];
-      }
-      if ($retro) {
-          $tabs[] = ['key' => 'retro', 'label' => 'retro'];
-      }
-      $hasTabs = count($tabs) > 1;
+    $tabs = [];
+    if ($page->description()->isNotEmpty()) {
+      $tabs[] = ['key' => 'readme', 'label' => 'readme'];
+    }
+    if ($stack && $stack->count() > 0) {
+      $tabs[] = ['key' => 'stack', 'label' => 'stack'];
+    }
+    if ($decisions) {
+      $tabs[] = ['key' => 'decisions', 'label' => 'decisions'];
+    }
+    if ($retro) {
+      $tabs[] = ['key' => 'retro', 'label' => 'retro'];
+    }
+    $hasTabs = count($tabs) > 1;
     ?>
 
     <?php if (count($tabs) > 0): ?>
@@ -131,8 +132,7 @@ $next = $page->nextListed();
                     role="tab"
                     aria-selected="<?= $i === 0 ? 'true' : 'false' ?>"
                     aria-controls="doc-panel-<?= esc($tab['key']) ?>"
-                    data-doc-tab="<?= esc($tab['key']) ?>"
-                  ><?= esc($tab['label']) ?></button>
+                    data-doc-tab="<?= esc($tab['key']) ?>"><?= esc($tab['label']) ?></button>
                 </li>
               <?php endforeach; ?>
             </ul>
@@ -145,20 +145,19 @@ $next = $page->nextListed();
             id="doc-panel-readme"
             role="tabpanel"
             data-doc-panel="readme"
-            <?= $tabs[0]['key'] !== 'readme' ? 'hidden' : '' ?>
-          >
+            <?= $tabs[0]['key'] !== 'readme' ? 'hidden' : '' ?>>
+            <h2 class="markdown-heading">readme</h2>
             <?= $page->description()->kt() ?>
           </article>
         <?php endif; ?>
 
         <?php if ($stack && $stack->count() > 0): ?>
           <article
-            class="project-doc-panel project-doc-stack<?= $tabs[0]['key'] === 'stack' ? ' is-active' : '' ?>"
+            class="project-doc-panel project-body markdown-body<?= $tabs[0]['key'] === 'stack' ? ' is-active' : '' ?>"
             id="doc-panel-stack"
             role="tabpanel"
             data-doc-panel="stack"
-            <?= $tabs[0]['key'] !== 'stack' ? 'hidden' : '' ?>
-          >
+            <?= $tabs[0]['key'] !== 'stack' ? 'hidden' : '' ?>>
             <h2 class="markdown-heading">stack</h2>
             <dl class="stack-table">
               <?php foreach ($stack as $row): ?>
@@ -180,8 +179,7 @@ $next = $page->nextListed();
             id="doc-panel-decisions"
             role="tabpanel"
             data-doc-panel="decisions"
-            <?= $tabs[0]['key'] !== 'decisions' ? 'hidden' : '' ?>
-          >
+            <?= $tabs[0]['key'] !== 'decisions' ? 'hidden' : '' ?>>
             <h2 class="markdown-heading">decisions</h2>
             <?= $decisions ?>
           </article>
@@ -193,8 +191,7 @@ $next = $page->nextListed();
             id="doc-panel-retro"
             role="tabpanel"
             data-doc-panel="retro"
-            <?= $tabs[0]['key'] !== 'retro' ? 'hidden' : '' ?>
-          >
+            <?= $tabs[0]['key'] !== 'retro' ? 'hidden' : '' ?>>
             <h2 class="markdown-heading">retro</h2>
             <?= $retro ?>
           </article>
@@ -216,11 +213,11 @@ $next = $page->nextListed();
     <?php endif; ?>
 
     <?php
-      // Render extra links list only if there are leftovers after extracting visit/repo.
-      $shownLinks = $extraLinks ? $extraLinks->filter(function ($l) use ($visitUrl, $repoUrl) {
-          $u = $l->url()->value();
-          return $u && $u !== $visitUrl && $u !== $repoUrl;
-      }) : null;
+    // Render extra links list only if there are leftovers after extracting visit/repo.
+    $shownLinks = $extraLinks ? $extraLinks->filter(function ($l) use ($visitUrl, $repoUrl) {
+      $u = $l->url()->value();
+      return $u && $u !== $visitUrl && $u !== $repoUrl;
+    }) : null;
     ?>
     <?php if ($shownLinks && $shownLinks->count() > 0): ?>
       <section class="project-links">
@@ -263,8 +260,7 @@ $next = $page->nextListed();
               <img
                 src="<?= $cover->resize(1400)->url() ?>"
                 alt="<?= $cover->alt()->or($page->title())->esc() ?>"
-                loading="lazy"
-              >
+                loading="lazy">
             </a>
           <?php endif; ?>
           <?php foreach ($thumbs as $img): ?>
@@ -272,8 +268,7 @@ $next = $page->nextListed();
               <img
                 src="<?= $img->resize(800)->url() ?>"
                 alt="<?= $img->alt()->or($page->title())->esc() ?>"
-                loading="lazy"
-              >
+                loading="lazy">
             </a>
           <?php endforeach; ?>
         </div>

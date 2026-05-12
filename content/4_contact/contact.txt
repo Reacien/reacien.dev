@@ -2,7 +2,19 @@ Title: Contact
 
 ----
 
+Headline: 
+
+----
+
 Subtitle: Questions? Commissions? Bugs? I'm here to help.
+
+----
+
+Description: Have a project in mind, a commission request, or just want to say hello? Send Reacien a message directly through the contact form.
+
+----
+
+Response-time: 1d
 
 ----
 
@@ -10,7 +22,39 @@ Email-to: business@reacien.dev
 
 ----
 
-Description: Have a project in mind, a commission request, or just want to say hello? Send Reacien a message directly through the contact form.
+Email-note: 
+
+----
+
+Email-badge: 
+
+----
+
+Github-note: 
+
+----
+
+Twitter-note: replies are very slow
+
+----
+
+Kofi-note: tip jar — fuels the coffee habit
+
+----
+
+Not-me-disclaimer: any account that isn't listed here most likely isn't mine even if it looks close — always ask if you're not sure.
+
+----
+
+Meta-title: 
+
+----
+
+Meta-description: 
+
+----
+
+Og-image: 
 
 ----
 

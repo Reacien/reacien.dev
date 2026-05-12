@@ -2,7 +2,31 @@ Title: Insights
 
 ----
 
-Subtitle: Occasional thoughts on the web and beyond.
+Headline: 
+
+----
+
+Subtitle: Not a blog. More like a trail of breadcrumbs.
+
+----
+
+Description: 
+
+----
+
+Footnote: More posts are in the drafts folder. They'll make it out eventually.
+
+----
+
+Meta-title: Insights — Reacien
+
+----
+
+Meta-description: Notes on web development, tooling, and decisions worth writing down. Mostly frontend and backend web work.
+
+----
+
+Og-image: 
 
 ----
 

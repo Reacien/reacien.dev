@@ -6,11 +6,11 @@ Show-hero: true
 
 ----
 
-Heading: This is a test.
+Heading: A developer who *builds* things that hold up.
 
 ----
 
-Intro: A Dutch software development student who enjoys building practical tools, clean UIs, and little automations that remove repetitive work. The focus is on writing code that feels understandable, maintainable, and just a bit over-engineered in the right places.
+Intro: Web developing as a *hobby* with a habit of building things that didn't *exist* yet.
 
 ----
 
@@ -18,7 +18,7 @@ Profile-image:
 
 ----
 
-Story-blocks: 
+Story-blocks: [{"content":{"level":"h3","text":"## Growing up with a settings menu"},"id":"bf46178f-5d6e-4214-bd36-941fb2c98fd0","isHidden":false,"type":"heading"},{"content":{"text":"<p>I grew up opening things I wasn't supposed to, breaking software, and figuring out how to fix it. That habit didn't go away — it just became a career path.</p>"},"id":"8b218e87-6c25-4527-bd46-668ca5a816c9","isHidden":false,"type":"text"},{"content":{"level":"h3","text":"## Falling for the web"},"id":"a53adb6b-de32-4e73-914c-224ab732a421","isHidden":false,"type":"heading"},{"content":{"text":"<p>The web became my focus: HTML, CSS, JavaScript, PHP with Kirby CMS for fast, content-driven sites. I like building things that feel simple from the outside, even when there's a lot running underneath.</p>"},"id":"9d38f4e8-759a-42dd-b4b2-4db1fa91f792","isHidden":false,"type":"text"},{"content":{"level":"h3","text":"## Real projects, real lessons"},"id":"a5e07276-0984-438e-8a3b-fcfb79417877","isHidden":false,"type":"heading"},{"content":{"text":"<p>To actually learn, I started building tools and websites other people could use. Each one is a small case study — what held up, what broke in production, and what I'd automate next time.</p>"},"id":"43c5810e-14a9-4792-aad4-b9b45bbf8ef5","isHidden":false,"type":"text"}]
 
 ----
 
@@ -26,7 +26,7 @@ Show-passions: true
 
 ----
 
-Passions-text: 
+Passions-text: Most spare time goes into making things by hand. That means 3D printing parts until the tolerances are right, painting miniatures detail by detail, and sewing — currently figuring out how to make my own clothes, which turns out to have a lot in common with writing CSS. Any creative process that rewards patience and iteration is welcome.
 
 ----
 
@@ -47,7 +47,7 @@ Skills:
   level: 70
 - 
   name: 'CLI Tools & Scripts'
-  level: 60
+  level: 55
 - 
   name: 'APIs & Integrations'
   level: 50
@@ -57,15 +57,15 @@ Skills:
 
 ----
 
-Display-name: 
+Display-name: Reacien
 
 ----
 
-Role: 
+Role: Developer
 
 ----
 
-Role-since: 
+Role-since: 2024
 
 ----
 
@@ -73,11 +73,11 @@ Location:
 
 ----
 
-Timezone: 
+Timezone: Europe/Amsterdam
 
 ----
 
-Availability: 
+Availability: open_to_offers
 
 ----
 
@@ -85,29 +85,11 @@ Currently-working-on:
 
 ----
 
-Journey:
-
-I grew up curious about how things work, especially anything with buttons, screens, or a settings menu. That curiosity slowly turned into a habit of **taking things apart**, breaking software, and then figuring out how to fix it again.
-
-### Studying software development
-
-Choosing software development as a study path was a natural move. It combines problem-solving, logic, and creativity, and it rewards you for being stubborn in a good way. At school I moved from *"just make it work"* to thinking about structure, readability, and how other developers will experience the code.
-
-### Falling in love with the web
-
-The web became my main focus: HTML, CSS, JavaScript, and PHP with Kirby CMS for fast, content-driven sites. I enjoy building things that feel **simple on the surface**, even when there's a lot of logic and automation running underneath.
-
-### Real projects, real lessons
-
-To really learn, I started building tools and websites that other people could actually use. Each project is a small case study: what went well, what broke in production, and what I can automate or refactor next time.
-
-### What I'm working towards
-
-Right now I'm focused on sharpening my full-stack web skills, building more reliable automation, and creating a portfolio that reflects how I think as a developer. The goal is to be able to take an idea from rough sketch to **deployed, maintainable software** — and have fun along the way.
+Journey: 
 
 ----
 
-Open-to: 
+Open-to: Freelance, Consulting, Side Projects
 
 ----
 
@@ -115,11 +97,11 @@ Bio-facts:
 
 ----
 
-Meta-title: 
+Meta-title: About — Reacien
 
 ----
 
-Meta-description: 
+Meta-description: Who I am, what I build, and how I got here. A web developer with a focus on practical tools and clean interfaces.
 
 ----
 

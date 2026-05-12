@@ -2,11 +2,27 @@ Title: Projects
 
 ----
 
-Subtitle: From prototypes to production: a look at what I'm building.
+Headline: 
 
 ----
 
-Description: A showcase of projects by Reacien — from completed web apps to works in progress, spanning frontend, backend, automation, and more.
+Subtitle: From prototypes to production: a look at what I'm building and what I've shipped.
+
+----
+
+Description: A mix of client work, personal tools, and side projects. Some are finished. Some are works in progress. All of them taught me something.
+
+----
+
+Meta-title: Projects — Reacien
+
+----
+
+Meta-description: A showcase of projects by Reacien — client sites, personal tools, and works in progress spanning frontend, backend, and automation.
+
+----
+
+Og-image: 
 
 ----
 

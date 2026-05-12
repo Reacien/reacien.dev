@@ -2,4 +2,40 @@ Title: Home
 
 ----
 
+Hero-heading: Code that <em>works</em>. Interfaces that don't get in the way.
+
+----
+
+Hero-lede: Practical tools, clean interfaces, and just enough automation to make life easier.
+
+----
+
+Selected-work-heading: Things I've <em>shipped</em>
+
+----
+
+Selected-work-limit: 2
+
+----
+
+Site-key-title: Reacien — <em>Web Developer</em>
+
+----
+
+Site-key-intro: ​Building for the web, mostly as a hobby. PHP, Kirby CMS, and vanilla JS are where I spend most of my time.
+
+----
+
+Meta-title: Reacien – Web Developer
+
+----
+
+Meta-description: Dutch web developer building tools, websites, and automations. PHP, Kirby CMS, vanilla JS. Available for freelance.
+
+----
+
+Og-image: 
+
+----
+
 Uuid: pl4h0rbcji1miy51

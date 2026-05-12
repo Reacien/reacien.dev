@@ -1,4 +1,5 @@
 <?php
+
 /** @var \Kirby\Cms\App $kirby */
 /** @var \Kirby\Cms\Site $site */
 /** @var \Kirby\Cms\Page $page */
@@ -8,9 +9,9 @@ $showSkills   = $page->show_skills()->toBool(true);
 $showPassions = $page->show_passions()->toBool(true);
 
 $availabilityLabels = [
-    'available'      => 'available',
-    'busy'           => 'busy',
-    'open_to_offers' => 'open to offers',
+  'available'      => 'available',
+  'busy'           => 'busy',
+  'open_to_offers' => 'open to offers',
 ];
 $availKey  = $page->availability()->value();
 $openToWork = $availKey === 'available';
@@ -35,8 +36,7 @@ $bioFacts = $page->bio_facts()->toStructure();
             alt="<?= $page->title()->esc() ?>"
             loading="lazy"
             width="<?= $profileImage->width() ?>"
-            height="<?= $profileImage->height() ?>"
-          >
+            height="<?= $profileImage->height() ?>">
         <?php else: ?>
           <span class="identity-card-photo-tag mono">[ portrait · <?= $identityYear ?> ]</span>
         <?php endif; ?>
@@ -67,10 +67,16 @@ $bioFacts = $page->bio_facts()->toStructure();
 
         <p class="identity-card-tagline mono">
           <?php
-            $tagline = [];
-            if ($page->role()->isNotEmpty())     { $tagline[] = strtolower($page->role()->value()); }
-            if ($page->location()->isNotEmpty()) { $tagline[] = strtolower($page->location()->value()); }
-            if ($page->role_since()->isNotEmpty()) { $tagline[] = 'est. ' . $page->role_since()->value(); }
+          $tagline = [];
+          if ($page->role()->isNotEmpty()) {
+            $tagline[] = strtolower($page->role()->value());
+          }
+          if ($page->location()->isNotEmpty()) {
+            $tagline[] = strtolower($page->location()->value());
+          }
+          if ($page->role_since()->isNotEmpty()) {
+            $tagline[] = 'est. ' . $page->role_since()->value();
+          }
           ?>
           <?= esc(implode(' · ', $tagline)) ?>
         </p>
@@ -116,11 +122,11 @@ $bioFacts = $page->bio_facts()->toStructure();
     <div class="about-row">
       <?php if ($page->journey()->isNotEmpty() || $page->story_blocks()->isNotEmpty()): ?>
         <section class="card journey-card">
-          <p class="card-label mono">My Journey</p>
+          <p class="card-label mono">my journey</p>
           <h2 class="card-heading">
             <?= $page->intro()->isNotEmpty()
-                ? $page->intro()->kirbytextinline()
-                : 'From taking things apart to <em>putting them on the internet</em>.' ?>
+              ? $page->intro()->kirbytextinline()
+              : 'From taking things apart to <em>putting them on the internet</em>.' ?>
           </h2>
 
           <div class="card-body text">
@@ -141,8 +147,8 @@ $bioFacts = $page->bio_facts()->toStructure();
           <ul class="skill-list">
             <?php foreach ($page->skills()->toStructure() as $skill): ?>
               <?php
-                $level = max(0, min(100, (int) $skill->level()->value()));
-                $note = $skill->note() ?? null;
+              $level = max(0, min(100, (int) $skill->level()->value()));
+              $note = $skill->note() ?? null;
               ?>
               <li class="skill-row">
                 <div class="skill-row-head">

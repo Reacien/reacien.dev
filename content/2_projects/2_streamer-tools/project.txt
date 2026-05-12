@@ -10,18 +10,39 @@ Project-status: wip
 
 ----
 
+Year: 2025
+
+----
+
+Scope: 
+
+----
+
+Category: tools
+
+----
+
+Tech: php, javascript, css, html, kirby
+
+----
+
 Description: A growing toolbox of browser‑based utilities for streamers and creators with no installs, no bullshit, just URLs.
 
 ----
 
-Urls:
+Stack: 
 
--
-  label: 'Visit the tools directory'
-  url: 'https://tools.reacien.dev'
--
-  label: 'Latest released tool'
-  url: 'https://tools.reacien.dev/home/spinner'
+----
+
+Decisions: 
+
+----
+
+Retro: 
+
+----
+
+Testimonial-quote: 
 
 ----
 
@@ -33,7 +54,35 @@ Testimonial-role:
 
 ----
 
-Testimonial-quote: 
+Info-cards: 
+
+----
+
+Visit-url: https://tools.reacien.dev
+
+----
+
+Repo-url: 
+
+----
+
+Urls:
+
+- 
+  label: Latest released tool
+  url: https://tools.reacien.dev/home/spinner
+
+----
+
+Meta-title: Streamer Tools — Reacien
+
+----
+
+Meta-description: A growing collection of browser-based utilities for streamers and creators. No installs, no accounts — just open and use.
+
+----
+
+Og-image: 
 
 ----
 
