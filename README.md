@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://reacien.dev"><img src=".github/hero.png" alt="reacien.dev — paper-and-terminal portfolio" width="960"></a>
+  <a href="https://reacien.dev"><img src=".github/hero.svg" alt="reacien.dev — paper-and-terminal portfolio" width="960"></a>
 </p>
 
 <h1 align="center">reacien.dev</h1>
@@ -13,7 +13,7 @@
   <a href="https://github.com/Reacien/reacien.dev/actions/workflows/update-build.yml"><img alt="build" src="https://github.com/Reacien/reacien.dev/actions/workflows/update-build.yml/badge.svg"></a>
   <a href="https://reacien.dev"><img alt="live site" src="https://img.shields.io/badge/live-reacien.dev-1a7a3f?style=flat-square&labelColor=21201c"></a>
   <a href="https://github.com/Reacien/reacien.dev/commits/main"><img alt="last commit" src="https://img.shields.io/github/last-commit/Reacien/reacien.dev?style=flat-square&color=21201c&labelColor=21201c"></a>
-  <a href="LICENSE"><img alt="MIT license" src="https://img.shields.io/badge/license-MIT-21201c?style=flat-square&labelColor=21201c"></a>
+  <a href="LICENSE"><img alt="all rights reserved" src="https://img.shields.io/badge/©-all_rights_reserved-21201c?style=flat-square&labelColor=21201c"></a>
 </p>
 
 ## stack
@@ -95,4 +95,6 @@ hash without any setup.
 
 ## license
 
-mit — see [LICENSE](LICENSE). take what's useful.
+published for reading and inspiration only — see [LICENSE](LICENSE).
+not for reuse, redistribution, or re-skinning. if you want more than
+inspiration, ask: hi@reacien.dev.

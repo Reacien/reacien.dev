@@ -132,29 +132,9 @@
   flex-wrap: wrap;
 }
 
-.page.project .btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.45em;
-  padding: 0.55rem 0.95rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  background: var(--paper);
-  color: var(--ink);
-  border: var(--border-hairline) solid var(--border-strong);
-  transition:
-    transform 0.15s ease-out,
-    box-shadow 0.15s ease-out,
-    background 0.15s ease-out,
-    color 0.15s ease-out;
-}
-
-.page.project .btn:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 3px 3px 0 var(--border-strong);
-}
-
+/* `.btn` base lives in global.css. Project's primary variant is
+   ink-on-paper on idle, accent-on-paper on hover — distinct from
+   contact's accent-on-paper primary. */
 .page.project .btn-primary {
   background: var(--ink);
   color: var(--paper);
@@ -503,9 +483,8 @@
   transform: scale(1.02);
 }
 
-/* ============================================================
-   PREV / NEXT PAGER
-   ============================================================ */
+/* `.pager-card` and friends live in global.css. Only the grid
+   wrapper is page-specific. */
 .page.project .project-pager {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -517,49 +496,4 @@
   .page.project .project-pager {
     grid-template-columns: 1fr;
   }
-}
-
-.page.project .pager-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  padding: 1rem 1.125rem;
-  background: var(--paper);
-  border: var(--border-hairline) solid var(--border-soft);
-  text-decoration: none;
-  color: inherit;
-  transition:
-    transform 0.15s ease-out,
-    box-shadow 0.15s ease-out,
-    border-color 0.15s ease-out;
-}
-
-.page.project .pager-card.pager-next {
-  text-align: right;
-}
-
-.page.project .pager-empty {
-  background: transparent;
-  border-color: transparent;
-  pointer-events: none;
-}
-
-.page.project .pager-card:not(.pager-empty):hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 3px 3px 0 var(--border-strong);
-  border-color: var(--border-strong);
-}
-
-.page.project .pager-direction {
-  font-size: 0.625rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-}
-
-.page.project .pager-title {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  line-height: 1.2;
-  color: var(--ink);
 }

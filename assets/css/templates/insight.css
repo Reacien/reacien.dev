@@ -115,9 +115,7 @@
   margin-top: 0;
 }
 
-/* ============================================================
-   PREV / NEXT PAGER
-   ============================================================ */
+/* `.pager-card` and friends live in global.css. */
 .page.insight .insight-pager {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -129,51 +127,6 @@
   .page.insight .insight-pager {
     grid-template-columns: 1fr;
   }
-}
-
-.page.insight .pager-card {
-  display: flex;
-  flex-direction: column;
-  gap: 0.3rem;
-  padding: 1rem 1.125rem;
-  background: var(--paper);
-  border: var(--border-hairline) solid var(--border-soft);
-  text-decoration: none;
-  color: inherit;
-  transition:
-    transform 0.15s ease-out,
-    box-shadow 0.15s ease-out,
-    border-color 0.15s ease-out;
-}
-
-.page.insight .pager-card.pager-next {
-  text-align: right;
-}
-
-.page.insight .pager-empty {
-  background: transparent;
-  border-color: transparent;
-  pointer-events: none;
-}
-
-.page.insight .pager-card:not(.pager-empty):hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 3px 3px 0 var(--border-strong);
-  border-color: var(--border-strong);
-}
-
-.page.insight .pager-direction {
-  font-size: 0.625rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ink-muted);
-}
-
-.page.insight .pager-title {
-  font-family: var(--font-serif);
-  font-size: 1.25rem;
-  line-height: 1.2;
-  color: var(--ink);
 }
 
 /* ============================================================

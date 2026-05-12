@@ -337,30 +337,9 @@
   border-top: var(--border-hairline) dashed var(--border-soft);
 }
 
-.page.contact .btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4em;
-  padding: 0.6rem 1.1rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  background: var(--paper);
-  color: var(--ink);
-  border: var(--border-hairline) solid var(--border-strong);
-  cursor: pointer;
-  transition:
-    transform 0.15s ease-out,
-    box-shadow 0.15s ease-out,
-    background 0.15s ease-out,
-    color 0.15s ease-out;
-}
-
-.page.contact .btn:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 3px 3px 0 var(--border-strong);
-}
-
+/* `.btn` base lives in global.css. Contact's primary variant is
+   accent-green-on-idle, accent-strong-on-hover — used for the
+   "seal & send" letter button. */
 .page.contact .btn-primary {
   background: var(--accent);
   color: var(--on-accent);

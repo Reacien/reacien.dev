@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid meet" role="img" aria-label="reacien.dev — paper-and-terminal portfolio">
+  <title>reacien.dev</title>
+  <desc>Cover image for the reacien.dev repository. A paper-textured hero with the wordmark in serif and a metadata grid in mono — mirrors the site's identity card.</desc>
+
+  <defs>
+    <pattern id="stripes" patternUnits="userSpaceOnUse" width="16" height="16" patternTransform="rotate(135)">
+      <rect width="16" height="16" fill="#f5f5f0"/>
+      <rect width="8" height="16" fill="#000" fill-opacity="0.025"/>
+    </pattern>
+
+    <radialGradient id="vignette" cx="20%" cy="20%" r="80%">
+      <stop offset="0%"  stop-color="#166534" stop-opacity="0.06"/>
+      <stop offset="80%" stop-color="#166534" stop-opacity="0"/>
+    </radialGradient>
+
+    <style>
+      .serif { font-family: 'Iowan Old Style', 'Apple Garamond', 'Baskerville', 'Times New Roman', serif; }
+      .mono  { font-family: 'JetBrains Mono', 'Cascadia Code', 'SF Mono', 'Menlo', monospace; }
+    </style>
+  </defs>
+
+  <!-- paper -->
+  <rect width="1600" height="900" fill="#f5f5f0"/>
+  <rect width="1600" height="900" fill="url(#stripes)"/>
+  <rect width="1600" height="900" fill="url(#vignette)"/>
+
+  <!-- frame -->
+  <rect x="40" y="40" width="1520" height="820" fill="none" stroke="#21201c" stroke-width="1"/>
+
+  <!-- crop ticks -->
+  <g stroke="#21201c" stroke-width="2" fill="none">
+    <path d="M40 70 L40 40 L70 40"/>
+    <path d="M1530 40 L1560 40 L1560 70"/>
+    <path d="M40 830 L40 860 L70 860"/>
+    <path d="M1530 860 L1560 860 L1560 830"/>
+  </g>
+
+  <!-- header row: file id + open-to-work pill -->
+  <text class="mono" x="88" y="108" font-size="14" letter-spacing="2.5" fill="#8a8a85">FILE-ID 001  ·  CLASSIFIED: PUBLIC</text>
+
+  <g transform="translate(1376, 84)">
+    <rect width="184" height="34" fill="#d5e5d4" stroke="#1a7a3f" stroke-width="1"/>
+    <circle cx="18" cy="17" r="4" fill="#166534"/>
+    <text class="mono" x="32" y="22" font-size="11" letter-spacing="2.2" fill="#166534">OPEN TO WORK</text>
+  </g>
+
+  <!-- wordmark -->
+  <text class="serif" x="80" y="380" font-size="208" fill="#21201c">reacien<tspan font-style="italic" fill="#166534">.dev</tspan></text>
+
+  <!-- subtitle -->
+  <text class="mono" x="86" y="428" font-size="16" letter-spacing="1.5" fill="#595959">software-development student  ·  the netherlands  ·  est. 2004</text>
+
+  <!-- dashed rule -->
+  <line x1="80" y1="486" x2="1520" y2="486" stroke="#21201c" stroke-width="1" stroke-dasharray="3 5" opacity="0.4"/>
+
+  <!-- bio-facts grid (4 cols × 2 rows) -->
+  <g class="mono">
+    <g transform="translate(80, 528)">
+      <text font-size="10" letter-spacing="2.5" fill="#8a8a85">FOCUS</text>
+      <text y="28" font-size="15" fill="#21201c">full-stack web</text>
+    </g>
+    <g transform="translate(440, 528)">
+      <text font-size="10" letter-spacing="2.5" fill="#8a8a85">CMS</text>
+      <text y="28" font-size="15" fill="#21201c">kirby 5  ·  php</text>
+    </g>
+    <g transform="translate(800, 528)">
+      <text font-size="10" letter-spacing="2.5" fill="#8a8a85">LANGS</text>
+      <text y="28" font-size="15" fill="#21201c">js  ·  php  ·  py</text>
+    </g>
+    <g transform="translate(1160, 528)">
+      <text font-size="10" letter-spacing="2.5" fill="#8a8a85">TOOLS</text>
+      <text y="28" font-size="15" fill="#21201c">phpstorm  ·  obs</text>
+    </g>
+
+    <g transform="translate(80, 608)">
+      <text font-size="10" letter-spacing="2.5" fill="#8a8a85">VIBE</text>
+      <text y="28" font-size="15" fill="#21201c">over-engineered, cleanly</text>
+    </g>
+    <g transform="translate(440, 608)">
+      <text font-size="10" letter-spacing="2.5" fill="#8a8a85">OUTSIDE</text>
+      <text y="28" font-size="15" fill="#21201c">3d print  ·  miniatures</text>
+    </g>
+    <g transform="translate(800, 608)">
+      <text font-size="10" letter-spacing="2.5" fill="#8a8a85">COFFEE</text>
+      <text y="28" font-size="15" fill="#21201c">americano, 3 / day</text>
+    </g>
+    <g transform="translate(1160, 608)">
+      <text font-size="10" letter-spacing="2.5" fill="#8a8a85">MBTI</text>
+      <text y="28" font-size="15" fill="#21201c">build-then-refactor</text>
+    </g>
+  </g>
+
+  <!-- dashed rule above the status bar -->
+  <line x1="80" y1="788" x2="1520" y2="788" stroke="#21201c" stroke-width="1" stroke-dasharray="3 5" opacity="0.4"/>
+
+  <!-- footer status bar — same shape as the site's -->
+  <g class="mono" font-size="12" letter-spacing="1.4">
+    <circle cx="92" cy="833" r="3.5" fill="#166534"/>
+    <text x="106" y="838" fill="#21201c">all systems nominal</text>
+    <text x="276" y="838" fill="#c8c8c2">|</text>
+    <text x="296" y="838" fill="#21201c">build #042 [c3157d3]</text>
+    <text x="520" y="838" fill="#c8c8c2">|</text>
+    <text x="540" y="838" fill="#21201c">last push · just now</text>
+    <text x="746" y="838" fill="#c8c8c2">|</text>
+    <text x="766" y="838" fill="#21201c">/source</text>
+
+    <text x="1520" y="838" text-anchor="end" fill="#21201c">23:10 CET  ·  © 2026 reacien.dev</text>
+  </g>
+</svg>

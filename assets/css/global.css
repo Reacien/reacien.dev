@@ -348,3 +348,126 @@ button:focus-visible {
   font-size: 0.75rem;
   color: var(--ink-muted);
 }
+
+/* ============================================================
+   Shared small components — used by more than one template.
+   Per-template files only override these when something is
+   genuinely page-specific (e.g. the contact .btn-primary is
+   accent-green while the project one is ink-black on idle).
+   ============================================================ */
+
+/* filter chips — projects index + insights index */
+.filter-chip {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.625rem;
+  background: var(--paper);
+  border: var(--border-hairline) solid var(--border-strong);
+  color: var(--ink);
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  letter-spacing: 0.04em;
+  cursor: pointer;
+  transition:
+    background 0.15s ease-out,
+    color 0.15s ease-out,
+    border-color 0.15s ease-out;
+}
+
+.filter-chip:hover {
+  background: var(--paper-soft);
+}
+
+.filter-chip.is-active {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.filter-chip-count {
+  font-size: 0.625rem;
+  color: var(--ink-muted);
+  background: var(--paper-soft);
+  padding: 0.05em 0.4em;
+  border: var(--border-hairline) solid var(--border-soft);
+}
+
+.filter-chip.is-active .filter-chip-count {
+  color: var(--paper);
+  background: rgba(245, 245, 240, 0.12);
+  border-color: rgba(245, 245, 240, 0.18);
+}
+
+/* prev / next pager — used by single project + single insight */
+.pager-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding: 1rem 1.125rem;
+  background: var(--paper);
+  border: var(--border-hairline) solid var(--border-soft);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform 0.15s ease-out,
+    box-shadow 0.15s ease-out,
+    border-color 0.15s ease-out;
+}
+
+.pager-card.pager-next { text-align: right; }
+
+.pager-empty {
+  background: transparent;
+  border-color: transparent;
+  pointer-events: none;
+}
+
+.pager-card:not(.pager-empty):hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 3px 3px 0 var(--border-strong);
+  border-color: var(--border-strong);
+}
+
+.pager-direction {
+  font-family: var(--font-code);
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+.pager-title {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+/* base button — `.btn-primary` is page-scoped because the
+   accent vs. ink filling differs between contact and project */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.55rem 1rem;
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  background: var(--paper);
+  color: var(--ink);
+  border: var(--border-hairline) solid var(--border-strong);
+  cursor: pointer;
+  transition:
+    transform 0.15s ease-out,
+    box-shadow 0.15s ease-out,
+    background 0.15s ease-out,
+    color 0.15s ease-out;
+}
+
+.btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 3px 3px 0 var(--border-strong);
+}

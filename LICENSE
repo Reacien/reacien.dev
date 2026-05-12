@@ -1,21 +1,33 @@
-MIT License
+View-Only Notice — reacien.dev
+================================
 
-Copyright (c) 2026 Reacien
+Copyright (c) 2026 Reacien. All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This repository is published so you can read the source, learn from it,
+and treat it as design or implementation inspiration for your own work.
+That is the only use granted.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+You may NOT:
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+  - copy substantial portions of the code, copy, or design into your own
+    projects, public or private
+  - redistribute this repository or its contents, in whole or in part
+  - re-publish the visual design, typography choices, colour palette,
+    copy, or layout under your own name or brand
+  - use this project, or any derivative of it, as the basis for a
+    product, template, theme, or service
+
+If you want to use any part of this beyond inspiration, please ask
+first — hi@reacien.dev. The answer is often yes; I just want to know.
+
+This notice covers everything in this repository EXCEPT:
+
+  - the contents of `kirby/` (Kirby CMS itself, licensed separately by
+    Bastian Allgeier — see https://getkirby.com/license)
+  - any third-party fonts referenced from Google Fonts, which are
+    covered by their own licences (SIL Open Font License)
+  - any third-party libraries listed in `composer.json`, each covered
+    by its own licence
+
+If you build something and this site inspired it in some way — I would
+genuinely love to see it.
