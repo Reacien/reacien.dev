@@ -10,9 +10,12 @@ $selectedWorkLimit  = max(1, (int) $page->selected_work_limit()->or(4)->value())
 ?>
 <?php snippet('header') ?>
 
-<main class="home">
+<?php /* Boot overlay sits at body level so its z-index isn't trapped
+         inside main's stacking context (which the footer would paint
+         over). */ ?>
+<?php snippet('boot-overlay') ?>
 
-  <?php snippet('boot-overlay') ?>
+<main class="home">
 
   <section class="home-hero">
     <div class="home-hero-grid">

@@ -73,11 +73,22 @@
         render();
     };
 
+    // Dispatch map for palette actions. Replaces a `new Function(...)`
+    // eval pattern so the page can ship under a strict CSP (no
+    // 'unsafe-eval' needed).
+    const actions = {
+        toggleTheme: () => window.rcToggleTheme && window.rcToggleTheme(),
+        setAccent:   (a) => window.rcSetAccent && window.rcSetAccent(a),
+        cycleAccent: () => window.rcCycleAccent && window.rcCycleAccent(),
+        copyEmail:   (a) => navigator.clipboard && navigator.clipboard.writeText(a),
+        replayBoot:  () => window.rcReplayBoot && window.rcReplayBoot(),
+    };
+
     const run = it => {
         if (!it) return;
-        if (it.js) {
+        if (it.action && typeof actions[it.action.type] === 'function') {
             try {
-                new Function(it.js)();
+                actions[it.action.type](it.action.arg);
             } catch (e) {
                 console.warn(e);
             }

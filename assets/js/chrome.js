@@ -135,11 +135,21 @@
             renderInline();
         };
 
+        // Same dispatcher pattern as cmdk.js — keeps the inline mini-
+        // palette CSP-safe (no 'unsafe-eval' required).
+        const inlineActions = {
+            toggleTheme: () => window.rcToggleTheme && window.rcToggleTheme(),
+            setAccent:   (a) => window.rcSetAccent && window.rcSetAccent(a),
+            cycleAccent: () => window.rcCycleAccent && window.rcCycleAccent(),
+            copyEmail:   (a) => navigator.clipboard && navigator.clipboard.writeText(a),
+            replayBoot:  () => window.rcReplayBoot && window.rcReplayBoot(),
+        };
+
         const runInline = it => {
             if (!it) return;
-            if (it.js) {
+            if (it.action && typeof inlineActions[it.action.type] === 'function') {
                 try {
-                    new Function(it.js)();
+                    inlineActions[it.action.type](it.action.arg);
                 } catch (e) {
                     console.warn(e);
                 }

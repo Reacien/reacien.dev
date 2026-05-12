@@ -55,13 +55,15 @@ if ($projects = page('projects')) {
     }
 }
 
-// Actions
+// Actions — declared as structured { type, arg } payloads so cmdk.js
+// can dispatch them by name. Using an eval-style "js" string would
+// require a CSP with 'unsafe-eval', which we don't want.
 $items[] = [
-    'group' => 'actions',
-    'k'     => 'theme',
-    'label' => 'theme: toggle light/dark',
-    'hint'  => '⇧ T',
-    'js'    => "window.rcToggleTheme && window.rcToggleTheme()",
+    'group'  => 'actions',
+    'k'      => 'theme',
+    'label'  => 'theme: toggle light/dark',
+    'hint'   => '⇧ T',
+    'action' => ['type' => 'toggleTheme'],
 ];
 
 $accentOptions = [
@@ -74,36 +76,36 @@ $accentOptions = [
 
 foreach ($accentOptions as $key => $label) {
     $items[] = [
-        'group' => 'actions',
-        'k'     => 'accent ' . $key,
-        'label' => $label,
-        'hint'  => 'set accent to ' . $key,
-        'js'    => "window.rcSetAccent && window.rcSetAccent('{$key}')",
+        'group'  => 'actions',
+        'k'      => 'accent ' . $key,
+        'label'  => $label,
+        'hint'   => 'set accent to ' . $key,
+        'action' => ['type' => 'setAccent', 'arg' => $key],
     ];
 }
 
 $items[] = [
-    'group' => 'actions',
-    'k'     => 'accent cycle',
-    'label' => 'accent: cycle through options',
-    'hint'  => 'shortcut',
-    'js'    => "window.rcCycleAccent && window.rcCycleAccent()",
+    'group'  => 'actions',
+    'k'      => 'accent cycle',
+    'label'  => 'accent: cycle through options',
+    'hint'   => 'shortcut',
+    'action' => ['type' => 'cycleAccent'],
 ];
 
 $items[] = [
-    'group' => 'actions',
-    'k'     => 'email',
-    'label' => 'copy email address',
-    'hint'  => $publicEmail,
-    'js'    => "navigator.clipboard?.writeText(" . json_encode($publicEmail, JSON_UNESCAPED_SLASHES) . ")",
+    'group'  => 'actions',
+    'k'      => 'email',
+    'label'  => 'copy email address',
+    'hint'   => $publicEmail,
+    'action' => ['type' => 'copyEmail', 'arg' => $publicEmail],
 ];
 
 $items[] = [
-    'group' => 'actions',
-    'k'     => 'boot replay',
-    'label' => 'boot: replay intro sequence',
-    'hint'  => 'rerun boot overlay',
-    'js'    => "window.rcReplayBoot && window.rcReplayBoot()",
+    'group'  => 'actions',
+    'k'      => 'boot replay',
+    'label'  => 'boot: replay intro sequence',
+    'hint'   => 'rerun boot overlay',
+    'action' => ['type' => 'replayBoot'],
 ];
 
 // External
