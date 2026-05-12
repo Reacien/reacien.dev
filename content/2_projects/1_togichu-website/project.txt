@@ -110,6 +110,9 @@ Urls:
 - 
   label: "Togichu's Twitch"
   url: https://twitch.tv/togichu
+- 
+  label: "Togichu's YouTube"
+  url: https://youtube.com/Togichu
 
 ----
 

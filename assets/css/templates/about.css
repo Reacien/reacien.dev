@@ -385,10 +385,18 @@
   }
 }
 
+.page.about .passions-card .card-label {
+  grid-column: 1;
+  grid-row: 1;
+}
+
 .page.about .passions-card .card-heading {
-  margin: 0;
+  grid-column: 1;
+  grid-row: 2;
 }
 
 .page.about .passions-card .card-body {
-  max-width: 40rem;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
 }
