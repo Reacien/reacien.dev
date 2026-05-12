@@ -8,13 +8,18 @@
 <main class="page error">
   <div class="wrap">
     <header class="page-head">
-      <p class="label">Error</p>
-      <h1>Page not found</h1>
+      <p class="label mono">Error · 404</p>
+      <h1><?= $page->title()->or('Page not found')->html() ?></h1>
     </header>
 
     <section class="page-body text">
-      <p>Sorry, the page you are looking for could not be found.</p>
-      <p><a href="<?= $site->url() ?>">Back to home</a></p>
+      <?php if ($page->text()->isNotEmpty()): ?>
+        <?= $page->text()->kt() ?>
+      <?php else: ?>
+        <p>Sorry, the page you are looking for could not be found.</p>
+      <?php endif; ?>
+
+      <p><a href="<?= $site->url() ?>" class="back-link mono">← Back to home</a></p>
     </section>
   </div>
 </main>

@@ -53,9 +53,10 @@
     <?php endif; ?>
 
     <?php
-        $identityName = $site->identity_name()->or('Reacien')->value();
-        $identityRole = $site->identity_role()->or('Software Developer')->value();
-        $sameAs       = array_values(array_filter([
+        $identityName     = $site->identity_name()->or('Reacien')->value();
+        $identityRole     = $site->identity_role()->or('Software Developer')->value();
+        $identityLocation = $site->identity_location()->value();
+        $sameAs           = array_values(array_filter([
             $site->github_url()->or('https://github.com/Reacien')->value(),
             $site->twitter_url()->or('https://twitter.com/Reacien_')->value(),
             $site->nickname_url()->value(),
@@ -66,12 +67,16 @@
 
         if ($page->isHomePage()) {
             $jsonLd[] = array_filter([
-                '@context' => 'https://schema.org',
-                '@type'    => 'Person',
-                'name'     => $identityName,
-                'url'      => $site->url(),
-                'jobTitle' => $identityRole,
-                'sameAs'   => $sameAs ?: null,
+                '@context'    => 'https://schema.org',
+                '@type'       => 'Person',
+                'name'        => $identityName,
+                'url'         => $site->url(),
+                'jobTitle'    => $identityRole,
+                'homeLocation' => $identityLocation ? [
+                    '@type' => 'Place',
+                    'name'  => $identityLocation,
+                ] : null,
+                'sameAs'      => $sameAs ?: null,
             ]);
             $jsonLd[] = array_filter([
                 '@context' => 'https://schema.org',

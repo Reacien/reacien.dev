@@ -64,9 +64,15 @@
   margin: 1.5rem 0 0.5rem;
 }
 
-.page.about .card-body.text h2 { font-size: 1.5rem; }
-.page.about .card-body.text h3 { font-size: 1.25rem; }
-.page.about .card-body.text h4 { font-size: 1.0625rem; }
+.page.about .card-body.text h2 {
+  font-size: 1.5rem;
+}
+.page.about .card-body.text h3 {
+  font-size: 1.25rem;
+}
+.page.about .card-body.text h4 {
+  font-size: 1.0625rem;
+}
 
 .page.about .card-body.text strong {
   color: var(--ink);
@@ -170,7 +176,10 @@
   gap: 0.4rem;
 }
 
-.page.about .identity-card-meta .muted { color: var(--ink-muted); opacity: 0.6; }
+.page.about .identity-card-meta .muted {
+  color: var(--ink-muted);
+  opacity: 0.6;
+}
 
 .page.about .status-pill {
   display: inline-flex;

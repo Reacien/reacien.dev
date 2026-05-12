@@ -20,24 +20,26 @@ tabs:
             type: fields
             label: Hero
             fields:
+              headline:
+                type: writer
+                label: Headline
+                inline: true
+                marks:
+                  - italic
+                help: "Big serif title. Wrap a word in italic (Cmd/Ctrl+I) for the accent colour."
+                default: "say <em>hi</em>."
               subtitle:
-                type: text
-                label: Subtitle
-                help: "Short tagline shown under the H1."
-              intro:
                 type: textarea
-                label: Intro
+                label: Subtitle / Lede
                 size: small
-                help: "A welcoming paragraph above the contact methods."
-          body:
-            type: fields
-            label: Body
-            fields:
+                buttons: false
+                help: "Short paragraph shown under the headline."
               description:
                 type: textarea
-                label: Body Copy
-                size: large
-                help: "Optional longer text — supports KirbyText."
+                label: SEO Description
+                size: small
+                buttons: false
+                help: "Used as the fallback meta description. Not shown on the page itself."
 
       sidebar:
         width: 1/3

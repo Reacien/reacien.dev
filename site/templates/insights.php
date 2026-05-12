@@ -51,9 +51,6 @@ arsort($tagCounts);
 
       <aside class="insights-hero-meta mono">
         <span class="hero-meta-chip"><?= $posts->count() ?> post<?= $posts->count() === 1 ? '' : 's' ?></span>
-        <span class="hero-meta-chip" aria-disabled="true" title="RSS feed — coming soon">
-          rss · /feed.xml
-        </span>
       </aside>
     </header>
 

@@ -1,1 +1,57 @@
 Title: Reacien.dev
+
+----
+
+Tagline: 
+
+----
+
+Description: 
+
+----
+
+Default-og-image: 
+
+----
+
+Identity-name: 
+
+----
+
+Identity-role: 
+
+----
+
+Identity-location: 
+
+----
+
+Github-url: https://github.com/Reacien
+
+----
+
+Twitter-url: https://x.com/Reacien_
+
+----
+
+Nickname-url: https://mynickname.com/reacien
+
+----
+
+Kofi-url: https://ko-fi.com/reacien_
+
+----
+
+Public-email: business@reacien.dev
+
+----
+
+Footer-blurb: 
+
+----
+
+Footer-colophon: 
+
+----
+
+Footer-made-by: 

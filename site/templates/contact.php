@@ -33,18 +33,10 @@ $mailtoSubject = 'Hello from reacien.dev';
       <div class="contact-hero-text">
         <p class="label contact-breadcrumb mono">Contact</p>
         <h1 class="contact-title">
-          <?php if ($page->headline()->isNotEmpty()): ?>
-            <?= $page->headline() ?>
-          <?php else: ?>
-            say <em>hi</em>.
-          <?php endif; ?>
+          <?= $page->headline()->or('say <em>hi</em>.') ?>
         </h1>
-        <?php if ($page->intro()->isNotEmpty()): ?>
-          <p class="lede"><?= $page->intro()->kirbytextinline() ?></p>
-        <?php else: ?>
-          <p class="lede">
-            Questions, commissions, bugs — all welcome. Pick a channel on the left, or write a letter on the right.
-          </p>
+        <?php if ($page->subtitle()->isNotEmpty()): ?>
+          <p class="lede"><?= $page->subtitle()->kirbytextinline() ?></p>
         <?php endif; ?>
       </div>
 
@@ -207,12 +199,6 @@ $mailtoSubject = 'Hello from reacien.dev';
         </form>
       </section>
     </div>
-
-    <?php if ($page->description()->isNotEmpty()): ?>
-      <section class="contact-extras markdown-body">
-        <?= $page->description()->kt() ?>
-      </section>
-    <?php endif; ?>
 
   </div>
 </main>

@@ -389,13 +389,6 @@
   color: var(--ink-muted);
 }
 
-/* extras section under the grid (optional bottom-of-page copy) */
-.page.contact .contact-extras {
-  background: var(--paper);
-  border: var(--border-hairline) solid var(--border-soft);
-  padding: clamp(1rem, 3vw, 1.5rem);
-}
-
 .page.contact .visually-hidden {
   position: absolute;
   width: 1px;
