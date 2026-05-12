@@ -22,7 +22,9 @@ $twitterNote  = $page->twitter_note()->or('quick chatter, replies within a day o
 $kofiNote     = $page->kofi_note()->or('tip jar — fuels the americano habit')->value();
 $notMe        = $page->not_me_disclaimer()->or("any account that isn't listed here isn't mine — even if it looks close.")->value();
 
-$mailtoSubject = 'Hello from reacien.dev';
+$businessEmail  = 'business@reacien.dev';
+$mailtoSubject  = 'Hello from reacien.dev';
+$mailtoHref     = 'mailto:' . $businessEmail . '?subject=' . rawurlencode($mailtoSubject);
 ?>
 <?php snippet('header') ?>
 
@@ -116,6 +118,8 @@ $mailtoSubject = 'Hello from reacien.dev';
           method="post"
           enctype="text/plain"
           data-letter-form
+          data-email="<?= esc($businessEmail) ?>"
+          data-mailto="<?= esc($mailtoHref) ?>"
         >
           <header class="letter-head">
             <span class="letter-tag mono">a letter, of sorts</span>
@@ -138,10 +142,10 @@ $mailtoSubject = 'Hello from reacien.dev';
               placeholder="your name"
               class="letter-input"
             >
-            and I'd like to talk about a
+            and I&rsquo;d like to talk about a
             <label class="visually-hidden" for="letter-type">Type of message</label>
             <select id="letter-type" name="type" class="letter-input letter-select">
-              <option value="" disabled selected>select type…</option>
+              <option value="" disabled selected>select type&hellip;</option>
               <option value="commission">commission</option>
               <option value="collaboration">collaboration</option>
               <option value="bug-report">bug report</option>
@@ -178,25 +182,26 @@ $mailtoSubject = 'Hello from reacien.dev';
             when you have a moment.
           </p>
 
-          <p class="letter-line letter-signoff">Thanks —</p>
+          <p class="letter-line letter-signoff">Thanks &mdash;</p>
           <p class="letter-line letter-signature"><em>you</em></p>
 
-          <!-- Honeypot: bots will fill this, humans won't. -->
+          <!-- Honeypot: bots will fill this, humans won’t. -->
           <input type="text" name="company" tabindex="-1" autocomplete="off" class="letter-honeypot" aria-hidden="true">
 
           <footer class="letter-foot">
             <button type="submit" class="btn btn-primary mono">
-              seal &amp; send <span aria-hidden="true">→</span>
+              seal &amp; send <span aria-hidden="true">&rarr;</span>
             </button>
-            <button
-              type="button"
-              class="btn btn-ghost mono"
-              data-copy-email
-              title="Copy email address to clipboard"
-            >copy email</button>
             <a
-              href="mailto:<?= esc($email) ?>?subject=<?= rawurlencode($mailtoSubject) ?>"
-              class="btn btn-ghost mono"
+              href="#"
+              class="letter-foot-action mono"
+              data-copy-email
+              role="button"
+              aria-label="Copy business email address to clipboard"
+            >copy as email</a>
+            <a
+              href="<?= esc($mailtoHref) ?>"
+              class="letter-foot-action mono"
               data-mailto-link
             >open mailto:</a>
             <span class="letter-stats mono" data-letter-stats>
@@ -213,33 +218,36 @@ $mailtoSubject = 'Hello from reacien.dev';
 
 <script>
 (function () {
-  var btn = document.querySelector('[data-copy-email]');
-  if (!btn) return;
-  btn.addEventListener('click', function () {
-    var email = '<?= esc($email) ?>';
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(email).then(function () {
-        btn.textContent = 'copied!';
-        setTimeout(function () { btn.textContent = 'copy email'; }, 2000);
-      }).catch(function () {
-        fallback(email);
-      });
-    } else {
-      fallback(email);
-    }
-    function fallback(text) {
-      var ta = document.createElement('textarea');
-      ta.value = text;
-      ta.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
-      document.body.appendChild(ta);
-      ta.focus();
-      ta.select();
-      try { document.execCommand('copy'); btn.textContent = 'copied!'; }
-      catch (e) { btn.textContent = 'copy failed'; }
-      setTimeout(function () { btn.textContent = 'copy email'; }, 2000);
-      document.body.removeChild(ta);
-    }
-  });
+  var form = document.querySelector('[data-letter-form]');
+  if (!form) return;
+  var copyLink = form.querySelector('[data-copy-email]');
+  var email    = form.dataset.email || 'business@reacien.dev';
+
+  if (copyLink) {
+    copyLink.addEventListener('click', function (e) {
+      e.preventDefault();
+      var original = copyLink.textContent;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(function () {
+          copyLink.textContent = 'copied!';
+          setTimeout(function () { copyLink.textContent = original; }, 2000);
+        }).catch(fallback);
+      } else {
+        fallback();
+      }
+      function fallback() {
+        var ta = document.createElement('textarea');
+        ta.value = email;
+        ta.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
+        document.body.appendChild(ta);
+        ta.focus(); ta.select();
+        try { document.execCommand('copy'); copyLink.textContent = 'copied!'; }
+        catch (err) { copyLink.textContent = 'copy failed'; }
+        setTimeout(function () { copyLink.textContent = original; }, 2000);
+        document.body.removeChild(ta);
+      }
+    });
+  }
 })();
 </script>
 
