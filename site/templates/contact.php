@@ -159,7 +159,7 @@ $mailtoSubject = 'Hello from reacien.dev';
             class="letter-textarea"
             required
             rows="6"
-            placeholder="what's on your mind…"
+            placeholder="what’s on your mind…"
             data-letter-body
           ></textarea>
 
@@ -188,12 +188,20 @@ $mailtoSubject = 'Hello from reacien.dev';
             <button type="submit" class="btn btn-primary mono">
               seal &amp; send <span aria-hidden="true">→</span>
             </button>
-            <span class="letter-foot-note mono">
-              or copy as email · open mailto:
-            </span>
+            <button
+              type="button"
+              class="btn btn-ghost mono"
+              data-copy-email
+              title="Copy email address to clipboard"
+            >copy email</button>
+            <a
+              href="mailto:<?= esc($email) ?>?subject=<?= rawurlencode($mailtoSubject) ?>"
+              class="btn btn-ghost mono"
+              data-mailto-link
+            >open mailto:</a>
             <span class="letter-stats mono" data-letter-stats>
               <span data-letter-count>0</span> chars
-              <span class="muted">· form has real labels under the hood · screen-reader friendly</span>
+              <span class="muted">· screen-reader friendly</span>
             </span>
           </footer>
         </form>
@@ -202,5 +210,37 @@ $mailtoSubject = 'Hello from reacien.dev';
 
   </div>
 </main>
+
+<script>
+(function () {
+  var btn = document.querySelector('[data-copy-email]');
+  if (!btn) return;
+  btn.addEventListener('click', function () {
+    var email = '<?= esc($email) ?>';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(function () {
+        btn.textContent = 'copied!';
+        setTimeout(function () { btn.textContent = 'copy email'; }, 2000);
+      }).catch(function () {
+        fallback(email);
+      });
+    } else {
+      fallback(email);
+    }
+    function fallback(text) {
+      var ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.cssText = 'position:fixed;left:-9999px;top:0;opacity:0';
+      document.body.appendChild(ta);
+      ta.focus();
+      ta.select();
+      try { document.execCommand('copy'); btn.textContent = 'copied!'; }
+      catch (e) { btn.textContent = 'copy failed'; }
+      setTimeout(function () { btn.textContent = 'copy email'; }, 2000);
+      document.body.removeChild(ta);
+    }
+  });
+})();
+</script>
 
 <?php snippet('footer') ?>

@@ -10,11 +10,22 @@
     <header class="page-head">
       <p class="label mono">Error · 404</p>
       <h1><?= $page->title()->or('Page not found')->html() ?></h1>
-      <p class="error-lede"><?php if ($page->text()->isNotEmpty()): ?><?= $page->text()->kt() ?><?php else: ?>That URL doesn't go anywhere — <em>at least not anymore.</em><?php endif; ?></p>
+      <p class="error-lede">
+        <?php if ($page->text()->isNotEmpty()): ?>
+          <?= $page->text()->kt() ?>
+        <?php else: ?>
+          That URL doesn’t go anywhere — <em>at least not anymore.</em>
+        <?php endif; ?>
+      </p>
     </header>
 
     <section class="page-body">
-      <p class="error-suggest">If something looks broken, feel free to reach out.</p>
+      <p class="error-suggest">
+        This could mean the page was moved, renamed, or never existed in the first place.
+        If you followed a link and ended up here, <em>it might be broken on the other end.</em>
+        If you typed the URL yourself — double-check the spelling.
+        Either way, feel free to reach out if something seems wrong.
+      </p>
 
       <div class="error-actions">
         <a href="<?= $site->url() ?>" class="back-link mono">← Back to home</a>
