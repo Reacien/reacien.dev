@@ -2,7 +2,7 @@
 name: Feature or improvement
 about: New idea, new tool, or an improvement to an existing page or feature.
 title: "[FEAT]"
-labels: ''
+labels: 'enhancement'
 assignees: ''
 
 ---
