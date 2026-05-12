@@ -34,8 +34,11 @@
     <meta name="description" content="<?= $metaDescription->escape() ?>">
     <link rel="canonical" href="<?= $page->url() ?>">
 
-    <link rel="icon" type="image/svg+xml" href="<?= url('assets/images/logo-light.svg') ?>" media="(prefers-color-scheme: light)">
-    <link rel="icon" type="image/svg+xml" href="<?= url('assets/images/logo-dark.svg') ?>" media="(prefers-color-scheme: dark)">
+    <link rel="icon" type="image/x-icon" href="/static/favicon/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/static/favicon/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/static/favicon/apple-touch-icon.png">
+    <link rel="manifest" href="/static/favicon/site.webmanifest">
 
     <meta property="og:site_name" content="<?= $site->title()->escape() ?>">
     <meta property="og:title" content="<?= esc($fullTitle) ?>">
