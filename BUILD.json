@@ -1,8 +1,8 @@
 {
-  "sha": "c7e8074daaa2a2c9f7a2a6410efb346a0c7400d1",
-  "short": "c7e8074",
+  "sha": "29a1fb60f7a51073cbd56ecd09b244203caebca8",
+  "short": "29a1fb6",
   "branch": "main",
-  "run": 17,
-  "version": "v0.1.17",
-  "timestamp": 1778614640
+  "run": 18,
+  "version": "v0.1.18",
+  "timestamp": 1778614861
 }
