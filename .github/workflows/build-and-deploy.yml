@@ -71,9 +71,6 @@ jobs:
             site/sessions/**
 
       - name: Clear Kirby Cache
-        uses: StephanThierry/ftp-delete-action@v2.1
-        with:
-          host: ${{ secrets.FTP_HOST }}
-          user: ${{ secrets.FTP_USER }}
-          password: ${{ secrets.FTP_PASS }}
-          remoteDirectories: "/public_html/site/cache/reacien.dev"
+        run: |
+          sudo apt-get install lftp -y
+          lftp -c "set ssl:verify-certificate no; open -u ${{ secrets.FTP_USER }},${{ secrets.FTP_PASS }} ${{ secrets.FTP_HOST }}; rm -r /public_html/site/cache/reacien.dev"
