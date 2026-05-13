@@ -140,7 +140,7 @@
     <?php endif; ?>
 
     <?php
-    $tplName = $page->template()->name();
+    $tplName = strtolower($page->template()->name());
     $tplCss  = 'assets/css/templates/' . $tplName . '.css';
     $tplJs   = 'assets/js/templates/'  . $tplName . '.js';
     $rootDir = $kirby->root('index');
@@ -164,7 +164,7 @@
     }
     ?>
 
-    <?= css($cssFiles) ?>
+    <?= css(array_map(fn($file) => $file . '?v=' . filemtime($kirby->root('index') . '/' . $file), $cssFiles)) ?>
 
     <?php if ($page->isHomePage()): ?>
         <?= js('assets/js/boot.js', ['defer' => true]) ?>
