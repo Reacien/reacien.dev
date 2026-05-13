@@ -1,7 +1,7 @@
 .colophon {
   position: relative;
-  z-index: 2;
-  border-top: var(--border-hairline) solid color-mix(in oklch, var(--ink) 30%, transparent);
+  border-top: var(--border-hairline) solid
+    color-mix(in oklch, var(--ink) 30%, transparent);
   background: var(--paper);
   color: var(--ink);
 }
@@ -81,11 +81,15 @@
   color: inherit;
   text-decoration: none;
   opacity: 0.85;
-  transition: color 0.15s ease-out, opacity 0.15s ease-out;
+  transition:
+    color 0.15s ease-out,
+    opacity 0.15s ease-out;
 }
 
 .colophon .footer-link-label {
-  transition: transform 0.15s ease-out, color 0.15s ease-out;
+  transition:
+    transform 0.15s ease-out,
+    color 0.15s ease-out;
 }
 
 .colophon .footer-link-arrow {
@@ -127,7 +131,6 @@
    single row at wide widths, stacks to two below 56rem. */
 .footer-bar {
   position: relative;
-  z-index: 2;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -145,7 +148,9 @@
   color: inherit;
   text-decoration: none;
   border-bottom: var(--border-hairline) dashed transparent;
-  transition: color 0.15s ease-out, border-color 0.15s ease-out;
+  transition:
+    color 0.15s ease-out,
+    border-color 0.15s ease-out;
 }
 
 .footer-bar a:hover {

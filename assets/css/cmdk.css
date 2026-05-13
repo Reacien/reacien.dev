@@ -131,7 +131,7 @@
 }
 
 #cmdk .cmdk-item:hover {
-  background: var(--paper-soft);
+  background: color-mix(in oklch, var(--accent) 14%, var(--paper));
 }
 
 #cmdk .cmdk-item.active {

@@ -61,6 +61,11 @@ body::before {
     100% 100%;
 }
 
+:root[data-theme="dark"] body::before {
+  mix-blend-mode: screen;
+  opacity: 0.35;
+}
+
 /* All major surfaces sit above the body texture so cards stay legible. */
 .chrome,
 .page,
@@ -68,7 +73,6 @@ body::before {
 .colophon,
 .footer-bar {
   position: relative;
-  z-index: 1;
 }
 
 a {

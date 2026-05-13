@@ -158,17 +158,13 @@
         }
     }
 
-    $jsFiles = ['assets/js/chrome.js', 'assets/js/cmdk.js'];
+    $jsFiles = ['assets/js/boot.js', 'assets/js/chrome.js', 'assets/js/cmdk.js'];
     if (file_exists($rootDir . '/' . $tplJs)) {
         $jsFiles[] = $tplJs;
     }
     ?>
 
     <?= css(array_map(fn($file) => $file . '?v=' . filemtime($kirby->root('index') . '/' . $file), $cssFiles)) ?>
-
-    <?php if ($page->isHomePage()): ?>
-        <?= js('assets/js/boot.js', ['defer' => true]) ?>
-    <?php endif; ?>
 
     <?= js($jsFiles, ['defer' => true]) ?>
 
@@ -208,6 +204,8 @@
 </head>
 
 <body>
+
+    <?php snippet('boot-overlay') ?>
 
     <a class="skip-link" href="#main-content">Skip to main content</a>
 
