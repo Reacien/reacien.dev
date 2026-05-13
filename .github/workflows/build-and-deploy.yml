@@ -28,7 +28,7 @@ jobs:
         run: |
           TIMESTAMP=$(git log -1 --format=%ct "$SHA")
           SHORT=${SHA:0:7}
-          VERSION="v0.1.${RUN}"
+          VERSION="v1.0.${RUN}"
 
           cat > BUILD.json <<EOF
           {
@@ -73,8 +73,7 @@ jobs:
       - name: Clear Kirby Cache
         uses: StephanThierry/ftp-delete-action@v2.1
         with:
-          host: ${{ secrets.FTP_SERVER }}
-          user: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          remoteFiles: /public_html/site/cache/reacien.dev/
-          ignoreDirectoryPath: true
+          host: ${{ secrets.FTP_HOST }}
+          user: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          remoteDirectories: "/public_html/site/cache/reacien.dev"
