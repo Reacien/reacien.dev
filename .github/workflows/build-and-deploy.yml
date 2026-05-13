@@ -54,6 +54,9 @@ jobs:
             git commit -m "chore: update BUILD.json [skip ci]"
             git push
           fi
+      
+      - name: Inject Webhook Secret
+        run: echo "${{ secrets.WEBHOOK_SECRET }}" > site/config/.webhook-secret
 
       - name: Deploy to cPanel
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -72,5 +75,5 @@ jobs:
 
       - name: Clear Kirby Cache
         run: |
-          sudo apt-get install lftp -y
-          lftp -c "set ssl:verify-certificate no; open -u ${{ secrets.FTP_USER }},${{ secrets.FTP_PASS }} ${{ secrets.FTP_HOST }}; rm -r /public_html/site/cache/reacien.dev"
+          curl -X POST https://reacien.dev/webhook/clear-cache \
+          -H "Authorization: Bearer ${{ secrets.WEBHOOK_SECRET }}"

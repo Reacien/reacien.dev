@@ -62,5 +62,22 @@ return [
                 return new \Kirby\Http\Response($body, 'text/plain');
             },
         ],
+        [
+            'pattern' => 'webhook/clear-cache',
+            'method'  => 'POST',
+            'action'  => function () {
+                $secretPath = __DIR__ . '/.webhook-secret';
+                $expectedToken = file_exists($secretPath) ? trim(file_get_contents($secretPath)) : null;
+
+                $providedToken = kirby()->request()->header('Authorization');
+
+                if (!$expectedToken || $providedToken !== 'Bearer ' . $expectedToken) {
+                    return new \Kirby\Http\Response('Unauthorized', 'text/plain', 401);
+                }
+
+                kirby()->cache('pages')->flush();
+                return new \Kirby\Http\Response('Cache cleared successfully!', 'text/plain', 200);
+            }
+        ],
     ],
 ];

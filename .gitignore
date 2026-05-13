@@ -61,3 +61,4 @@ _changes/
 # ---------------
 
 /site/config/config.env.php
+/site/config/.webhook-secret
