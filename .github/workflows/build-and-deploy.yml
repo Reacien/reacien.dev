@@ -1,4 +1,4 @@
-name: Update BUILD.json
+name: Build and Deploy to cPanel
 
 on:
   push:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  update-build:
+  build-and-deploy:
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-latest
 
@@ -54,3 +54,27 @@ jobs:
             git commit -m "chore: update BUILD.json [skip ci]"
             git push
           fi
+
+      - name: Deploy to cPanel
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /public_html/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/.github*/**
+            .editorconfig
+            site/cache/**
+            site/sessions/**
+
+      - name: Clear Kirby Cache
+        uses: StephanThierry/ftp-delete-action@v2.1
+        with:
+          host: ${{ secrets.FTP_SERVER }}
+          user: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          remoteFiles: /public_html/site/cache/reacien.dev/
+          ignoreDirectoryPath: true
